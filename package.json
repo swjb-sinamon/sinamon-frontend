@@ -16,7 +16,6 @@
   "bugs": {
     "url": "https://github.com/swjb-sinamon/sinamon-frontend/issues"
   },
-  "homepage": "https://github.com/swjb-sinamon/sinamon-frontendreadme",
   "dependencies": {
     "dotenv": "^8.2.0",
     "react": "^16.13.1",
