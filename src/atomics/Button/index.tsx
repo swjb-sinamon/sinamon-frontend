@@ -9,7 +9,7 @@ export const SmallButton = styled.button`
   border-radius: 3px;
   cursor: pointer;
   font-size: 12px;
-  
+
   &:hover {
     background-color: var(--color-button-hover);
   }
@@ -24,7 +24,7 @@ export const MediumButton = styled.button`
   border-radius: 3px;
   cursor: pointer;
   font-size: 14px;
-  
+
   &:hover {
     background-color: var(--color-button-hover);
   }
@@ -39,7 +39,7 @@ export const HugeButton = styled.button`
   border-radius: 3px;
   cursor: pointer;
   font-size: 16px;
-  
+
   &:hover {
     background-color: var(--color-button-hover);
   }

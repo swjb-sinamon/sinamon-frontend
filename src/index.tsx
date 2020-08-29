@@ -10,7 +10,7 @@ dotenv.config();
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router/>
+    <Router />
   </React.StrictMode>,
   document.getElementById('root')
 );

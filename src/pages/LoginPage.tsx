@@ -36,22 +36,22 @@ const LoginPage: React.FC = () => {
   return (
     <Container>
       <GridContainer>
-        <StyledSVG width={600} height={600}/>
+        <StyledSVG width={600} height={600} />
         <StyledForm>
           <div>
             <Heading1>수정과 로그인</Heading1>
 
-            <BlankLine gap={30}/>
+            <BlankLine gap={30} />
 
             <Label>이메일</Label>
-            <Input placeholder="이메일" type="email"/>
+            <Input placeholder="이메일" type="email" />
 
-            <BlankLine gap={20}/>
+            <BlankLine gap={20} />
 
             <Label>비밀번호</Label>
-            <Input placeholder="비밀번호" type="password"/>
+            <Input placeholder="비밀번호" type="password" />
 
-            <BlankLine gap={30}/>
+            <BlankLine gap={30} />
             <ButtonGroup>
               <MediumButton>로그인</MediumButton>
               <MediumButton>회원가입</MediumButton>
