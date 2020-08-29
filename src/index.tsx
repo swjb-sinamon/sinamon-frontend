@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import dotenv from 'dotenv';
-import * as serviceWorker from './serviceWorker';
-import Router from './router';
+import * as serviceWorker from 'src/serviceWorker';
+import Router from 'src/router';
 
-import './styles/global.css';
+import 'src/styles/global.css';
 
 dotenv.config();
 

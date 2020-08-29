@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import LoginPage from './pages/LoginPage';
+import LoginPage from 'src/pages/LoginPage';
 
 const Router: React.FC = () => {
   return (
