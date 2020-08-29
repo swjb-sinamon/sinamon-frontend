@@ -8,7 +8,7 @@ const Input = styled.input`
   padding-left: 16px;
   
   border-radius: 3px;
-  border: 1px var(--color-gray) solid;
+  border: 1px solid var(--color-gray) ;
 `;
 
 export default Input;
