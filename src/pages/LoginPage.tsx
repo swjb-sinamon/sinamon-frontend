@@ -5,7 +5,8 @@ import { ReactComponent as Friends } from 'src/assets/friends.svg';
 import BlankLine from 'src/utils/BlankLine';
 import Label from 'src/atomics/Form/Label';
 import Input from 'src/atomics/Form/Input';
-import LoginButton from '../components/Login/LoginButton';
+import ButtonGroup from '../components/ButtonGroup';
+import { MediumButton } from '../atomics/Button';
 
 const Container = styled.div`
   display: flex;
@@ -51,7 +52,10 @@ const LoginPage: React.FC = () => {
             <Input placeholder="비밀번호" type="password"/>
 
             <BlankLine gap={30}/>
-            <LoginButton/>
+            <ButtonGroup>
+              <MediumButton>로그인</MediumButton>
+              <MediumButton>회원가입</MediumButton>
+            </ButtonGroup>
           </div>
         </StyledForm>
       </GridContainer>
