@@ -26,16 +26,6 @@ const StyledForm = styled.div`
   grid-column: 2 / 3;
 `;
 
-const ButtonGroup = styled.div`
-  & button {
-    margin-right: 1rem;
-  }
-  
-  & button:last-child {
-    margin-right: 0;
-  }
-`;
-
 const StyledSVG = styled(Friends)`
   margin-right: -10px;
   grid-column: 1 / 2;
