@@ -4,7 +4,6 @@ import BlankLine from 'src/utils/BlankLine';
 import Input from 'src/atomics/Form/Input';
 import Label from 'src/atomics/Form/Label';
 import Radio from 'src/atomics/Form/Radio';
-
 import SCREEN_SIZE from 'src/styles/screen-size';
 
 const RadioList = styled.div`
@@ -22,7 +21,7 @@ const GridContainer = styled.div`
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 4rem;
 
-  @media screen and (max-width: ${SCREEN_SIZE}) {
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
     display: block;
   }
 `;
