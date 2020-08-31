@@ -8,6 +8,7 @@ import Input from 'src/atomics/Form/Input';
 import ButtonGroup from 'src/components/ButtonGroup';
 import { MediumButton } from 'src/atomics/Button';
 import { Link } from 'react-router-dom';
+import SCREEN_SIZE from 'src/styles/screen-size';
 
 const Container = styled.div`
   display: flex;
@@ -19,6 +20,10 @@ const Container = styled.div`
 const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
+    display: block;
+  }
 `;
 
 const StyledForm = styled.div`
@@ -31,6 +36,10 @@ const StyledForm = styled.div`
 const StyledSVG = styled(Friends)`
   margin-right: -10px;
   grid-column: 1 / 2;
+
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
+    display: none;
+  }
 `;
 
 const LoginPage: React.FC = () => {
