@@ -4,6 +4,7 @@ import BlankLine from 'src/utils/BlankLine';
 import { HugeButton } from 'src/atomics/Button';
 import RegisterHeaderText from 'src/components/Register/RegisterHeaderText';
 import RegisterFooterText from 'src/components/Register/RegisterFooterText';
+import RegisterForm from 'src/components/Register/RegisterForm';
 
 const Container = styled.div`
   display: flex;
@@ -35,15 +36,17 @@ const RegisterPage: React.FC = () => {
   return (
     <Container>
       <div>
-        <RegisterHeaderText/>
+        <RegisterHeaderText />
 
-        <BlankLine gap={30}/>
+        <BlankLine gap={30} />
 
         <Form>
-          <RegisterFooterText/>
+          <RegisterForm />
+
+          <RegisterFooterText />
         </Form>
 
-        <BlankLine gap={30}/>
+        <BlankLine gap={30} />
 
         <ButtonWrapper>
           <HugeButton>회원가입</HugeButton>
