@@ -7,6 +7,7 @@ import Label from 'src/atomics/Form/Label';
 import Input from 'src/atomics/Form/Input';
 import ButtonGroup from 'src/components/ButtonGroup';
 import { MediumButton } from 'src/atomics/Button';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   display: flex;
@@ -54,7 +55,9 @@ const LoginPage: React.FC = () => {
             <BlankLine gap={30} />
             <ButtonGroup>
               <MediumButton>로그인</MediumButton>
-              <MediumButton>회원가입</MediumButton>
+              <Link to="/register">
+                <MediumButton>회원가입</MediumButton>
+              </Link>
             </ButtonGroup>
           </div>
         </StyledForm>
