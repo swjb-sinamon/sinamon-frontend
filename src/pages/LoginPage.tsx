@@ -5,8 +5,8 @@ import { ReactComponent as Friends } from 'src/assets/friends.svg';
 import BlankLine from 'src/utils/BlankLine';
 import Label from 'src/atomics/Form/Label';
 import Input from 'src/atomics/Form/Input';
-import ButtonGroup from '../components/ButtonGroup';
-import { MediumButton } from '../atomics/Button';
+import ButtonGroup from 'src/components/ButtonGroup';
+import { MediumButton } from 'src/atomics/Button';
 
 const Container = styled.div`
   display: flex;
