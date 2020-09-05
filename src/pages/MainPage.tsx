@@ -99,7 +99,7 @@ const MainPage: React.FC = () => {
             </Card>
 
             <Card columnStart={3} columnEnd={6} rowStart={1} rowEnd={2}>
-              <CardTitle>오늘 급식은 뭐야?</CardTitle>
+              <CardTitle>급식 알려줘!</CardTitle>
               <p>밤밥</p>
               <p>순두부찌개</p>
               <p>수제어쩌구소스</p>
