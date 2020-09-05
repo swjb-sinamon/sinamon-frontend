@@ -1,16 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import CardTitle from 'src/atomics/Typography/CardTitle';
 
 interface CardProps {
   readonly columnStart: number;
   readonly columnEnd: number;
   readonly rowStart: number;
   readonly rowEnd: number;
-  readonly title: string;
 }
 
-const CardContainer = styled.div<Omit<CardProps, 'title'>>`
+const CardContainer = styled.div<CardProps>`
   grid-column: ${(props) => props.columnStart} / ${(props) => props.columnEnd};
   grid-row: ${(props) => props.rowStart} / ${(props) => props.rowEnd};
 
@@ -21,12 +19,8 @@ const CardContainer = styled.div<Omit<CardProps, 'title'>>`
   padding: 1.8rem;
 `;
 
-const CardBody = styled.div`
-  margin-top: 1rem;
-`;
-
 const Card: React.FC<CardProps> = ({ children, ...props }) => {
-  const { columnStart, columnEnd, rowStart, rowEnd, title } = props;
+  const { columnStart, columnEnd, rowStart, rowEnd } = props;
   return (
     <CardContainer
       columnStart={columnStart}
@@ -34,8 +28,7 @@ const Card: React.FC<CardProps> = ({ children, ...props }) => {
       rowStart={rowStart}
       rowEnd={rowEnd}
     >
-      <CardTitle>{title}</CardTitle>
-      <CardBody>{children}</CardBody>
+      {children}
     </CardContainer>
   );
 };
