@@ -1,3 +1,3 @@
 export default {
-  SCREEN_TABLET: '900px'
+  SCREEN_TABLET: '1000px'
 };
