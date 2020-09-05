@@ -55,9 +55,6 @@ const BBody = styled.div`
 
   &:hover {
     transform: scale(1.05);
-    background-image: linear-gradient(135deg, #43cbff 10%, #9708cc 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 
     & svg * {
       fill: url(#Gradient__QRCode);
