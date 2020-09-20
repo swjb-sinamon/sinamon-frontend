@@ -8,8 +8,8 @@ import {
   faSignOutAlt,
   faUmbrella
 } from '@fortawesome/free-solid-svg-icons';
-import MainSideBarTitle from 'src/components/MainSideBar/MainSideBarTitle';
-import MainSideBarItem from 'src/components/MainSideBar/MainSideBarItem';
+import MainSideBarTitle from './MainSideBarTitle';
+import MainSideBarItem from './MainSideBarItem';
 
 const Sidebar = styled.ul`
   min-height: 100vh;

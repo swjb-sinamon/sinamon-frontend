@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloudSunRain, faQrcode, faUmbrella } from '@fortawesome/free-solid-svg-icons';
-import { Heading3 } from 'src/atomics/Typography/Heading';
-import BlankLine from 'src/utils/BlankLine';
-import { MediumButton } from 'src/atomics/Button';
-import MainSideBar from 'src/components/MainSideBar';
-import Card from 'src/components/Card';
-import CardTitle from 'src/atomics/Typography/CardTitle';
-import GradientQR from 'src/assets/Gradient/qr';
+import { Heading3 } from '../atomics/Typography/Heading';
+import BlankLine from '../utils/BlankLine';
+import { MediumButton } from '../atomics/Button';
+import MainSideBar from '../components/MainSideBar';
+import Card from '../components/Card';
+import CardTitle from '../atomics/Typography/CardTitle';
+import GradientQR from '../assets/Gradient/qr';
 
 const Container = styled.div`
   display: grid;

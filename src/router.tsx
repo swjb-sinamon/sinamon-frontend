@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import LoginPage from 'src/pages/LoginPage';
-import RegisterPage from 'src/pages/RegisterPage';
-import MainPage from 'src/pages/MainPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import MainPage from './pages/MainPage';
 
 const Router: React.FC = () => {
   return (

@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import BlankLine from 'src/utils/BlankLine';
-import Input from 'src/atomics/Form/Input';
-import Label from 'src/atomics/Form/Label';
-import Radio from 'src/atomics/Form/Radio';
-import SCREEN_SIZE from 'src/styles/screen-size';
+import BlankLine from '../../utils/BlankLine';
+import Input from '../../atomics/Form/Input';
+import Label from '../../atomics/Form/Label';
+import Radio from '../../atomics/Form/Radio';
+import SCREEN_SIZE from '../../styles/screen-size';
 
 const RadioList = styled.div`
   & input[type='radio'] {

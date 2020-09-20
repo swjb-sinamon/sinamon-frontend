@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import CheckBox from 'src/atomics/Form/CheckBox';
+import CheckBox from '../../atomics/Form/CheckBox';
 
 const UnderLine = styled.span`
   text-decoration: underline;

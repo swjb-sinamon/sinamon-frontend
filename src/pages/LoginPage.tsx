@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Heading1 } from 'src/atomics/Typography/Heading';
-import { ReactComponent as Friends } from 'src/assets/friends.svg';
-import BlankLine from 'src/utils/BlankLine';
-import Label from 'src/atomics/Form/Label';
-import Input from 'src/atomics/Form/Input';
-import ButtonGroup from 'src/components/ButtonGroup';
-import { MediumButton } from 'src/atomics/Button';
+import { Heading1 } from '../atomics/Typography/Heading';
+import { ReactComponent as Friends } from '../assets/friends.svg';
+import BlankLine from '../utils/BlankLine';
+import Label from '../atomics/Form/Label';
+import Input from '../atomics/Form/Input';
+import ButtonGroup from '../components/ButtonGroup';
+import { MediumButton } from '../atomics/Button';
 import { Link } from 'react-router-dom';
-import SCREEN_SIZE from 'src/styles/screen-size';
+import SCREEN_SIZE from '../styles/screen-size';
 
 const Container = styled.div`
   display: flex;

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Heading1, Heading3 } from 'src/atomics/Typography/Heading';
+import { Heading1, Heading3 } from '../../atomics/Typography/Heading';
 
 const TitleContainer = styled.div`
   text-align: center;

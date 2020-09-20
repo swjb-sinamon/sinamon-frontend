@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWineGlassAlt } from '@fortawesome/free-solid-svg-icons';
-import { Heading1, Heading3 } from 'src/atomics/Typography/Heading';
+import { Heading1, Heading3 } from '../../atomics/Typography/Heading';
 
 const SideBarTitle = styled.li`
   width: 100%;

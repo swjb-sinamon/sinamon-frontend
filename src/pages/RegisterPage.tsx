@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import BlankLine from 'src/utils/BlankLine';
-import { HugeButton } from 'src/atomics/Button';
-import RegisterHeaderText from 'src/components/Register/RegisterHeaderText';
-import RegisterFooterText from 'src/components/Register/RegisterFooterText';
-import RegisterForm from 'src/components/Register/RegisterForm';
+import BlankLine from '../utils/BlankLine';
+import { HugeButton } from '../atomics/Button';
+import RegisterHeaderText from '../components/Register/RegisterHeaderText';
+import RegisterFooterText from '../components/Register/RegisterFooterText';
+import RegisterForm from '../components/Register/RegisterForm';
 
 const Container = styled.div`
   display: flex;
