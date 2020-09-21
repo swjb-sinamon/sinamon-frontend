@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWineGlassAlt } from '@fortawesome/free-solid-svg-icons';
 import { Heading1, Heading3 } from '../../atomics/Typography/Heading';
+import SCREEN_SIZE from '../../styles/screen-size';
 
 const SideBarTitle = styled.li`
   width: 100%;
@@ -13,6 +14,11 @@ const SideBarTitle = styled.li`
   align-items: center;
 
   border-bottom: 1px solid var(--color-gray);
+
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
+    height: 100%;
+    border: none;
+  }
 `;
 
 const TitleContainer = styled.div`
@@ -28,10 +34,27 @@ const TitleContainer = styled.div`
   &:hover {
     color: var(--color-button-hover);
   }
+
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
+    margin-bottom: 0;
+    margin-top: -10px;
+    display: grid;
+    place-items: center;
+  }
+`;
+
+const IconWrapper = styled(FontAwesomeIcon)`
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
+    display: none;
+  }
 `;
 
 const AboutContainer = styled.div`
   text-align: center;
+
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
+    display: none;
+  }
 `;
 
 const MainSideBarTitle: React.FC = () => {
@@ -39,7 +62,7 @@ const MainSideBarTitle: React.FC = () => {
     <SideBarTitle>
       <div>
         <TitleContainer>
-          <FontAwesomeIcon icon={faWineGlassAlt} size="2x" />
+          <IconWrapper icon={faWineGlassAlt} size="2x" />
           &nbsp;
           <Heading1>수정과</Heading1>
         </TitleContainer>

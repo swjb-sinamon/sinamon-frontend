@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import SCREEN_SIZE from '../../styles/screen-size';
 
 const MainSideBarItem = styled.li`
   display: flex;
@@ -15,6 +16,10 @@ const MainSideBarItem = styled.li`
     transform: scale(1.05);
     box-shadow: 0 0 30px rgba(169, 169, 169, 0.4);
     background-image: linear-gradient(135deg, #fccf31 10%, #f55555 100%);
+  }
+
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
+    display: none;
   }
 `;
 

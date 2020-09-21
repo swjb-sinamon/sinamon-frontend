@@ -9,10 +9,16 @@ import MainSideBar from '../components/MainSideBar';
 import Card from '../components/Card';
 import CardTitle from '../atomics/Typography/CardTitle';
 import GradientQR from '../assets/Gradient/qr';
+import SCREEN_SIZE from '../styles/screen-size';
 
 const Container = styled.div`
   display: grid;
   grid-template-columns: 280px 4fr;
+
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const StyledContent = styled.div`
@@ -27,6 +33,11 @@ const StyledContentGrid = styled.div`
   grid-template-columns: repeat(5, minmax(auto, 240px));
   grid-template-rows: repeat(3, 260px);
   grid-gap: 30px;
+  
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const WeatherBody = styled.div`

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import SCREEN_SIZE from '../../styles/screen-size';
 
 interface CardProps {
   readonly columnStart: number;
@@ -17,6 +18,15 @@ const CardContainer = styled.div<CardProps>`
   box-shadow: 0 0 30px rgba(169, 169, 169, 0.2);
 
   padding: 1.8rem;
+
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
+    width: 70vw;
+    margin-bottom: 30px;
+  }
+
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_MOBILE}) {
+    width: 90vw;
+  }
 `;
 
 const Card: React.FC<CardProps> = ({ children, ...props }) => {

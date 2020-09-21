@@ -10,6 +10,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import MainSideBarTitle from './MainSideBarTitle';
 import MainSideBarItem from './MainSideBarItem';
+import SCREEN_SIZE from '../../styles/screen-size';
 
 const Sidebar = styled.ul`
   min-height: 100vh;
@@ -20,6 +21,10 @@ const Sidebar = styled.ul`
   flex-direction: column;
 
   list-style: none;
+  
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
+    min-height: 4rem;
+  }
 `;
 
 const MainSideBar: React.FC = () => {
