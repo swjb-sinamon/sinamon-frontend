@@ -4,8 +4,8 @@ const GradientQR: React.FC = () => {
   return (
     <svg width="0" height="0">
       <linearGradient id="Gradient__QRCode" gradientTransform="rotate(135)">
-        <stop stopColor="#43cbff" offset="10%" />
-        <stop stopColor="#9708cc" offset="100%" />
+        <stop stopColor="#F6416C" offset="10%" />
+        <stop stopColor="#FFF6B7" offset="100%" />
       </linearGradient>
     </svg>
   );
