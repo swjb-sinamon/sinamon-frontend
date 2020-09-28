@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { Heading1 } from '../atomics/Typography/Heading';
 import { ReactComponent as Friends } from '../assets/friends.svg';
 import BlankLine from '../utils/BlankLine';
@@ -7,8 +8,8 @@ import Label from '../atomics/Form/Label';
 import Input from '../atomics/Form/Input';
 import ButtonGroup from '../components/ButtonGroup';
 import { MediumButton } from '../atomics/Button';
-import { Link } from 'react-router-dom';
 import SCREEN_SIZE from '../styles/screen-size';
+import Api from '../api';
 
 const Container = styled.div`
   display: flex;
@@ -42,7 +43,44 @@ const StyledSVG = styled(Friends)`
   }
 `;
 
+interface LoginState {
+  readonly email: string;
+  readonly password: string;
+}
+
 const LoginPage: React.FC = () => {
+  const [input, setInput] = useState<LoginState>({
+    email: '',
+    password: ''
+  });
+
+  const onEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.persist();
+
+    setInput((current) => ({
+      ...current,
+      email: e.target.value
+    }));
+  };
+
+  const onPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.persist();
+
+    setInput((current) => ({
+      ...current,
+      password: e.target.value
+    }));
+  };
+
+  const onLoginClick = async () => {
+    const result = await Api.post('/auth/login', {
+      email: input.email,
+      password: input.password
+    });
+
+    console.log(result.data);
+  };
+
   return (
     <Container>
       <GridContainer>
@@ -54,16 +92,16 @@ const LoginPage: React.FC = () => {
             <BlankLine gap={30} />
 
             <Label>이메일</Label>
-            <Input placeholder="이메일" type="email" />
+            <Input placeholder="이메일" type="email" value={input.email} onChange={onEmailChange} />
 
             <BlankLine gap={20} />
 
             <Label>비밀번호</Label>
-            <Input placeholder="비밀번호" type="password" />
+            <Input placeholder="비밀번호" type="password" value={input.password} onChange={onPasswordChange} />
 
             <BlankLine gap={30} />
             <ButtonGroup>
-              <MediumButton>로그인</MediumButton>
+              <MediumButton onClick={onLoginClick}>로그인</MediumButton>
               <Link to="/register">
                 <MediumButton>회원가입</MediumButton>
               </Link>
