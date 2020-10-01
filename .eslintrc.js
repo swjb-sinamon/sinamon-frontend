@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['react-app', 'airbnb'],
+  extends: ['react-app', 'airbnb', 'eslint-config-prettier'],
   rules: {
     'arrow-body-style': 'off',
     'jsx-quotes': 'off',
