@@ -11,7 +11,8 @@ body {
   --color-background: #fafbff;
   --color-button: #0057ff;
   --color-button-hover: #004ede;
-  --color-gray: #788097;
+  --color-subtext: #788097;
+  --color-gray: #dfe4ea;
 }
 
 body {

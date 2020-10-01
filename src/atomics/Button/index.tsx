@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-export const SmallButton = styled.button`
-  width: 80px;
-  height: 22px;
+export const SmallButton = styled.button<{ width?: number; height?: number }>`
+  width: ${(props) => (props.width ? props.width : 80)}px;
+  height: ${(props) => (props.height ? props.height : 22)}px;
   background-color: var(--color-button);
   color: white;
   border: none;
@@ -15,9 +15,9 @@ export const SmallButton = styled.button`
   }
 `;
 
-export const MediumButton = styled.button`
-  width: 100px;
-  height: 30px;
+export const MediumButton = styled.button<{ width?: number; height?: number }>`
+  width: ${(props) => (props.width ? props.width : 100)}px;
+  height: ${(props) => (props.height ? props.height : 30)}px;
   background-color: var(--color-button);
   color: white;
   border: none;
@@ -30,9 +30,9 @@ export const MediumButton = styled.button`
   }
 `;
 
-export const HugeButton = styled.button`
-  width: 120px;
-  height: 40px;
+export const HugeButton = styled.button<{ width?: number; height?: number }>`
+  width: ${(props) => (props.width ? props.width : 120)}px;
+  height: ${(props) => (props.height ? props.height : 40)}px;
   background-color: var(--color-button);
   color: white;
   border: none;
