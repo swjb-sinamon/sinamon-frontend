@@ -54,31 +54,26 @@ const LoginPage: React.FC = () => {
     password: ''
   });
 
-  const onEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.persist();
+  const onInputChange = (type: keyof LoginState) => {
+    return (e: React.ChangeEvent<HTMLInputElement>) => {
+      e.persist();
 
-    setInput((current) => ({
-      ...current,
-      email: e.target.value
-    }));
-  };
-
-  const onPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.persist();
-
-    setInput((current) => ({
-      ...current,
-      password: e.target.value
-    }));
+      setInput((current) => ({
+        ...current,
+        [type]: e.target.value
+      }));
+    };
   };
 
   const onLoginClick = async () => {
-    const result = await Api.post('/auth/login', {
-      email: input.email,
-      password: input.password
-    });
-
-    console.log(result.data);
+    try {
+      const result = await Api.post('/auth/login', {
+        email: input.email,
+        password: input.password
+      });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
@@ -92,12 +87,22 @@ const LoginPage: React.FC = () => {
             <BlankLine gap={30} />
 
             <Label>이메일</Label>
-            <Input placeholder="이메일" type="email" value={input.email} onChange={onEmailChange} />
+            <Input
+              placeholder="이메일"
+              type="email"
+              value={input.email}
+              onChange={() => onInputChange('email')}
+            />
 
             <BlankLine gap={20} />
 
             <Label>비밀번호</Label>
-            <Input placeholder="비밀번호" type="password" value={input.password} onChange={onPasswordChange} />
+            <Input
+              placeholder="비밀번호"
+              type="password"
+              value={input.password}
+              onChange={() => onInputChange('password')}
+            />
 
             <BlankLine gap={30} />
             <ButtonGroup>
