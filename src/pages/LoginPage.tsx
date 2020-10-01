@@ -71,6 +71,7 @@ const LoginPage: React.FC = () => {
         email: input.email,
         password: input.password
       });
+      console.log(result);
     } catch (e) {
       console.log(e);
     }
