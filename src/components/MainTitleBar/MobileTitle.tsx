@@ -18,23 +18,31 @@ const MobileTitleContainer = styled.div`
 
   margin-top: 2px;
   padding: 0 1.6rem;
-
-  cursor: pointer;
-
-  & > *:hover {
-    color: var(--color-button-hover);
-  }
 `;
 
 const StyledTitle = styled(Heading1)`
   font-size: 26px;
+
+  cursor: pointer;
+  &:hover {
+    color: var(--color-button-hover);
+  }
 `;
+
+const StyledIcon = styled(FontAwesomeIcon)`
+  cursor: pointer;
+  &:hover {
+    color: var(--color-button-hover);
+  }
+`;
+
+interface MobileTitleProps {}
 
 const MobileTitle: React.FC = () => {
   return (
     <MobileTitleContainer>
       <StyledTitle>수정과</StyledTitle>
-      <FontAwesomeIcon icon={faBars} size="lg" />
+      <StyledIcon icon={faBars} size="lg" />
     </MobileTitleContainer>
   );
 };
