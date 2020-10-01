@@ -1,5 +1,5 @@
 const SCREEN_SIZE = {
-  SCREEN_TABLET: '1000px',
+  SCREEN_TABLET: '1200px',
   SCREEN_MOBILE: '420px'
 };
 
