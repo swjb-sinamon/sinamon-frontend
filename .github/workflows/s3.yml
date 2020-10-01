@@ -5,7 +5,7 @@ on:
       - release@beta
 
 jobs:
-  build:
+  Deploy:
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout source code.
@@ -15,7 +15,7 @@ jobs:
         uses: actions/cache@v1
         with:
           path: node_modules
-          key: ${{ runner.OS }}-build-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.OS }}-build-
             ${{ runner.OS }}-
@@ -38,3 +38,17 @@ jobs:
             --recursive \
             --region ap-northeast-2 \
             build s3://sinamon-frontend-dev
+
+      - name: Discord Alert Success
+        uses: sarisia/actions-status-discord@v1
+        if: success()
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          description: "🎉 개발버전 사이트가 배포되었습니다!"
+
+      - name: Discord Alert Failure
+        uses: sarisia/actions-status-discord@v1
+        if: failure()
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          description: "🔥 개발버전 사이트 배포를 실패하였습니다."
