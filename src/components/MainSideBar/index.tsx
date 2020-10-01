@@ -28,7 +28,10 @@ const Sidebar = styled.ul`
 `;
 
 const ItemList = styled.ul<{ isOpen: boolean }>`
-  display: ${(props) => (props.isOpen ? 'block' : 'none')};
+  display: block;
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
+    display: ${(props) => (props.isOpen ? 'block' : 'none')};
+  }
 `;
 
 const MainSideBar: React.FC = () => {
