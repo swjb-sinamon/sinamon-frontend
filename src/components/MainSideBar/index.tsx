@@ -32,31 +32,33 @@ const MainSideBar: React.FC = () => {
     <Sidebar>
       <MainTitleBar />
 
-      <MainSideBarItem>
-        <FontAwesomeIcon icon={faUmbrella} size="lg" />
-        &nbsp;
-        <p>우산대여제</p>
-      </MainSideBarItem>
-      <MainSideBarItem>
-        <FontAwesomeIcon icon={faHammer} size="lg" />
-        &nbsp;
-        <p>실습실 대여</p>
-      </MainSideBarItem>
-      <MainSideBarItem>
-        <FontAwesomeIcon icon={faBook} size="lg" />
-        &nbsp;
-        <p>온라인 시간표</p>
-      </MainSideBarItem>
-      <MainSideBarItem>
-        <FontAwesomeIcon icon={faCalendarDay} size="lg" />
-        &nbsp;
-        <p>학사 일정</p>
-      </MainSideBarItem>
-      <MainSideBarItem>
-        <FontAwesomeIcon icon={faSignOutAlt} size="lg" />
-        &nbsp;
-        <p>로그아웃</p>
-      </MainSideBarItem>
+      <ul>
+        <MainSideBarItem>
+          <FontAwesomeIcon icon={faUmbrella} size="lg" />
+          &nbsp;
+          <p>우산대여제</p>
+        </MainSideBarItem>
+        <MainSideBarItem>
+          <FontAwesomeIcon icon={faHammer} size="lg" />
+          &nbsp;
+          <p>실습실 대여</p>
+        </MainSideBarItem>
+        <MainSideBarItem>
+          <FontAwesomeIcon icon={faBook} size="lg" />
+          &nbsp;
+          <p>온라인 시간표</p>
+        </MainSideBarItem>
+        <MainSideBarItem>
+          <FontAwesomeIcon icon={faCalendarDay} size="lg" />
+          &nbsp;
+          <p>학사 일정</p>
+        </MainSideBarItem>
+        <MainSideBarItem>
+          <FontAwesomeIcon icon={faSignOutAlt} size="lg" />
+          &nbsp;
+          <p>로그아웃</p>
+        </MainSideBarItem>
+      </ul>
     </Sidebar>
   );
 };
