@@ -36,13 +36,19 @@ const StyledIcon = styled(FontAwesomeIcon)`
   }
 `;
 
-interface MobileTitleProps {}
+interface MobileTitleProps {
+  readonly setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-const MobileTitle: React.FC = () => {
+const MobileTitle: React.FC<MobileTitleProps> = ({ setOpen }) => {
+  const onBuggerClick = () => {
+    setOpen((current) => !current);
+  };
+
   return (
     <MobileTitleContainer>
       <StyledTitle>수정과</StyledTitle>
-      <StyledIcon icon={faBars} size="lg" />
+      <StyledIcon icon={faBars} size="lg" onClick={onBuggerClick} />
     </MobileTitleContainer>
   );
 };

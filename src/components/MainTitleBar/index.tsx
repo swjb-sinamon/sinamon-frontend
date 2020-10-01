@@ -44,7 +44,11 @@ const TitleContainer = styled.div`
   }
 `;
 
-const MainTitleBar: React.FC = () => {
+interface MainTitleBarProps {
+  readonly setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const MainTitleBar: React.FC<MainTitleBarProps> = ({ setOpen }) => {
   return (
     <SideBarTitle>
       <div>
@@ -54,7 +58,7 @@ const MainTitleBar: React.FC = () => {
           <Heading1>수정과</Heading1>
         </TitleContainer>
 
-        <MobileTitle />
+        <MobileTitle setOpen={setOpen} />
         <MyInfoTitle />
       </div>
     </SideBarTitle>

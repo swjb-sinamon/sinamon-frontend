@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -27,12 +27,18 @@ const Sidebar = styled.ul`
   }
 `;
 
+const ItemList = styled.ul<{ isOpen: boolean }>`
+  display: ${(props) => (props.isOpen ? 'block' : 'none')};
+`;
+
 const MainSideBar: React.FC = () => {
+  const [isOpen, setOpen] = useState<boolean>(false);
+
   return (
     <Sidebar>
-      <MainTitleBar />
+      <MainTitleBar setOpen={setOpen} />
 
-      <ul>
+      <ItemList isOpen={isOpen}>
         <MainSideBarItem>
           <FontAwesomeIcon icon={faUmbrella} size="lg" />
           &nbsp;
@@ -58,7 +64,7 @@ const MainSideBar: React.FC = () => {
           &nbsp;
           <p>로그아웃</p>
         </MainSideBarItem>
-      </ul>
+      </ItemList>
     </Sidebar>
   );
 };

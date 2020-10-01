@@ -19,7 +19,10 @@ const MainSideBarItem = styled.li`
   }
 
   @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
-    display: none;
+    transition: none;
+    &:hover {
+      transform: none;
+    }
   }
 `;
 
