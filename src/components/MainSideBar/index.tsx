@@ -11,6 +11,8 @@ import {
 import MainSideBarItem from './MainSideBarItem';
 import SCREEN_SIZE from '../../styles/screen-size';
 import MainTitleBar from '../MainTitleBar';
+import Api from '../../api';
+import showToast from '../../utils/Toast';
 
 const Sidebar = styled.ul`
   min-height: 100vh;
@@ -37,6 +39,14 @@ const ItemList = styled.ul<{ isOpen: boolean }>`
 const MainSideBar: React.FC = () => {
   const [isOpen, setOpen] = useState<boolean>(false);
 
+  const onLogoutClick = async () => {
+    const isLogout = window.confirm('정말로 로그아웃 하시겠습니까?');
+    if (!isLogout) return;
+    await Api.delete('/auth/logout');
+    showToast('👋 다음에 또 찾아와주세요!', 'success');
+    window.location.reload();
+  };
+
   return (
     <Sidebar>
       <MainTitleBar setOpen={setOpen} />
@@ -62,7 +72,7 @@ const MainSideBar: React.FC = () => {
           &nbsp;
           <p>학사 일정</p>
         </MainSideBarItem>
-        <MainSideBarItem>
+        <MainSideBarItem onClick={onLogoutClick}>
           <FontAwesomeIcon icon={faSignOutAlt} size="lg" />
           &nbsp;
           <p>로그아웃</p>
