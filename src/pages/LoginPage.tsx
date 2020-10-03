@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Heading1 } from '../atomics/Typography/Heading';
 import { ReactComponent as Friends } from '../assets/friends.svg';
 import BlankLine from '../utils/BlankLine';
@@ -55,7 +55,6 @@ const LoginPage: React.FC = () => {
     email: '',
     password: ''
   });
-  const history = useHistory();
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>, type: keyof LoginState) => {
     e.persist();
