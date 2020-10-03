@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Heading1 } from '../atomics/Typography/Heading';
 import { ReactComponent as Friends } from '../assets/friends.svg';
 import BlankLine from '../utils/BlankLine';
@@ -55,6 +55,7 @@ const LoginPage: React.FC = () => {
     email: '',
     password: ''
   });
+  const history = useHistory();
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>, type: keyof LoginState) => {
     e.persist();
@@ -78,11 +79,13 @@ const LoginPage: React.FC = () => {
     }
 
     try {
-      const result = await Api.post('/auth/login', {
+      await Api.post('/auth/login', {
         email: input.email,
         password: input.password
       });
-      console.log(result);
+
+      showToast('🎉 로그인 성공! 메인 페이지로 이동합니다.', 'success');
+      history.push('/');
     } catch (e) {
       if (!e.response.data) return;
       const { success, error } = e.response.data;
