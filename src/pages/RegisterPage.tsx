@@ -6,7 +6,7 @@ import { HugeButton } from '../atomics/Button';
 import RegisterHeaderText from '../components/Register/RegisterHeaderText';
 import RegisterFooterText from '../components/Register/RegisterFooterText';
 import RegisterForm from '../components/Register/RegisterForm';
-import showToast from '../utils/toast';
+import showToast from '../utils/Toast';
 import Api from '../api';
 
 const Container = styled.div`

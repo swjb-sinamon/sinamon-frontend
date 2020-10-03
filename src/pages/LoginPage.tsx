@@ -11,7 +11,7 @@ import { MediumButton } from '../atomics/Button';
 import SCREEN_SIZE from '../styles/screen-size';
 import Api from '../api';
 import ErrorMessage from '../error/ErrorMessage';
-import showToast from '../utils/toast';
+import showToast from '../utils/Toast';
 
 const Container = styled.div`
   display: flex;
