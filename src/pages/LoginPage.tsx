@@ -97,6 +97,10 @@ const LoginPage: React.FC = () => {
     }
   };
 
+  const onEnterKeyPress = async (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') await onLoginClick();
+  };
+
   return (
     <Container>
       <GridContainer>
@@ -123,6 +127,7 @@ const LoginPage: React.FC = () => {
               type="password"
               value={input.password}
               onChange={(e) => onInputChange(e, 'password')}
+              onKeyPress={onEnterKeyPress}
             />
 
             <BlankLine gap={30} />
