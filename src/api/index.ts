@@ -1,5 +1,6 @@
 import axios from 'axios';
 import showToast from '../utils/Toast';
+import ErrorMessage from '../error/ErrorMessage';
 
 const host = process.env.REACT_APP_API_HOST || 'http://localhost:8080';
 
@@ -20,6 +21,8 @@ Api.interceptors.response.use(
     if (success) return Promise.reject(e);
     if (isErrorDataNullOrUndefined) return Promise.reject(e);
     if (isValidatorError) return Promise.reject(e);
+
+    if (error === ErrorMessage.NO_PERMISSION) return Promise.reject(e);
 
     showToast(`🔥 ${error}`, 'danger');
 
