@@ -7,13 +7,16 @@ import Router from './router';
 
 import './styles/global.css';
 import 'react-notifications-component/dist/theme.css';
+import { ProfileProvider } from './hooks/useProfile';
 
 dotenv.config();
 
 ReactDOM.render(
   <React.StrictMode>
-    <ReactNotification />
-    <Router />
+    <ProfileProvider>
+      <ReactNotification />
+      <Router />
+    </ProfileProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
