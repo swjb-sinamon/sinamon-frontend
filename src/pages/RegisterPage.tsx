@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 import BlankLine from '../utils/BlankLine';
 import { HugeButton } from '../atomics/Button';
 import RegisterHeaderText from '../components/Register/RegisterHeaderText';
 import RegisterFooterText from '../components/Register/RegisterFooterText';
 import RegisterForm from '../components/Register/RegisterForm';
 import showToast from '../utils/toast';
+import Api from '../api';
 
 const Container = styled.div`
   display: flex;
@@ -58,11 +60,12 @@ const RegisterPage: React.FC = () => {
     class: 0,
     number: 1
   });
-
   const check = useState<CheckState>({
     privacy: false,
     tos: false
   });
+
+  const history = useHistory();
 
   const validator = (): boolean => {
     const blankCount = Object.values(state[0]).filter(
@@ -103,10 +106,20 @@ const RegisterPage: React.FC = () => {
     return true;
   };
 
-  const onRegisterClick = () => {
+  const onRegisterClick = async () => {
     if (!validator()) return;
 
-    // TODO: Register API
+    await Api.post('/auth/register', {
+      email: state[0].email,
+      password: state[0].password,
+      name: state[0].fullName,
+      studentGrade: state[0].grade,
+      studentClass: state[0].class,
+      studentNumber: state[0].number
+    });
+
+    showToast('🎉 회원가입 성공! 로그인 페이지로 이동합니다.', 'success');
+    history.push('/login');
   };
 
   return (
