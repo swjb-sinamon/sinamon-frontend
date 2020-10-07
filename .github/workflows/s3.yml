@@ -27,6 +27,9 @@ jobs:
         run: yarn lint
 
       - name: Build
+        env:
+          GENERATE_SOURCEMAP: false
+          REACT_APP_API_HOST: ${{ secrets.API_HOST }}
         run: yarn build
 
       - name: Deploy
