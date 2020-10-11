@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloudSunRain, faQrcode, faUmbrella } from '@fortawesome/free-solid-svg-icons';
@@ -10,6 +10,7 @@ import Card from '../components/Card';
 import CardTitle from '../atomics/Typography/CardTitle';
 import GradientQR from '../assets/Gradient/qr';
 import SCREEN_SIZE from '../styles/screen-size';
+import Api from '../api';
 
 const Container = styled.div`
   display: grid;
@@ -33,7 +34,7 @@ const StyledContentGrid = styled.div`
   grid-template-columns: repeat(5, minmax(auto, 240px));
   grid-template-rows: repeat(3, 260px);
   grid-gap: 30px;
-  
+
   @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
     display: flex;
     flex-direction: column;
@@ -73,7 +74,19 @@ const BBody = styled.div`
   }
 `;
 
+const StyledMeal = styled.pre`
+  font-family: 'Noto Sans KR', sans-serif;
+`;
+
 const MainPage: React.FC = () => {
+  const [today, setToday] = useState<string>('');
+  const [calender, setCalender] = useState<string[]>([]);
+
+  useEffect(() => {
+    Api.get('/school/meal?type=today').then((res) => setToday(res.data.data));
+    Api.get('/school/calender').then((res) => setCalender(res.data.data));
+  }, []);
+
   return (
     <>
       <Container>
@@ -108,12 +121,7 @@ const MainPage: React.FC = () => {
 
             <Card columnStart={3} columnEnd={6} rowStart={1} rowEnd={2}>
               <CardTitle>급식 알려줘!</CardTitle>
-              <p>밤밥</p>
-              <p>순두부찌개</p>
-              <p>수제어쩌구소스</p>
-              <p>취나물어쩌꾸볶음</p>
-              <p>배추김치</p>
-              <p>젤리</p>
+              <StyledMeal>{today}</StyledMeal>
             </Card>
 
             <Card columnStart={1} columnEnd={5} rowStart={2} rowEnd={3}>
@@ -138,7 +146,7 @@ const MainPage: React.FC = () => {
 
             <Card columnStart={4} columnEnd={6} rowStart={3} rowEnd={4}>
               <CardTitle>곧 있을 행사가 궁금해!</CardTitle>
-              <p>[주요 학사일정]</p>
+              <StyledMeal>{calender.map((value) => `${value}\n`)}</StyledMeal>
             </Card>
           </StyledContentGrid>
         </StyledContent>
