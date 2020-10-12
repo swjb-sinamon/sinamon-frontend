@@ -129,11 +129,6 @@ const MainPage: React.FC = () => {
               <p>[시간표]</p>
             </Card>
 
-            <Card columnStart={1} columnEnd={4} rowStart={3} rowEnd={4}>
-              <CardTitle>지금 우산 남았어?</CardTitle>
-              <p>[우산개수, 상태]</p>
-            </Card>
-
             <Card columnStart={5} columnEnd={6} rowStart={2} rowEnd={3}>
               <BBody>
                 <GradientQR />
@@ -144,7 +139,7 @@ const MainPage: React.FC = () => {
               </BBody>
             </Card>
 
-            <Card columnStart={4} columnEnd={6} rowStart={3} rowEnd={4}>
+            <Card columnStart={1} columnEnd={6} rowStart={3} rowEnd={4}>
               <CardTitle>곧 있을 행사가 궁금해!</CardTitle>
               <StyledMeal>{calender.map((value) => `${value}\n`)}</StyledMeal>
             </Card>

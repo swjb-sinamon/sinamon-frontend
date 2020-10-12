@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faBook,
-  faCalendarDay,
-  faHammer,
-  faSignOutAlt,
-  faUmbrella
-} from '@fortawesome/free-solid-svg-icons';
+import { faBook, faCalendarDay, faHammer, faSignOutAlt, faUmbrella } from '@fortawesome/free-solid-svg-icons';
+import { useHistory } from 'react-router-dom';
 import MainSideBarItem from './MainSideBarItem';
 import SCREEN_SIZE from '../../styles/screen-size';
 import MainTitleBar from '../MainTitleBar';
@@ -36,7 +31,23 @@ const ItemList = styled.ul<{ isOpen: boolean }>`
   }
 `;
 
+const StyledFooterText = styled.p`
+  text-align: center;
+  font-size: 14px;
+  color: var(--color-subtext);
+  
+  margin: 2rem 0;
+  
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+  
+  & span:hover {
+     color: var(--color-button-hover);
+  }
+`;
+
 const MainSideBar: React.FC = () => {
+  const history = useHistory();
   const [isOpen, setOpen] = useState<boolean>(false);
 
   const onLogoutClick = async () => {
@@ -45,6 +56,14 @@ const MainSideBar: React.FC = () => {
     await Api.delete('/auth/logout');
     showToast('👋 다음에 또 찾아와주세요!', 'success');
     window.location.reload();
+  };
+
+  const onPrivacyClick = () => {
+    history.push('/privacy');
+  };
+
+  const onToSClick = () => {
+    history.push('/tou');
   };
 
   return (
@@ -77,6 +96,10 @@ const MainSideBar: React.FC = () => {
           &nbsp;
           <p>로그아웃</p>
         </MainSideBarItem>
+
+        <StyledFooterText>
+          <span onClick={onPrivacyClick}>개인정보처리방침</span> &middot; <span onClick={onToSClick}>이용약관</span>
+        </StyledFooterText>
       </ItemList>
     </Sidebar>
   );
