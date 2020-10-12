@@ -12,7 +12,7 @@ const Api = axios.create({
 Api.interceptors.response.use(
   (res) => res,
   (e) => {
-    if (!e.response.data) return Promise.reject(e);
+    if (!e.response || !e.response.data) return Promise.reject(e);
 
     const { success, error } = e.response.data;
     const isValidatorError = e.response.status === 400;
