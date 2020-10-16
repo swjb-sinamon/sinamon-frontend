@@ -5,6 +5,7 @@ import RegisterPage from './pages/RegisterPage';
 import MainPage from './pages/MainPage';
 import PrivacyPage from './pages/PrivacyPage';
 import PermissionRoute from './utils/Route/PermissionRoute';
+import ToSPage from './pages/ToSPage';
 
 const Router: React.FC = () => {
   return (
@@ -24,6 +25,7 @@ const Router: React.FC = () => {
         />
         <Route exact path="/register" component={RegisterPage} />
         <Route exact path="/privacy" component={PrivacyPage} />
+        <Route exact path="/tos" component={ToSPage} />
       </Switch>
     </BrowserRouter>
   );
