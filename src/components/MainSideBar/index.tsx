@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBook, faCalendarDay, faHammer, faSignOutAlt, faUmbrella } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBook,
+  faCalendarDay,
+  faHammer,
+  faSignOutAlt,
+  faUmbrella
+} from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
 import MainSideBarItem from './MainSideBarItem';
 import SCREEN_SIZE from '../../styles/screen-size';
@@ -33,16 +39,23 @@ const ItemList = styled.ul<{ isOpen: boolean }>`
 
 const StyledFooterText = styled.p`
   text-align: center;
-  font-size: 14px;
-  color: var(--color-subtext);
-  
+
   margin: 2rem 0;
-  
+`;
+
+const PrivacyButton = styled.button`
+  border: none;
+  background-color: transparent;
+
+  font-size: 14px;
+  font-family: 'Noto Sans KR', sans-serif;
+  color: var(--color-subtext);
+
   cursor: pointer;
   transition: color 0.2s ease-in-out;
-  
-  & span:hover {
-     color: var(--color-button-hover);
+
+  &:hover {
+    color: var(--color-button-hover);
   }
 `;
 
@@ -63,7 +76,7 @@ const MainSideBar: React.FC = () => {
   };
 
   const onToSClick = () => {
-    history.push('/tou');
+    history.push('/tos');
   };
 
   return (
@@ -98,7 +111,8 @@ const MainSideBar: React.FC = () => {
         </MainSideBarItem>
 
         <StyledFooterText>
-          <span onClick={onPrivacyClick}>개인정보처리방침</span> &middot; <span onClick={onToSClick}>이용약관</span>
+          <PrivacyButton onClick={onPrivacyClick}>개인정보처리방침</PrivacyButton> &middot;{' '}
+          <PrivacyButton onClick={onToSClick}>이용약관</PrivacyButton>
         </StyledFooterText>
       </ItemList>
     </Sidebar>
