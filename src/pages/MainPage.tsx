@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCloudSunRain, faQrcode, faUmbrella } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCloudShowersHeavy,
+  faQrcode,
+  faUmbrella,
+  faSun,
+  faCloud,
+  faSnowflake,
+  faCloudSun
+} from '@fortawesome/free-solid-svg-icons';
 import { Heading3 } from '../atomics/Typography/Heading';
 import BlankLine from '../utils/BlankLine';
 import { MediumButton } from '../atomics/Button';
@@ -11,6 +19,7 @@ import CardTitle from '../atomics/Typography/CardTitle';
 import GradientQR from '../assets/Gradient/qr';
 import SCREEN_SIZE from '../styles/screen-size';
 import Api from '../api';
+import convertWeatherStatusToString from '../utils/Converter/Weather';
 
 const Container = styled.div`
   display: grid;
@@ -81,11 +90,21 @@ const StyledMeal = styled.pre`
 const MainPage: React.FC = () => {
   const [today, setToday] = useState<string>('');
   const [calender, setCalender] = useState<string[]>([]);
+  const [weather, setWeather] = useState<string>('');
 
   useEffect(() => {
     Api.get('/school/meal?type=today').then((res) => setToday(res.data.data));
     Api.get('/school/calender').then((res) => setCalender(res.data.data));
+    Api.get('/weather').then((res) => setWeather(res.data.data));
   }, []);
+
+  const WeatherIcon = () => {
+    if (weather === 'CLEAR') return <FontAwesomeIcon icon={faSun} size="5x" />;
+    if (weather === 'RAIN') return <FontAwesomeIcon icon={faCloudShowersHeavy} size="5x" />;
+    if (weather === 'CLOUDS') return <FontAwesomeIcon icon={faCloud} size="5x" />;
+    if (weather === 'SNOW') return <FontAwesomeIcon icon={faSnowflake} size="5x" />;
+    return <FontAwesomeIcon icon={faCloudSun} size="5x" />;
+  };
 
   return (
     <>
@@ -99,9 +118,9 @@ const MainPage: React.FC = () => {
               <WeatherBody>
                 <WeatherCenterContainer>
                   <div>
-                    <FontAwesomeIcon icon={faCloudSunRain} size="5x" />
+                    <WeatherIcon />
                     <BlankLine gap={10} />
-                    <p>비가 주륵</p>
+                    <p>{convertWeatherStatusToString(weather)}</p>
                   </div>
                 </WeatherCenterContainer>
                 <WeatherCenterContainer>
