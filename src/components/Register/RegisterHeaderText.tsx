@@ -4,7 +4,7 @@ import { Heading1, Heading3 } from '../../atomics/Typography/Heading';
 
 const TitleContainer = styled.div`
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 2rem;
 `;
 
 const StyledHeading3 = styled(Heading3)`

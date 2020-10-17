@@ -31,7 +31,7 @@ const ButtonWrapper = styled.div`
   flex-direction: column;
 
   & > button {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 `;
 
