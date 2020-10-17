@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import CheckBox from '../../atomics/Form/CheckBox';
@@ -26,7 +26,6 @@ interface RegisterFooterTextProps {
 }
 
 const RegisterFooterText: React.FC<RegisterFooterTextProps> = ({ check }) => {
-  const history = useHistory();
   const [input, setInput] = check;
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>, type: keyof CheckState) => {
