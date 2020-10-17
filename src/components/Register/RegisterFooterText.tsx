@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import CheckBox from '../../atomics/Form/CheckBox';
 
 const UnderLine = styled.span`
@@ -22,6 +25,7 @@ interface RegisterFooterTextProps {
 }
 
 const RegisterFooterText: React.FC<RegisterFooterTextProps> = ({ check }) => {
+  const history = useHistory();
   const [input, setInput] = check;
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>, type: keyof CheckState) => {
@@ -36,8 +40,15 @@ const RegisterFooterText: React.FC<RegisterFooterTextProps> = ({ check }) => {
   return (
     <>
       <span>
-        <UnderLine>개인정보처리방침</UnderLine> 동의 (필수){' '}
+        <UnderLine onClick={() => history.push('/privacy')}>
+          <FontAwesomeIcon icon={faExternalLinkAlt} />
+          개인정보처리방침
+        </UnderLine>{' '}
+        동의 (필수)
         <CheckBox
+          style={{
+            marginLeft: 5
+          }}
           type="checkbox"
           checked={input.privacy}
           onChange={(e) => onInputChange(e, 'privacy')}
@@ -45,8 +56,19 @@ const RegisterFooterText: React.FC<RegisterFooterTextProps> = ({ check }) => {
       </span>
       <br />
       <span>
-        <UnderLine>수정과 이용약관</UnderLine> 동의 (필수){' '}
-        <CheckBox type="checkbox" checked={input.tos} onChange={(e) => onInputChange(e, 'tos')} />
+        <UnderLine onClick={() => history.push('/tos')}>
+          <FontAwesomeIcon icon={faExternalLinkAlt} />
+          수정과 이용약관
+        </UnderLine>{' '}
+        동의 (필수)
+        <CheckBox
+          style={{
+            marginLeft: 5
+          }}
+          type="checkbox"
+          checked={input.tos}
+          onChange={(e) => onInputChange(e, 'tos')}
+        />
       </span>
     </>
   );
