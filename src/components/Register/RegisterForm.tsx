@@ -5,6 +5,7 @@ import Input from '../../atomics/Form/Input';
 import Label from '../../atomics/Form/Label';
 import Radio from '../../atomics/Form/Radio';
 import SCREEN_SIZE from '../../styles/screen-size';
+import Select from '../../atomics/Form/Select';
 
 const RadioList = styled.div`
   & input[type='radio'] {
@@ -91,7 +92,18 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ state }) => {
         />
         <BlankLine gap={20} />
       </div>
+
       <div>
+        <Label>학과</Label>
+        <Select>
+          <option value="1">컴퓨터전자과</option>
+          <option value="2">스마트자동학과</option>
+          <option value="3">IT산업디자인과</option>
+          <option value="4">IT경영정보과</option>
+          <option value="5">IT소프트웨어과</option>
+        </Select>
+        <BlankLine gap={20} />
+
         <Label>학년 (선생님 가입 시 담당 학년을 선택합니다)</Label>
         <RadioList>
           <Radio
