@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import BlankLine from '../../utils/BlankLine';
 import Input from '../../atomics/Form/Input';
@@ -56,7 +56,12 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ state }) => {
     <GridContainer>
       <div>
         <Label>이메일</Label>
-        <Input type="email" value={input.email} onChange={(e) => onInputChange(e, 'email')} />
+        <Input
+          type="email"
+          value={input.email}
+          onChange={(e) => onInputChange(e, 'email')}
+          placeholder="로그인 시 사용할 이메일을 입력해주세요."
+        />
         <BlankLine gap={20} />
 
         <Label>비밀번호</Label>
@@ -64,6 +69,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ state }) => {
           type="password"
           value={input.password}
           onChange={(e) => onInputChange(e, 'password')}
+          placeholder="6자리 이상의 비밀번호를 입력해주세요."
         />
         <BlankLine gap={20} />
 
@@ -72,11 +78,17 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ state }) => {
           type="password"
           value={input.passwordConfirm}
           onChange={(e) => onInputChange(e, 'passwordConfirm')}
+          placeholder="비밀번호를 한번 더 입력해주세요."
         />
         <BlankLine gap={20} />
 
         <Label>실명</Label>
-        <Input type="text" value={input.fullName} onChange={(e) => onInputChange(e, 'fullName')} />
+        <Input
+          type="text"
+          value={input.fullName}
+          onChange={(e) => onInputChange(e, 'fullName')}
+          placeholder="실명을 입력해주세요."
+        />
         <BlankLine gap={20} />
       </div>
       <div>
