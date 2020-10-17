@@ -96,6 +96,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ state }) => {
       <div>
         <Label>학과</Label>
         <Select>
+          <option value="-1">자신의 학과를 선택해주세요.</option>
           <option value="1">컴퓨터전자과</option>
           <option value="2">스마트자동학과</option>
           <option value="3">IT산업디자인과</option>
@@ -104,7 +105,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ state }) => {
         </Select>
         <BlankLine gap={20} />
 
-        <Label>학년 (선생님 가입 시 담당 학년을 선택합니다)</Label>
+        <Label>학년</Label>
         <RadioList>
           <Radio
             type="radio"
