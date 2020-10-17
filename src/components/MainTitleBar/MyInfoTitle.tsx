@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Heading3 } from '../../atomics/Typography/Heading';
 import SCREEN_SIZE from '../../styles/screen-size';
 import { useProfile } from '../../hooks/useProfile';
+import convertDepartmentIdToString from '../../utils/Department';
 
 const AboutContainer = styled.div`
   text-align: center;
@@ -29,7 +30,8 @@ const MyInfoTitle: React.FC = () => {
   return (
     <AboutContainer>
       <Heading3>
-        [학과]과 {profile.studentGrade}학년 {profile.studentClass}반
+        {convertDepartmentIdToString(profile.department)}과 {profile.studentGrade}학년{' '}
+        {profile.studentClass}반
       </Heading3>
       <Heading3>
         {profile.name} {rule}
