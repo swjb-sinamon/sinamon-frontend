@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Heading3 } from '../../atomics/Typography/Heading';
 import SCREEN_SIZE from '../../styles/screen-size';
 import { useProfile } from '../../hooks/useProfile';
-import convertDepartmentIdToString from '../../utils/Department';
+import convertDepartmentIdToString from '../../utils/Converter/Department';
 
 const AboutContainer = styled.div`
   text-align: center;
