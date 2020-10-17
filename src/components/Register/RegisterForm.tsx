@@ -32,6 +32,7 @@ interface RegisterState {
   readonly password: string;
   readonly passwordConfirm: string;
   readonly fullName: string;
+  readonly department: number;
   readonly grade: number;
   readonly class: number;
   readonly number: number;
@@ -44,7 +45,10 @@ interface RegisterFormProps {
 const RegisterForm: React.FC<RegisterFormProps> = ({ state }) => {
   const [input, setInput] = state;
 
-  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>, type: keyof RegisterState) => {
+  const onInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+    type: keyof RegisterState
+  ) => {
     e.persist();
 
     setInput((current) => ({
@@ -95,8 +99,8 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ state }) => {
 
       <div>
         <Label>학과</Label>
-        <Select>
-          <option value="-1">자신의 학과를 선택해주세요.</option>
+        <Select value={input.department} onChange={(e) => onInputChange(e, 'department')}>
+          <option value="0">자신의 학과를 선택해주세요.</option>
           <option value="1">컴퓨터전자과</option>
           <option value="2">스마트자동학과</option>
           <option value="3">IT산업디자인과</option>
