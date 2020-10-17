@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import CheckBox from '../../atomics/Form/CheckBox';
 
-const UnderLine = styled.span`
+const UnderLineLink = styled(Link)`
   text-decoration: underline;
+  color: #333333;
   cursor: pointer;
   transition: color 0.2s ease-in;
 
@@ -40,10 +41,10 @@ const RegisterFooterText: React.FC<RegisterFooterTextProps> = ({ check }) => {
   return (
     <>
       <span>
-        <UnderLine onClick={() => history.push('/privacy')}>
+        <UnderLineLink to="/privacy" target="_blank">
           <FontAwesomeIcon icon={faExternalLinkAlt} />
           개인정보처리방침
-        </UnderLine>{' '}
+        </UnderLineLink>{' '}
         동의 (필수)
         <CheckBox
           style={{
@@ -56,10 +57,10 @@ const RegisterFooterText: React.FC<RegisterFooterTextProps> = ({ check }) => {
       </span>
       <br />
       <span>
-        <UnderLine onClick={() => history.push('/tos')}>
+        <UnderLineLink to="/tos" target="_blank">
           <FontAwesomeIcon icon={faExternalLinkAlt} />
           수정과 이용약관
-        </UnderLine>{' '}
+        </UnderLineLink>{' '}
         동의 (필수)
         <CheckBox
           style={{
