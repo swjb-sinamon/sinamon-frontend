@@ -7,6 +7,7 @@ import SCREEN_SIZE from '../styles/screen-size';
 import Api from '../api';
 import WeatherCard from '../components/Card/WeatherCard';
 import QRCodeCard from '../components/Card/QRCodeCard';
+import MealCard from '../components/Card/MealCard';
 
 const Container = styled.div`
   display: grid;
@@ -43,11 +44,9 @@ const StyledMeal = styled.pre`
 `;
 
 const MainPage: React.FC = () => {
-  const [today, setToday] = useState<string>('');
   const [calender, setCalender] = useState<string[]>([]);
 
   useEffect(() => {
-    Api.get('/school/meal?type=today').then((res) => setToday(res.data.data));
     Api.get('/school/calender').then((res) => setCalender(res.data.data));
   }, []);
 
@@ -60,10 +59,7 @@ const MainPage: React.FC = () => {
           <StyledContentGrid>
             <WeatherCard />
 
-            <Card columnStart={3} columnEnd={6} rowStart={1} rowEnd={2}>
-              <CardTitle>급식 알려줘!</CardTitle>
-              <StyledMeal>{today}</StyledMeal>
-            </Card>
+            <MealCard />
 
             <Card columnStart={1} columnEnd={5} rowStart={2} rowEnd={3}>
               <CardTitle>무엇을 배울까?</CardTitle>
