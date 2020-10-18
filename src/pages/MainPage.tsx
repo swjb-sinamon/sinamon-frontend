@@ -1,28 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faCloudShowersHeavy,
-  faQrcode,
-  faUmbrella,
-  faSun,
-  faCloud,
-  faSnowflake,
-  faCloudSun,
-  faMoon,
-  faCloudMoon,
-  faCloudMoonRain
-} from '@fortawesome/free-solid-svg-icons';
+import { faQrcode } from '@fortawesome/free-solid-svg-icons';
 import { Heading3 } from '../atomics/Typography/Heading';
-import BlankLine from '../utils/BlankLine';
-import { MediumButton } from '../atomics/Button';
 import MainSideBar from '../components/MainSideBar';
 import Card from '../components/Card';
 import CardTitle from '../atomics/Typography/CardTitle';
 import GradientQR from '../assets/Gradient/qr';
 import SCREEN_SIZE from '../styles/screen-size';
 import Api from '../api';
-import convertWeatherStatusToString from '../utils/Converter/Weather';
+import WeatherCard from '../components/Card/WeatherCard';
 
 const Container = styled.div`
   display: grid;
@@ -53,20 +40,6 @@ const StyledContentGrid = styled.div`
   }
 `;
 
-const WeatherBody = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  height: 80%;
-  grid-gap: 10px;
-`;
-
-const WeatherCenterContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-`;
-
 const BBody = styled.div`
   display: flex;
   height: 100%;
@@ -90,51 +63,14 @@ const StyledMeal = styled.pre`
   font-family: 'Noto Sans KR', sans-serif;
 `;
 
-const StyledWeatherStatus = styled.p`
-  font-size: 14px;
-`;
-
-const StyledDustStatus = styled.p`
-  font-size: 14px;
-`;
-
-const StyledDustContent = styled.b<{ color: string }>`
-  color: ${(props) => props.color};
-`;
-
 const MainPage: React.FC = () => {
   const [today, setToday] = useState<string>('');
   const [calender, setCalender] = useState<string[]>([]);
-  const [weather, setWeather] = useState<string>('');
 
   useEffect(() => {
     Api.get('/school/meal?type=today').then((res) => setToday(res.data.data));
     Api.get('/school/calender').then((res) => setCalender(res.data.data));
-    Api.get('/weather').then((res) => setWeather(res.data.data));
   }, []);
-
-  const WeatherIcon = () => {
-    if (weather === 'CLEAR') {
-      if (new Date().getHours() >= 20) {
-        return <FontAwesomeIcon icon={faMoon} size="5x" />;
-      }
-      return <FontAwesomeIcon icon={faSun} size="5x" />;
-    }
-    if (weather === 'RAIN') {
-      if (new Date().getHours() >= 20) {
-        return <FontAwesomeIcon icon={faCloudMoonRain} size="5x" />;
-      }
-      return <FontAwesomeIcon icon={faCloudShowersHeavy} size="5x" />;
-    }
-    if (weather === 'CLOUDS') {
-      if (new Date().getHours() >= 20) {
-        return <FontAwesomeIcon icon={faCloudMoon} size="5x" />;
-      }
-      return <FontAwesomeIcon icon={faCloud} size="5x" />;
-    }
-    if (weather === 'SNOW') return <FontAwesomeIcon icon={faSnowflake} size="5x" />;
-    return <FontAwesomeIcon icon={faCloudSun} size="5x" />;
-  };
 
   return (
     <>
@@ -143,37 +79,7 @@ const MainPage: React.FC = () => {
 
         <StyledContent>
           <StyledContentGrid>
-            <Card columnStart={1} columnEnd={3} rowStart={1} rowEnd={2}>
-              <CardTitle>오늘 날씨는 어때?</CardTitle>
-              <WeatherBody>
-                <WeatherCenterContainer>
-                  <div>
-                    <WeatherIcon />
-                    <BlankLine gap={10} />
-                    <StyledWeatherStatus>
-                      {convertWeatherStatusToString(weather)}
-                    </StyledWeatherStatus>
-                  </div>
-                </WeatherCenterContainer>
-                <WeatherCenterContainer>
-                  <div>
-                    <StyledDustStatus>
-                      미세먼지 <StyledDustContent color="var(--color-good)">좋음</StyledDustContent>
-                    </StyledDustStatus>
-                    <StyledDustStatus>
-                      초미세먼지{' '}
-                      <StyledDustContent color="var(--color-bad)">나쁨</StyledDustContent>
-                    </StyledDustStatus>
-
-                    <BlankLine gap={20} />
-
-                    <MediumButton width={120}>
-                      <FontAwesomeIcon icon={faUmbrella} /> 우산대여하기
-                    </MediumButton>
-                  </div>
-                </WeatherCenterContainer>
-              </WeatherBody>
-            </Card>
+            <WeatherCard />
 
             <Card columnStart={3} columnEnd={6} rowStart={1} rowEnd={2}>
               <CardTitle>급식 알려줘!</CardTitle>
