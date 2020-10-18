@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Card from '../../components/Card';
 import CardTitle from '../../atomics/Typography/CardTitle';
-import Api from '../../api';
+import { useSchool } from '../../hooks/useSchool';
 
 const Content = styled.pre`
   font-family: 'Noto Sans KR', sans-serif;
@@ -10,11 +10,7 @@ const Content = styled.pre`
 `;
 
 const CalendarCard: React.FC = () => {
-  const [calendar, setCalendar] = useState<string[]>([]);
-
-  useEffect(() => {
-    Api.get('/school/calendar').then((res) => setCalendar(res.data.data));
-  }, []);
+  const { calendar } = useSchool();
 
   return (
     <Card columnStart={1} columnEnd={6} rowStart={3} rowEnd={4}>
