@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faQrcode } from '@fortawesome/free-solid-svg-icons';
-import { Heading3 } from '../atomics/Typography/Heading';
 import MainSideBar from '../components/MainSideBar';
 import Card from '../components/Card';
 import CardTitle from '../atomics/Typography/CardTitle';
-import GradientQR from '../assets/Gradient/qr';
 import SCREEN_SIZE from '../styles/screen-size';
 import Api from '../api';
 import WeatherCard from '../components/Card/WeatherCard';
+import QRCodeCard from '../components/Card/QRCodeCard';
 
 const Container = styled.div`
   display: grid;
@@ -40,27 +37,9 @@ const StyledContentGrid = styled.div`
   }
 `;
 
-const BBody = styled.div`
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-
-  &:hover {
-    transform: scale(1.05);
-
-    & svg * {
-      fill: url(#Gradient__QRCode);
-    }
-  }
-`;
-
 const StyledMeal = styled.pre`
   font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
 `;
 
 const MainPage: React.FC = () => {
@@ -91,15 +70,7 @@ const MainPage: React.FC = () => {
               <p>[시간표]</p>
             </Card>
 
-            <Card columnStart={5} columnEnd={6} rowStart={2} rowEnd={3}>
-              <BBody>
-                <GradientQR />
-                <div>
-                  <FontAwesomeIcon icon={faQrcode} size="5x" />
-                  <Heading3>QR코드 바로가기</Heading3>
-                </div>
-              </BBody>
-            </Card>
+            <QRCodeCard />
 
             <Card columnStart={1} columnEnd={6} rowStart={3} rowEnd={4}>
               <CardTitle>곧 있을 행사가 궁금해!</CardTitle>
