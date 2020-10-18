@@ -13,7 +13,7 @@ const CalendarCard: React.FC = () => {
   const [calendar, setCalendar] = useState<string[]>([]);
 
   useEffect(() => {
-    Api.get('/school/calender').then((res) => setCalendar(res.data.data));
+    Api.get('/school/calendar').then((res) => setCalendar(res.data.data));
   }, []);
 
   return (
