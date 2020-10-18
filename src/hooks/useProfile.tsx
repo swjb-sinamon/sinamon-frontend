@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import Api from '../api';
-import { ProfileType } from '../../types/Profile';
+import { ProfileType } from '../types/Profile';
 
 const context = createContext<ProfileType | undefined>(undefined);
 
