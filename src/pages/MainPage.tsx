@@ -8,7 +8,10 @@ import {
   faSun,
   faCloud,
   faSnowflake,
-  faCloudSun
+  faCloudSun,
+  faMoon,
+  faCloudMoon,
+  faCloudMoonRain
 } from '@fortawesome/free-solid-svg-icons';
 import { Heading3 } from '../atomics/Typography/Heading';
 import BlankLine from '../utils/BlankLine';
@@ -87,6 +90,18 @@ const StyledMeal = styled.pre`
   font-family: 'Noto Sans KR', sans-serif;
 `;
 
+const StyledWeatherStatus = styled.p`
+  font-size: 14px;
+`;
+
+const StyledDustStatus = styled.p`
+  font-size: 14px;
+`;
+
+const StyledDustContent = styled.b<{ color: string }>`
+  color: ${(props) => props.color};
+`;
+
 const MainPage: React.FC = () => {
   const [today, setToday] = useState<string>('');
   const [calender, setCalender] = useState<string[]>([]);
@@ -99,9 +114,24 @@ const MainPage: React.FC = () => {
   }, []);
 
   const WeatherIcon = () => {
-    if (weather === 'CLEAR') return <FontAwesomeIcon icon={faSun} size="5x" />;
-    if (weather === 'RAIN') return <FontAwesomeIcon icon={faCloudShowersHeavy} size="5x" />;
-    if (weather === 'CLOUDS') return <FontAwesomeIcon icon={faCloud} size="5x" />;
+    if (weather === 'CLEAR') {
+      if (new Date().getHours() >= 20) {
+        return <FontAwesomeIcon icon={faMoon} size="5x" />;
+      }
+      return <FontAwesomeIcon icon={faSun} size="5x" />;
+    }
+    if (weather === 'RAIN') {
+      if (new Date().getHours() >= 20) {
+        return <FontAwesomeIcon icon={faCloudMoonRain} size="5x" />;
+      }
+      return <FontAwesomeIcon icon={faCloudShowersHeavy} size="5x" />;
+    }
+    if (weather === 'CLOUDS') {
+      if (new Date().getHours() >= 20) {
+        return <FontAwesomeIcon icon={faCloudMoon} size="5x" />;
+      }
+      return <FontAwesomeIcon icon={faCloud} size="5x" />;
+    }
     if (weather === 'SNOW') return <FontAwesomeIcon icon={faSnowflake} size="5x" />;
     return <FontAwesomeIcon icon={faCloudSun} size="5x" />;
   };
@@ -120,13 +150,20 @@ const MainPage: React.FC = () => {
                   <div>
                     <WeatherIcon />
                     <BlankLine gap={10} />
-                    <p>{convertWeatherStatusToString(weather)}</p>
+                    <StyledWeatherStatus>
+                      {convertWeatherStatusToString(weather)}
+                    </StyledWeatherStatus>
                   </div>
                 </WeatherCenterContainer>
                 <WeatherCenterContainer>
                   <div>
-                    <p>미세먼지: 좋음</p>
-                    <p>초미세먼지: 보통</p>
+                    <StyledDustStatus>
+                      미세먼지 <StyledDustContent color="var(--color-good)">좋음</StyledDustContent>
+                    </StyledDustStatus>
+                    <StyledDustStatus>
+                      초미세먼지{' '}
+                      <StyledDustContent color="var(--color-bad)">나쁨</StyledDustContent>
+                    </StyledDustStatus>
 
                     <BlankLine gap={20} />
 
