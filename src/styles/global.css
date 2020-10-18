@@ -13,6 +13,11 @@ body {
   --color-button-hover: #004ede;
   --color-subtext: #788097;
   --color-gray: #dfe4ea;
+
+  --color-good: #4cd137;
+  --color-fine: #0097e6;
+  --color-warn: #fbc531;
+  --color-bad: #e84118;
 }
 
 body {
