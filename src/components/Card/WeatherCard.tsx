@@ -80,7 +80,7 @@ const WeatherCard: React.FC = () => {
 
             <BlankLine gap={20} />
 
-            <MediumButton width={120}>
+            <MediumButton width={120} disabled>
               <FontAwesomeIcon icon={faUmbrella} /> 우산대여하기
             </MediumButton>
           </div>
