@@ -10,7 +10,8 @@ import {
   faMoon,
   faSnowflake,
   faSun,
-  faUmbrella
+  faUmbrella,
+  faSmog
 } from '@fortawesome/free-solid-svg-icons';
 import BlankLine from '../../utils/BlankLine';
 import { MediumButton } from '../../atomics/Button';
@@ -53,25 +54,31 @@ const WeatherCard: React.FC = () => {
   }, []);
 
   const WeatherIcon = () => {
+    const hours = new Date().getHours();
+    const isNight = hours >= 20 && hours <= 6;
+
     if (weather === 'CLEAR') {
-      if (new Date().getHours() >= 20) {
+      if (isNight) {
         return <FontAwesomeIcon icon={faMoon} size="5x" />;
       }
       return <FontAwesomeIcon icon={faSun} size="5x" />;
     }
     if (weather === 'RAIN') {
-      if (new Date().getHours() >= 20) {
+      if (isNight) {
         return <FontAwesomeIcon icon={faCloudMoonRain} size="5x" />;
       }
       return <FontAwesomeIcon icon={faCloudShowersHeavy} size="5x" />;
     }
     if (weather === 'CLOUDS') {
-      if (new Date().getHours() >= 20) {
+      if (isNight) {
         return <FontAwesomeIcon icon={faCloudMoon} size="5x" />;
       }
       return <FontAwesomeIcon icon={faCloud} size="5x" />;
     }
     if (weather === 'SNOW') return <FontAwesomeIcon icon={faSnowflake} size="5x" />;
+    if (weather === 'HAZE' || weather === 'MIST') {
+      return <FontAwesomeIcon icon={faSmog} size="5x" />;
+    }
     return <FontAwesomeIcon icon={faCloudSun} size="5x" />;
   };
 
