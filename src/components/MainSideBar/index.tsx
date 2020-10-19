@@ -84,27 +84,27 @@ const MainSideBar: React.FC = () => {
       <MainTitleBar setOpen={setOpen} />
 
       <ItemList isOpen={isOpen}>
-        <MainSideBarItem>
+        <MainSideBarItem tabIndex={0}>
           <FontAwesomeIcon icon={faUmbrella} size="lg" />
           &nbsp;
           <p>우산대여제</p>
         </MainSideBarItem>
-        <MainSideBarItem>
+        <MainSideBarItem tabIndex={0}>
           <FontAwesomeIcon icon={faHammer} size="lg" />
           &nbsp;
           <p>실습실 대여</p>
         </MainSideBarItem>
-        <MainSideBarItem>
+        <MainSideBarItem tabIndex={0}>
           <FontAwesomeIcon icon={faBook} size="lg" />
           &nbsp;
           <p>온라인 시간표</p>
         </MainSideBarItem>
-        <MainSideBarItem>
+        <MainSideBarItem tabIndex={0}>
           <FontAwesomeIcon icon={faCalendarDay} size="lg" />
           &nbsp;
           <p>학사 일정</p>
         </MainSideBarItem>
-        <MainSideBarItem onClick={onLogoutClick}>
+        <MainSideBarItem onClick={onLogoutClick} tabIndex={0}>
           <FontAwesomeIcon icon={faSignOutAlt} size="lg" />
           &nbsp;
           <p>로그아웃</p>

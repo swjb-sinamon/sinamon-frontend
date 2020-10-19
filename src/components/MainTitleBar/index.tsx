@@ -52,7 +52,7 @@ const MainTitleBar: React.FC<MainTitleBarProps> = ({ setOpen }) => {
   return (
     <SideBarTitle>
       <div>
-        <TitleContainer>
+        <TitleContainer tabIndex={0}>
           <FontAwesomeIcon icon={faWineGlassAlt} size="2x" />
           &nbsp;
           <Heading1>수정과</Heading1>

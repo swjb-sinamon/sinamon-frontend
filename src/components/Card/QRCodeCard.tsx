@@ -54,7 +54,7 @@ const QRCodeCard: React.FC = () => {
   return (
     <>
       <Card columnStart={5} columnEnd={6} rowStart={2} rowEnd={3}>
-        <Container onClick={onQRCodeClick}>
+        <Container onClick={onQRCodeClick} tabIndex={0}>
           <GradientQR />
           <div>
             <FontAwesomeIcon icon={faQrcode} size="5x" />
