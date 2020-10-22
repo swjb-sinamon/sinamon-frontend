@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUmbrella } from '@fortawesome/free-solid-svg-icons';
@@ -6,10 +6,10 @@ import BlankLine from '../../utils/BlankLine';
 import { MediumButton } from '../../atomics/Button';
 import Card from '../../components/Card';
 import CardTitle from '../../atomics/Typography/CardTitle';
-import Api from '../../api';
 import convertWeatherStatusToString from '../../utils/Converter/Weather';
 import { convertPm10ToString, convertPm25ToString } from '../../utils/Converter/Dust';
 import WeatherIcon from '../../atomics/Icon/WeatherIcon';
+import { useWeather } from '../../hooks/useWeather';
 
 const Container = styled.div`
   display: grid;
@@ -37,22 +37,9 @@ const StyledDustContent = styled.b<{ color: string }>`
   color: ${(props) => props.color};
 `;
 
-interface DustPayload {
-  readonly pm25: number;
-  readonly pm10: number;
-}
 
 const WeatherCard: React.FC = () => {
-  const [weather, setWeather] = useState<string>('');
-  const [dust, setDust] = useState<DustPayload>({
-    pm25: 0,
-    pm10: 0
-  });
-
-  useEffect(() => {
-    Api.get('/weather').then((res) => setWeather(res.data.data));
-    Api.get('/weather/dust').then((res) => setDust(res.data.data));
-  }, []);
+  const { weather, dust } = useWeather();
 
   const [pm10Text, pm10Color] = convertPm10ToString(dust.pm10);
   const [pm25Text, pm25Color] = convertPm25ToString(dust.pm25);

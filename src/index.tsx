@@ -10,6 +10,7 @@ import { SchoolProvider } from './hooks/useSchool';
 
 import './styles/global.css';
 import 'react-notifications-component/dist/theme.css';
+import { WeatherProvider } from './hooks/useWeather';
 
 dotenv.config();
 
@@ -19,8 +20,10 @@ ReactDOM.render(
   <React.StrictMode>
     <ProfileProvider>
       <SchoolProvider>
-        <ReactNotification />
-        <Router />
+        <WeatherProvider>
+          <ReactNotification />
+          <Router />
+        </WeatherProvider>
       </SchoolProvider>
     </ProfileProvider>
   </React.StrictMode>,
