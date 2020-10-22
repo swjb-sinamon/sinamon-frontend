@@ -8,6 +8,7 @@ import WeatherCard from '../components/Card/WeatherCard';
 import QRCodeCard from '../components/Card/QRCodeCard';
 import MealCard from '../components/Card/MealCard';
 import CalendarCard from '../components/Card/CalenderCard';
+import useWindowSize from '../hooks/useWindowSize';
 
 const Container = styled.div`
   display: grid;
@@ -38,7 +39,18 @@ const StyledContentGrid = styled.div`
   }
 `;
 
+const StyledMobileQRCodeCard = styled(QRCodeCard)`
+  display: none;
+
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
+    display: block;
+  }
+`;
+
 const MainPage: React.FC = () => {
+  const [width] = useWindowSize();
+  const tabletSize = parseInt(SCREEN_SIZE.SCREEN_TABLET.replace('px', ''), 10);
+
   return (
     <>
       <Container>
@@ -46,6 +58,8 @@ const MainPage: React.FC = () => {
 
         <StyledContent>
           <StyledContentGrid>
+            <StyledMobileQRCodeCard />
+
             <WeatherCard />
 
             <MealCard />
@@ -55,7 +69,7 @@ const MainPage: React.FC = () => {
               <p>[시간표]</p>
             </Card>
 
-            <QRCodeCard />
+            <QRCodeCard hidden={width <= tabletSize} />
 
             <CalendarCard />
           </StyledContentGrid>

@@ -7,9 +7,12 @@ interface CardProps {
   readonly columnEnd: number;
   readonly rowStart: number;
   readonly rowEnd: number;
+  readonly hidden?: boolean;
 }
 
 const CardContainer = styled.div<CardProps>`
+  display: ${(props) => (props.hidden ? 'none' : 'block')};
+
   grid-column: ${(props) => props.columnStart} / ${(props) => props.columnEnd};
   grid-row: ${(props) => props.rowStart} / ${(props) => props.rowEnd};
 
@@ -26,17 +29,18 @@ const CardContainer = styled.div<CardProps>`
 
   @media screen and (max-width: ${SCREEN_SIZE.SCREEN_MOBILE}) {
     width: 90vw;
-  }
+  
 `;
 
 const Card: React.FC<CardProps> = ({ children, ...props }) => {
-  const { columnStart, columnEnd, rowStart, rowEnd } = props;
+  const { columnStart, columnEnd, rowStart, rowEnd, hidden } = props;
   return (
     <CardContainer
       columnStart={columnStart}
       columnEnd={columnEnd}
       rowStart={rowStart}
       rowEnd={rowEnd}
+      hidden={hidden}
     >
       {children}
     </CardContainer>

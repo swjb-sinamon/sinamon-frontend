@@ -35,8 +35,12 @@ const ModalContent = styled.div`
   margin-bottom: -30px;
 `;
 
-const QRCodeCard: React.FC = () => {
-  const [qrData, setQRData] = useState<object>({});
+interface QRCodeCardProps {
+  readonly hidden?: boolean;
+}
+
+const QRCodeCard: React.FC<QRCodeCardProps> = ({ hidden }) => {
+  const [qrData, setQRData] = useState<string>('');
   const openState = useState<boolean>(false);
 
   const onQRCodeClick = () => {
@@ -53,7 +57,7 @@ const QRCodeCard: React.FC = () => {
 
   return (
     <>
-      <Card columnStart={5} columnEnd={6} rowStart={2} rowEnd={3}>
+      <Card columnStart={5} columnEnd={6} rowStart={2} rowEnd={3} hidden={hidden}>
         <Container onClick={onQRCodeClick} tabIndex={0}>
           <GradientQR />
           <div>
@@ -68,7 +72,7 @@ const QRCodeCard: React.FC = () => {
           <Heading2>우산대여 QR코드</Heading2>
           <p>QR코드를 스캔하여 우산을 대여해보세요.</p>
         </ModalContent>
-        <QRCode value={JSON.stringify(qrData)} />
+        <QRCode value={qrData} />
       </Modal>
     </>
   );
