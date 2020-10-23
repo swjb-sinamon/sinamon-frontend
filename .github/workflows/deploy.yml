@@ -38,7 +38,6 @@ jobs:
           ftp-server: ${{ secrets.FTP_HOST }}
           ftp-username: ${{ secrets.FTP_USERNAME }}
           ftp-password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: build
           git-ftp-args: --insecure 
 
       - name: Discord Alert Success
