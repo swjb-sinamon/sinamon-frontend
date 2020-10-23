@@ -46,7 +46,7 @@ jobs:
         if: success()
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          description: "🎉 개발버전 사이트가 배포되었습니다! http://dev.sinamon.info"
+          description: "🎉 개발버전 사이트가 배포되었습니다! https://dev.sinamon.info"
 
       - name: Discord Alert Failure
         uses: sarisia/actions-status-discord@v1
