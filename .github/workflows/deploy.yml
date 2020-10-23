@@ -38,7 +38,7 @@ jobs:
           ftp-server: ${{ secrets.FTP_HOST }}
           ftp-username: ${{ secrets.FTP_USERNAME }}
           ftp-password: ${{ secrets.FTP_PASSWORD }}
-          git-ftp-args: --insecure 
+          local-dir: ./build/
 
       - name: Discord Alert Success
         uses: sarisia/actions-status-discord@v1
