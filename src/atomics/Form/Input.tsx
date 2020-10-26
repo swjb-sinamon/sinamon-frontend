@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-const Input = styled.input`
-  width: 300px;
+const Input = styled.input<{ width?: number }>`
+  width: ${(props) => props.width || 300}px;
   height: 40px;
 
   background-color: white;
