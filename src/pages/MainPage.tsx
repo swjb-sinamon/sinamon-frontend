@@ -9,16 +9,7 @@ import QRCodeCard from '../components/Card/QRCodeCard';
 import MealCard from '../components/Card/MealCard';
 import CalendarCard from '../components/Card/CalenderCard';
 import useWindowSize from '../hooks/useWindowSize';
-
-const Container = styled.div`
-  display: grid;
-  grid-template-columns: 280px 4fr;
-
-  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
-    display: flex;
-    flex-direction: column;
-  }
-`;
+import MainSideBarContainer from '../components/MainSideBar/MainSideBarContainer';
 
 const StyledContent = styled.div`
   margin: 3rem;
@@ -52,30 +43,28 @@ const MainPage: React.FC = () => {
   const tabletSize = parseInt(SCREEN_SIZE.SCREEN_TABLET.replace('px', ''), 10);
 
   return (
-    <>
-      <Container>
-        <MainSideBar />
+    <MainSideBarContainer>
+      <MainSideBar />
 
-        <StyledContent>
-          <StyledContentGrid>
-            <StyledMobileQRCodeCard />
+      <StyledContent>
+        <StyledContentGrid>
+          <StyledMobileQRCodeCard />
 
-            <WeatherCard />
+          <WeatherCard />
 
-            <MealCard />
+          <MealCard />
 
-            <Card columnStart={1} columnEnd={5} rowStart={2} rowEnd={3}>
-              <CardTitle>무엇을 배울까?</CardTitle>
-              <p>[시간표]</p>
-            </Card>
+          <Card columnStart={1} columnEnd={5} rowStart={2} rowEnd={3}>
+            <CardTitle>무엇을 배울까?</CardTitle>
+            <p>[시간표]</p>
+          </Card>
 
-            <QRCodeCard hidden={width <= tabletSize} />
+          <QRCodeCard hidden={width <= tabletSize} />
 
-            <CalendarCard />
-          </StyledContentGrid>
-        </StyledContent>
-      </Container>
-    </>
+          <CalendarCard />
+        </StyledContentGrid>
+      </StyledContent>
+    </MainSideBarContainer>
   );
 };
 
