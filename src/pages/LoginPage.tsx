@@ -78,7 +78,7 @@ const LoginPage: React.FC = () => {
     }
 
     try {
-      await Api.post('/auth/login', {
+      await Api.post('/auth/login?admin=false', {
         email: input.email,
         password: input.password
       });
