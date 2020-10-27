@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
-import CheckBox from '../../atomics/Form/CheckBox';
+import ScaleInput from '../../atomics/Form/ScaleInput';
 
 const UnderLineLink = styled(Link)`
   text-decoration: underline;
@@ -45,7 +45,7 @@ const RegisterFooterText: React.FC<RegisterFooterTextProps> = ({ check }) => {
           개인정보처리방침
         </UnderLineLink>{' '}
         동의 (필수)
-        <CheckBox
+        <ScaleInput
           style={{
             marginLeft: 5
           }}
@@ -61,7 +61,7 @@ const RegisterFooterText: React.FC<RegisterFooterTextProps> = ({ check }) => {
           수정과 이용약관
         </UnderLineLink>{' '}
         동의 (필수)
-        <CheckBox
+        <ScaleInput
           style={{
             marginLeft: 5
           }}

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-const CheckBox = styled.input`
+const ScaleInput = styled.input`
   transform: scale(1.2);
 `;
 
-export default CheckBox;
+export default ScaleInput;
