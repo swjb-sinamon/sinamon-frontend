@@ -16,7 +16,9 @@ enum ErrorMessage {
   RENTAL_NOT_FOUND = '존재하지 않는 대여 정보입니다.',
   RENTAL_USER_ALREADY_EXISTS = '이미 대여한 상태입니다.',
   RENTAL_UMBRELLA_ALREADY_EXISTS = '누군가 대여한 우산입니다.',
-  RENTAL_EXPIRE = '우산이 연체되었습니다.'
+  RENTAL_EXPIRE = '우산이 연체되었습니다.',
+
+  QRCODE_EXPIRE = 'QR코드 유효기간이 지났습니다.'
 }
 
 export default ErrorMessage;
