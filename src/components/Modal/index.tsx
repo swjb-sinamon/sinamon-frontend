@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import ReactModal from 'react-modal';
+import SCREEN_SIZE from '../../styles/screen-size';
 
 const StyledModal = styled(ReactModal)<{ width: number; height: number }>`
   position: absolute;
@@ -26,6 +27,13 @@ const StyledModal = styled(ReactModal)<{ width: number; height: number }>`
 
   &:focus {
     outline: none;
+  }
+
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
+    width: 90%;
+    height: 90%;
+    top: calc(50% - 90% / 2);
+    left: calc(50% - 90% / 2);
   }
 `;
 
@@ -64,6 +72,11 @@ const Modal: React.FC<ModalProps> = ({ width, height, name, state, children }) =
       contentLabel={name}
       width={width}
       height={height}
+      style={{
+        overlay: {
+          backgroundColor: 'rgba(0, 0, 0, 0.6)'
+        }
+      }}
     >
       <CancelButton onClick={() => setOpen(false)}>
         <FontAwesomeIcon icon={faTimes} />
