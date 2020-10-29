@@ -91,6 +91,7 @@ const LoginPage: React.FC = () => {
       if (success || !error) return;
 
       if (error === ErrorMessage.USER_NOT_FOUND) {
+        showToast('💡 존재하지 않는 이메일이거나 잘못된 비밀번호입니다.', 'warning');
         setInput({ email: '', password: '' });
       }
     }
