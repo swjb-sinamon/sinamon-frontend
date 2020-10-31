@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWineGlassAlt } from '@fortawesome/free-solid-svg-icons';
 import { Heading1 } from '../../atomics/Typography/Heading';
 import SCREEN_SIZE from '../../styles/screen-size';
 import MyInfoTitle from './MyInfoTitle';
 import MobileTitle from './MobileTitle';
+import Logo from '../../assets/logo.png';
+import NoStyleLink from '../../atomics/NoStyleLink';
 
 const SideBarTitle = styled.li`
   width: 100%;
@@ -44,6 +44,12 @@ const TitleContainer = styled.div`
   }
 `;
 
+const LogoTitle = styled(Heading1)`
+  font-size: 28px;
+  margin-top: 7px;
+  margin-left: 5px;
+`;
+
 interface MainTitleBarProps {
   readonly setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -52,11 +58,12 @@ const MainTitleBar: React.FC<MainTitleBarProps> = ({ setOpen }) => {
   return (
     <SideBarTitle>
       <div>
-        <TitleContainer tabIndex={0}>
-          <FontAwesomeIcon icon={faWineGlassAlt} size="2x" />
-          &nbsp;
-          <Heading1>수정과</Heading1>
-        </TitleContainer>
+        <NoStyleLink to="/">
+          <TitleContainer>
+            <img src={Logo} alt="수정과" width={60} height={60} />
+            <LogoTitle>수정과</LogoTitle>
+          </TitleContainer>
+        </NoStyleLink>
 
         <MobileTitle setOpen={setOpen} />
         <MyInfoTitle />
