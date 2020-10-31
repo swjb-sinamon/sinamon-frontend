@@ -61,6 +61,11 @@ const MainPage: React.FC = () => {
 
           <QRCodeCard hidden={width <= tabletSize} />
 
+          <Card columnStart={1} columnEnd={4} rowStart={3} rowEnd={4}>
+            <CardTitle>알려드려요!</CardTitle>
+            <p>[공지사항]</p>
+          </Card>
+
           <CalendarCard />
         </StyledContentGrid>
       </StyledContent>

@@ -15,7 +15,7 @@ const CalendarCard: React.FC = () => {
   const emptyLength = calendar.filter((value) => value === '').length;
 
   return (
-    <Card columnStart={1} columnEnd={6} rowStart={3} rowEnd={4}>
+    <Card columnStart={4} columnEnd={6} rowStart={3} rowEnd={4}>
       <CardTitle>곧 있을 행사가 궁금해!</CardTitle>
       <Content>
         {emptyLength === 5 ? '행사가 없습니다' : calendar.map((value) => `${value}\n`)}
