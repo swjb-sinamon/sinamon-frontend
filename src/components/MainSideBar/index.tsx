@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faBook,
-  faCalendarDay,
-  faHammer,
-  faSignOutAlt,
-  faUmbrella
-} from '@fortawesome/free-solid-svg-icons';
+import { faBook, faSchool, faSignOutAlt, faUmbrella } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
+import { faFacebook, faFacebookF } from '@fortawesome/free-brands-svg-icons';
 import MainSideBarItem from './MainSideBarItem';
 import SCREEN_SIZE from '../../styles/screen-size';
 import MainTitleBar from '../MainTitleBar';
@@ -89,21 +84,31 @@ const MainSideBar: React.FC = () => {
           &nbsp;
           <p>우산대여제</p>
         </MainSideBarItem>
-        <MainSideBarItem tabIndex={0}>
-          <FontAwesomeIcon icon={faHammer} size="lg" />
-          &nbsp;
-          <p>실습실 대여</p>
-        </MainSideBarItem>
+
         <MainSideBarItem tabIndex={0}>
           <FontAwesomeIcon icon={faBook} size="lg" />
           &nbsp;
-          <p>온라인 시간표</p>
+          <p>시간표 보기</p>
         </MainSideBarItem>
+
         <MainSideBarItem tabIndex={0}>
-          <FontAwesomeIcon icon={faCalendarDay} size="lg" />
+          <FontAwesomeIcon icon={faSchool} size="lg" />
           &nbsp;
-          <p>학사 일정</p>
+          <p>방과후학교</p>
         </MainSideBarItem>
+
+        <MainSideBarItem tabIndex={0}>
+          <FontAwesomeIcon icon={faFacebookF} size="lg" />
+          &nbsp;
+          <p>익명 페이지</p>
+        </MainSideBarItem>
+
+        <MainSideBarItem tabIndex={0}>
+          <FontAwesomeIcon icon={faFacebookF} size="lg" />
+          &nbsp;
+          <p>학생회 페이지</p>
+        </MainSideBarItem>
+
         <MainSideBarItem onClick={onLogoutClick} tabIndex={0}>
           <FontAwesomeIcon icon={faSignOutAlt} size="lg" />
           &nbsp;
