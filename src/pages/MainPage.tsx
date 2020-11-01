@@ -10,6 +10,7 @@ import MealCard from '../components/Card/MealCard';
 import CalendarCard from '../components/Card/CalenderCard';
 import useWindowSize from '../hooks/useWindowSize';
 import MainSideBarContainer from '../components/MainSideBar/MainSideBarContainer';
+import NoticeCard from '../components/Card/NoticeCard';
 
 const StyledContent = styled.div`
   margin: 3rem;
@@ -66,15 +67,7 @@ const MainPage: React.FC = () => {
 
           <QRCodeCard hidden={width <= tabletSize} />
 
-          <Card columnStart={1} columnEnd={4} rowStart={3} rowEnd={4}>
-            <CardTitle>
-              <span role="img" aria-label="notice">
-                📢
-              </span>
-              알려드려요!
-            </CardTitle>
-            <p>[공지사항]</p>
-          </Card>
+          <NoticeCard />
 
           <CalendarCard />
         </StyledContentGrid>
