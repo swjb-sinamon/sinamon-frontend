@@ -18,7 +18,7 @@ interface WeatherIconProps {
 
 const WeatherIcon: React.FC<WeatherIconProps> = ({ weather }) => {
   const hours = new Date().getHours();
-  const isNight = hours >= 20 && hours <= 6;
+  const isNight = (hours >= 18 && hours <= 23) || (hours >= 0 && hours <= 6);
 
   if (weather === 'CLEAR') {
     if (isNight) {
