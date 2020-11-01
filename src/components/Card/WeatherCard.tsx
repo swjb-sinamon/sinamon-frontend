@@ -1,15 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUmbrella } from '@fortawesome/free-solid-svg-icons';
 import BlankLine from '../../utils/BlankLine';
-import { MediumButton } from '../../atomics/Button';
 import Card from '../../components/Card';
 import CardTitle from '../../atomics/Typography/CardTitle';
 import convertWeatherStatusToString from '../../utils/Converter/Weather';
 import { convertPm10ToString, convertPm25ToString } from '../../utils/Converter/Dust';
 import WeatherIcon from '../../atomics/Icon/WeatherIcon';
 import { useWeather } from '../../hooks/useWeather';
+import { Heading1 } from '../../atomics/Typography/Heading';
 
 const Container = styled.div`
   display: grid;
@@ -25,8 +23,9 @@ const ContentBody = styled.div`
   text-align: center;
 `;
 
-const StyledWeatherStatus = styled.p`
-  font-size: 14px;
+const StyledWeatherStatus = styled.span`
+  font-size: 18px;
+  font-weight: lighter;
 `;
 
 const StyledDustStatus = styled.p`
@@ -37,9 +36,8 @@ const StyledDustContent = styled.b<{ color: string }>`
   color: ${(props) => props.color};
 `;
 
-
 const WeatherCard: React.FC = () => {
-  const { weather, dust } = useWeather();
+  const { weather, temp, dust } = useWeather();
 
   const [pm10Text, pm10Color] = convertPm10ToString(dust.pm10);
   const [pm25Text, pm25Color] = convertPm25ToString(dust.pm25);
@@ -54,14 +52,17 @@ const WeatherCard: React.FC = () => {
       </CardTitle>
       <Container>
         <ContentBody>
-          <div>
-            <WeatherIcon weather={weather} />
-            <BlankLine gap={10} />
-            <StyledWeatherStatus>{convertWeatherStatusToString(weather)}</StyledWeatherStatus>
-          </div>
+          <WeatherIcon weather={weather} />
         </ContentBody>
         <ContentBody>
           <div>
+            <Heading1>
+              <span>{temp} ℃ </span>
+              <StyledWeatherStatus>{convertWeatherStatusToString(weather)}</StyledWeatherStatus>
+            </Heading1>
+
+            <BlankLine gap={5} />
+
             <StyledDustStatus>
               미세먼지 <StyledDustContent color={`var(${pm10Color})`}>{pm10Text}</StyledDustContent>
             </StyledDustStatus>
@@ -69,12 +70,6 @@ const WeatherCard: React.FC = () => {
               초미세먼지{' '}
               <StyledDustContent color={`var(${pm25Color})`}>{pm25Text}</StyledDustContent>
             </StyledDustStatus>
-
-            <BlankLine gap={20} />
-
-            <MediumButton width={120} disabled>
-              <FontAwesomeIcon icon={faUmbrella} /> 우산대여하기
-            </MediumButton>
           </div>
         </ContentBody>
       </Container>
