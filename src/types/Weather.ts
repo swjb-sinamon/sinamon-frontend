@@ -1,5 +1,6 @@
 export interface WeatherType {
   readonly weather: string;
+  readonly temp: number;
   readonly dust: DustType;
 }
 

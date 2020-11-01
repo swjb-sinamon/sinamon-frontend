@@ -4,6 +4,7 @@ import { DustType, WeatherType } from '../types/Weather';
 
 const context = createContext<WeatherType>({
   weather: '',
+  temp: 0,
   dust: {
     pm10: 0,
     pm25: 0
@@ -12,6 +13,7 @@ const context = createContext<WeatherType>({
 
 export const WeatherProvider: React.FC = ({ children }) => {
   const [weather, setWeather] = useState<string>('');
+  const [temp, setTemp] = useState<number>(0);
   const [dust, setDust] = useState<DustType>({
     pm10: 0,
     pm25: 0
@@ -19,6 +21,7 @@ export const WeatherProvider: React.FC = ({ children }) => {
 
   const [data, setData] = useState<WeatherType>({
     weather: '',
+    temp: 0,
     dust: {
       pm10: 0,
       pm25: 0
@@ -29,7 +32,8 @@ export const WeatherProvider: React.FC = ({ children }) => {
     Api.get('/weather').then((res) => {
       if (!res.data) return;
       if (!res.data.success) return;
-      setWeather(res.data.data);
+      setWeather(res.data.data.status);
+      setTemp(res.data.data.temp);
     });
     Api.get('/weather/dust').then((res) => {
       if (!res.data) return;
@@ -41,9 +45,10 @@ export const WeatherProvider: React.FC = ({ children }) => {
   useEffect(() => {
     setData({
       weather,
+      temp,
       dust
     });
-  }, [dust, weather]);
+  }, [dust, temp, weather]);
 
   return <context.Provider value={data}>{children}</context.Provider>;
 };
