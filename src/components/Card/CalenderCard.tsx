@@ -30,7 +30,7 @@ const CalendarCard: React.FC = () => {
   const CalendarContent = () => (
     <Content>
       {dayArray.map((value, index) => (
-        <p>
+        <p key={`Day${value}`}>
           <StyledDay isToday={day === index + 1}>{value}</StyledDay> {calendar[index]}
         </p>
       ))}
