@@ -46,7 +46,12 @@ const WeatherCard: React.FC = () => {
 
   return (
     <Card columnStart={1} columnEnd={3} rowStart={1} rowEnd={2}>
-      <CardTitle>오늘 날씨는 어때?</CardTitle>
+      <CardTitle>
+        <span role="img" aria-label="weather">
+          ⛅
+        </span>
+        오늘 날씨는 어때?
+      </CardTitle>
       <Container>
         <ContentBody>
           <div>

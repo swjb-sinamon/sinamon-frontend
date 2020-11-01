@@ -55,14 +55,24 @@ const MainPage: React.FC = () => {
           <MealCard />
 
           <Card columnStart={1} columnEnd={5} rowStart={2} rowEnd={3}>
-            <CardTitle>무엇을 배울까?</CardTitle>
+            <CardTitle>
+              <span role="img" aria-label="clock">
+                ⏱
+              </span>
+              무엇을 배울까?
+            </CardTitle>
             <p>[시간표]</p>
           </Card>
 
           <QRCodeCard hidden={width <= tabletSize} />
 
           <Card columnStart={1} columnEnd={4} rowStart={3} rowEnd={4}>
-            <CardTitle>알려드려요!</CardTitle>
+            <CardTitle>
+              <span role="img" aria-label="notice">
+                📢
+              </span>
+              알려드려요!
+            </CardTitle>
             <p>[공지사항]</p>
           </Card>
 

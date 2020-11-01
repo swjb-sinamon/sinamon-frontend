@@ -16,7 +16,12 @@ const CalendarCard: React.FC = () => {
 
   return (
     <Card columnStart={4} columnEnd={6} rowStart={3} rowEnd={4}>
-      <CardTitle>곧 있을 행사가 궁금해!</CardTitle>
+      <CardTitle>
+        <span role="img" aria-label="calendar">
+          📆
+        </span>
+        곧 있을 행사가 궁금해!
+      </CardTitle>
       <Content>
         {emptyLength === 5 ? '행사가 없습니다' : calendar.map((value) => `${value}\n`)}
       </Content>

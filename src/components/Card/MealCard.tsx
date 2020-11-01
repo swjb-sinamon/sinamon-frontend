@@ -14,7 +14,12 @@ const MealCard: React.FC = () => {
 
   return (
     <Card columnStart={3} columnEnd={6} rowStart={1} rowEnd={2}>
-      <CardTitle>급식 알려줘!</CardTitle>
+      <CardTitle>
+        <span role="img" aria-label="meal">
+          🍚
+        </span>
+        급식 알려줘!
+      </CardTitle>
       <StyledMeal>{meal}</StyledMeal>
     </Card>
   );
