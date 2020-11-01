@@ -31,7 +31,7 @@ const CalendarCard: React.FC = () => {
     <Content>
       {dayArray.map((value, index) => (
         <p>
-          <StyledDay isToday={day === index}>{value}</StyledDay> {calendar[index]}
+          <StyledDay isToday={day === index + 1}>{value}</StyledDay> {calendar[index]}
         </p>
       ))}
     </Content>
@@ -43,7 +43,7 @@ const CalendarCard: React.FC = () => {
         <span role="img" aria-label="calendar">
           📆
         </span>
-        곧 있을 행사가 궁금해!
+        학교 행사가 궁금해!
       </CardTitle>
       {emptyLength === 5 ? <Content>행사가 없습니다</Content> : <CalendarContent />}
     </Card>
