@@ -15,6 +15,9 @@ const StyledSVG = styled.svg`
   filter: drop-shadow(0 0 30px rgba(169, 169, 169, 0.6));
   width: 120px;
   height: 120px;
+
+  stroke: #a9a9a9;
+  stroke-width: 1px;
 `;
 
 const WeatherIcon: React.FC<WeatherIconProps> = ({ weather }) => {
