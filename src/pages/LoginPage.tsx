@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { ReCaptcha } from 'react-recaptcha-v3';
 import { Heading1 } from '../atomics/Typography/Heading';
 import { ReactComponent as Friends } from '../assets/friends.svg';
 import BlankLine from '../utils/BlankLine';
@@ -140,6 +141,8 @@ const LoginPage: React.FC = () => {
           </div>
         </StyledForm>
       </GridContainer>
+
+      <ReCaptcha sitekey={process.env.REACT_APP_RECAPTCHA!} action="login" />
     </Container>
   );
 };

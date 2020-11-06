@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
+import { ReCaptcha } from 'react-recaptcha-v3';
 import BlankLine from '../utils/BlankLine';
 import { HugeButton } from '../atomics/Button';
 import RegisterHeaderText from '../components/Register/RegisterHeaderText';
@@ -145,6 +146,8 @@ const RegisterPage: React.FC = () => {
           <HugeButton onClick={onRegisterClick}>회원가입</HugeButton>
         </ButtonWrapper>
       </div>
+
+      <ReCaptcha sitekey={process.env.REACT_APP_RECAPTCHA!} action="register" />
     </Container>
   );
 };
