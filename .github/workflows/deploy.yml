@@ -31,6 +31,7 @@ jobs:
         env:
           GENERATE_SOURCEMAP: false
           REACT_APP_API_HOST: ${{ secrets.API_HOST }}
+          REACT_APP_RECAPTCHA: ${{ secrets.RECAPTCHA }}
         run: yarn build
 
       - name: Deploy
