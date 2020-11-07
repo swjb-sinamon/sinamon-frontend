@@ -32,7 +32,7 @@ jobs:
           GENERATE_SOURCEMAP: false
           REACT_APP_API_HOST: ${{ secrets.API_HOST }}
           REACT_APP_RECAPTCHA: ${{ secrets.RECAPTCHA }}
-        run: yarn build
+        run: yarn build:production
 
       - name: Deploy
         uses: SamKirkland/FTP-Deploy-Action@3.1.1
