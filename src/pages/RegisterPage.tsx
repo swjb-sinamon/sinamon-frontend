@@ -9,8 +9,6 @@ import RegisterFooterText from '../components/Register/RegisterFooterText';
 import RegisterForm from '../components/Register/RegisterForm';
 import showToast from '../utils/Toast';
 import Api from '../api';
-import Label from '../atomics/Form/Label';
-import Input from '../atomics/Form/Input';
 
 const Container = styled.div`
   display: flex;
