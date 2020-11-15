@@ -9,6 +9,7 @@ import GradientQR from '../../assets/Gradient/qr';
 import Api from '../../api';
 import Modal from '../Modal';
 import showToast from '../../utils/Toast';
+import BlankLine from '../../utils/BlankLine';
 
 const Container = styled.div`
   display: flex;
@@ -64,7 +65,8 @@ const QRCodeCard: React.FC<QRCodeCardProps> = ({ hidden }) => {
       <Modal width={350} height={350} name="QRCode" state={openState}>
         <Heading2>우산대여 QR코드</Heading2>
         <p>QR코드를 스캔하여 우산을 대여해보세요.</p>
-        <QRCode value={qrData} style={{ marginTop: '1rem' }} />
+        <BlankLine gap={10} />
+        <QRCode value={qrData} />
       </Modal>
     </>
   );
