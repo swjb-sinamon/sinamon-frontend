@@ -9,6 +9,8 @@ import RegisterFooterText from '../components/Register/RegisterFooterText';
 import RegisterForm from '../components/Register/RegisterForm';
 import showToast from '../utils/Toast';
 import Api from '../api';
+import Label from '../atomics/Form/Label';
+import Input from '../atomics/Form/Input';
 
 const Container = styled.div`
   display: flex;
@@ -41,6 +43,7 @@ interface RegisterState {
   readonly password: string;
   readonly passwordConfirm: string;
   readonly fullName: string;
+  readonly code: string;
   readonly department: number;
   readonly grade: number;
   readonly class: number;
@@ -58,6 +61,7 @@ const RegisterPage: React.FC = () => {
     password: '',
     passwordConfirm: '',
     fullName: '',
+    code: '',
     department: 0,
     grade: 0,
     class: 0,
@@ -120,7 +124,8 @@ const RegisterPage: React.FC = () => {
       department: state[0].department,
       studentGrade: state[0].grade,
       studentClass: state[0].class,
-      studentNumber: state[0].number
+      studentNumber: state[0].number,
+      code: state[0].code
     });
 
     showToast('🎉 회원가입 성공! 로그인 페이지로 이동합니다.', 'success');
@@ -136,7 +141,6 @@ const RegisterPage: React.FC = () => {
 
         <Form>
           <RegisterForm state={state} />
-
           <RegisterFooterText check={check} />
         </Form>
 

@@ -32,6 +32,7 @@ interface RegisterState {
   readonly password: string;
   readonly passwordConfirm: string;
   readonly fullName: string;
+  readonly code: string;
   readonly department: number;
   readonly grade: number;
   readonly class: number;
@@ -93,6 +94,15 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ state }) => {
           value={input.fullName}
           onChange={(e) => onInputChange(e, 'fullName')}
           placeholder="실명을 입력해주세요."
+        />
+        <BlankLine gap={20} />
+
+        <Label>인증코드</Label>
+        <Input
+          type="text"
+          value={input.code}
+          onChange={(e) => onInputChange(e, 'code')}
+          placeholder="인증코드를 입력해주세요."
         />
         <BlankLine gap={20} />
       </div>
