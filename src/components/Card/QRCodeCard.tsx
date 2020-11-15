@@ -29,12 +29,6 @@ const Container = styled.div`
   }
 `;
 
-const ModalContent = styled.div`
-  text-align: center;
-
-  margin-bottom: -30px;
-`;
-
 interface QRCodeCardProps {
   readonly hidden?: boolean;
 }
@@ -68,11 +62,9 @@ const QRCodeCard: React.FC<QRCodeCardProps> = ({ hidden }) => {
       </Card>
 
       <Modal width={350} height={350} name="QRCode" state={openState}>
-        <ModalContent>
-          <Heading2>우산대여 QR코드</Heading2>
-          <p>QR코드를 스캔하여 우산을 대여해보세요.</p>
-        </ModalContent>
-        <QRCode value={qrData} />
+        <Heading2>우산대여 QR코드</Heading2>
+        <p>QR코드를 스캔하여 우산을 대여해보세요.</p>
+        <QRCode value={qrData} style={{ marginTop: '1rem' }} />
       </Modal>
     </>
   );

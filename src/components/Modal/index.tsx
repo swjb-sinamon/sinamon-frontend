@@ -3,14 +3,12 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import ReactModal from 'react-modal';
-import SCREEN_SIZE from '../../styles/screen-size';
 
 const StyledModal = styled(ReactModal)<{ width: number; height: number }>`
   position: absolute;
-  top: calc(50% - ${(props) => props.height}px / 2);
-  left: calc(50% - ${(props) => props.width}px / 2);
-  right: 0;
-  bottom: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   width: ${(props) => props.width}px;
   height: ${(props) => props.height}px;
@@ -22,18 +20,8 @@ const StyledModal = styled(ReactModal)<{ width: number; height: number }>`
 
   padding: 1.8rem;
 
-  display: grid;
-  place-items: center;
-
   &:focus {
     outline: none;
-  }
-
-  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
-    width: 90%;
-    height: 90%;
-    top: calc(50% - 90% / 2);
-    left: calc(50% - 90% / 2);
   }
 `;
 
@@ -55,18 +43,30 @@ const CancelButton = styled.button`
   }
 `;
 
+const ModalContent = styled.div`
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+`;
+
 interface ModalProps {
+  readonly className?: string;
   readonly width: number;
   readonly height: number;
   readonly name: string;
   readonly state: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
 }
 
-const Modal: React.FC<ModalProps> = ({ width, height, name, state, children }) => {
+const Modal: React.FC<ModalProps> = ({ className, width, height, name, state, children }) => {
   const [isOpen, setOpen] = state;
 
   return (
     <StyledModal
+      className={className}
       isOpen={isOpen}
       onRequestClose={() => setOpen(false)}
       contentLabel={name}
@@ -81,7 +81,9 @@ const Modal: React.FC<ModalProps> = ({ width, height, name, state, children }) =
       <CancelButton onClick={() => setOpen(false)}>
         <FontAwesomeIcon icon={faTimes} />
       </CancelButton>
-      {children}
+      <ModalContent>
+        <div>{children}</div>
+      </ModalContent>
     </StyledModal>
   );
 };
