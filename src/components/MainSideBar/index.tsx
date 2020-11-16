@@ -9,6 +9,7 @@ import SCREEN_SIZE from '../../styles/screen-size';
 import MainTitleBar from '../MainTitleBar';
 import Api from '../../api';
 import showToast from '../../utils/Toast';
+import NoStyleA from '../../atomics/NoStyleA';
 
 const Sidebar = styled.ul`
   min-height: 100vh;
@@ -36,6 +37,8 @@ const StyledFooterText = styled.p`
   text-align: center;
 
   margin: 2rem 0;
+
+  color: var(--color-subtext);
 `;
 
 const PrivacyButton = styled.button`
@@ -66,14 +69,6 @@ const MainSideBar: React.FC = () => {
     window.location.reload();
   };
 
-  const onPrivacyClick = () => {
-    history.push('/privacy');
-  };
-
-  const onToSClick = () => {
-    history.push('/tos');
-  };
-
   return (
     <Sidebar>
       <MainTitleBar setOpen={setOpen} />
@@ -97,17 +92,25 @@ const MainSideBar: React.FC = () => {
           <p>방과후학교</p>
         </MainSideBarItem>
 
-        <MainSideBarItem tabIndex={0}>
-          <FontAwesomeIcon icon={faFacebookF} size="lg" />
-          &nbsp;
-          <p>익명 페이지</p>
-        </MainSideBarItem>
+        <NoStyleA
+          href="https://www.facebook.com/swjbgh1/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <MainSideBarItem>
+            <FontAwesomeIcon icon={faFacebookF} size="lg" />
+            &nbsp;
+            <p>익명 페이지</p>
+          </MainSideBarItem>
+        </NoStyleA>
 
-        <MainSideBarItem tabIndex={0}>
-          <FontAwesomeIcon icon={faFacebookF} size="lg" />
-          &nbsp;
-          <p>학생회 페이지</p>
-        </MainSideBarItem>
+        <NoStyleA href="https://www.facebook.com/swjb0/" target="_blank" rel="noopener noreferrer">
+          <MainSideBarItem>
+            <FontAwesomeIcon icon={faFacebookF} size="lg" />
+            &nbsp;
+            <p>학생회 페이지</p>
+          </MainSideBarItem>
+        </NoStyleA>
 
         <MainSideBarItem onClick={onLogoutClick} tabIndex={0}>
           <FontAwesomeIcon icon={faSignOutAlt} size="lg" />
@@ -116,8 +119,8 @@ const MainSideBar: React.FC = () => {
         </MainSideBarItem>
 
         <StyledFooterText>
-          <PrivacyButton onClick={onPrivacyClick}>개인정보처리방침</PrivacyButton> &middot;{' '}
-          <PrivacyButton onClick={onToSClick}>이용약관</PrivacyButton>
+          <PrivacyButton onClick={() => history.push('/privacy')}>개인정보처리방침</PrivacyButton>{' '}
+          &middot; <PrivacyButton onClick={() => history.push('/tos')}>이용약관</PrivacyButton>
         </StyledFooterText>
       </ItemList>
     </Sidebar>
