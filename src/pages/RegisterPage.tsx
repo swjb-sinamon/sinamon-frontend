@@ -37,7 +37,7 @@ const ButtonWrapper = styled.div`
 `;
 
 interface RegisterState {
-  readonly email: string;
+  readonly id: string;
   readonly password: string;
   readonly passwordConfirm: string;
   readonly fullName: string;
@@ -55,7 +55,7 @@ interface CheckState {
 
 const RegisterPage: React.FC = () => {
   const state = useState<RegisterState>({
-    email: '',
+    id: '',
     password: '',
     passwordConfirm: '',
     fullName: '',
@@ -80,12 +80,6 @@ const RegisterPage: React.FC = () => {
     );
     if (blankCount.length > 0) {
       showToast('❗ 빈칸이 있습니다.', 'danger');
-      return false;
-    }
-
-    const emailRegex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-    if (!emailRegex.test(state[0].email)) {
-      showToast('❗ 올바른 이메일이 아닙니다.', 'danger');
       return false;
     }
 
@@ -116,7 +110,7 @@ const RegisterPage: React.FC = () => {
     if (!validator()) return;
 
     await Api.post('/auth/register', {
-      email: state[0].email,
+      id: state[0].id,
       password: state[0].password,
       name: state[0].fullName,
       department: state[0].department,

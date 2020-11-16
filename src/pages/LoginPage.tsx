@@ -47,13 +47,13 @@ const StyledSVG = styled(Friends)`
 `;
 
 interface LoginState {
-  readonly email: string;
+  readonly id: string;
   readonly password: string;
 }
 
 const LoginPage: React.FC = () => {
   const [input, setInput] = useState<LoginState>({
-    email: '',
+    id: '',
     password: ''
   });
 
@@ -67,20 +67,14 @@ const LoginPage: React.FC = () => {
   };
 
   const onLoginClick = async () => {
-    if (input.email.trim() === '' || input.password.trim() === '') {
-      showToast('❗ 이메일 또는 비밀번호가 빈칸입니다.', 'danger');
-      return;
-    }
-
-    const emailRegex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-    if (!emailRegex.test(input.email)) {
-      showToast('❗ 올바른 이메일이 아닙니다.', 'danger');
+    if (input.id.trim() === '' || input.password.trim() === '') {
+      showToast('❗ 아이디 또는 비밀번호가 빈칸입니다.', 'danger');
       return;
     }
 
     try {
       await Api.post('/auth/login?admin=false', {
-        email: input.email,
+        id: input.id,
         password: input.password
       });
 
@@ -92,8 +86,8 @@ const LoginPage: React.FC = () => {
       if (success || !error) return;
 
       if (error === ErrorMessage.USER_NOT_FOUND) {
-        showToast('💡 존재하지 않는 이메일이거나 잘못된 비밀번호입니다.', 'warning');
-        setInput({ email: '', password: '' });
+        showToast('💡 존재하지 않는 아이디이거나 잘못된 비밀번호입니다.', 'warning');
+        setInput({ id: '', password: '' });
       }
     }
   };
@@ -112,12 +106,12 @@ const LoginPage: React.FC = () => {
 
             <BlankLine gap={30} />
 
-            <Label>이메일</Label>
+            <Label>아이디</Label>
             <Input
-              placeholder="이메일"
-              type="email"
-              value={input.email}
-              onChange={(e) => onInputChange(e, 'email')}
+              placeholder="아이디"
+              type="text"
+              value={input.id}
+              onChange={(e) => onInputChange(e, 'id')}
             />
 
             <BlankLine gap={20} />

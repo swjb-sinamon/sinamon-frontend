@@ -68,8 +68,8 @@ const PrivacyPage: React.FC = () => {
         <Heading2>4. 처리하는 개인정보의 항목 작성</Heading2>
         <p>① 수정과 은(는) 다음의 개인정보 항목을 처리하고 있습니다.</p>
         <p>
-          1. &lt;서비스 이용&gt; <br />- 필수항목: 이메일, 이름, 나이, 서비스 이용 기록, IP,
-          User-Agent, 쿠키
+          1. &lt;서비스 이용&gt; <br />- 필수항목: 아이디, 이름, 학년, 반, 번호, 서비스 이용 기록,
+          IP, User-Agent, 쿠키
         </p>
       </div>
       <BlankLine gap={10} />

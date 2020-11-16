@@ -1,6 +1,6 @@
 export interface ProfileType {
   readonly uuid: string;
-  readonly email: string;
+  readonly id: string;
   readonly name: string;
   readonly department: number;
   readonly studentGrade: number;

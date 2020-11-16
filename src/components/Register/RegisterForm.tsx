@@ -28,7 +28,7 @@ const GridContainer = styled.div`
 `;
 
 interface RegisterState {
-  readonly email: string;
+  readonly id: string;
   readonly password: string;
   readonly passwordConfirm: string;
   readonly fullName: string;
@@ -61,12 +61,12 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ state }) => {
   return (
     <GridContainer>
       <div>
-        <Label>이메일</Label>
+        <Label>아이디</Label>
         <Input
-          type="email"
-          value={input.email}
-          onChange={(e) => onInputChange(e, 'email')}
-          placeholder="로그인 시 사용할 이메일을 입력해주세요."
+          type="text"
+          value={input.id}
+          onChange={(e) => onInputChange(e, 'id')}
+          placeholder="로그인 시 사용할 아이디를 입력해주세요."
         />
         <BlankLine gap={20} />
 
