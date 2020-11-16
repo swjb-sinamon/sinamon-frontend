@@ -25,17 +25,13 @@ const MyInfoTitle: React.FC = () => {
     );
   }
 
-  const rule = profile.isTeacher ? '선생님' : '학생';
-
   return (
     <AboutContainer>
       <Heading3>
         {convertDepartmentIdToString(profile.department)}과 {profile.studentGrade}학년{' '}
         {profile.studentClass}반
       </Heading3>
-      <Heading3>
-        {profile.name} {rule}
-      </Heading3>
+      <Heading3>{profile.name} 님</Heading3>
     </AboutContainer>
   );
 };
