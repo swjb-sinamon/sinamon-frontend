@@ -10,5 +10,9 @@ export interface ProfileType {
   readonly createdAt: string;
   readonly updatedAt: string;
   readonly deletedAt?: string;
-  readonly isPermission: boolean;
+  readonly permission: {
+    readonly isAdmin: boolean;
+    readonly isTeacher: boolean;
+    readonly isSchoolUnion: boolean;
+  };
 }
