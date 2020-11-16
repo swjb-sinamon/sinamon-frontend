@@ -62,7 +62,7 @@ const MainPage: React.FC = () => {
               </span>
               무엇을 배울까?
             </CardTitle>
-            <p>[시간표]</p>
+            <p>준비중입니다.</p>
           </Card>
 
           <QRCodeCard hidden={width <= tabletSize} />
