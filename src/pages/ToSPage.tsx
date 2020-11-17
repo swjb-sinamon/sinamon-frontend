@@ -158,7 +158,7 @@ const ToSPage: React.FC = () => {
       <BlankLine gap={10} />
       <div>
         <Heading2>9. 부칙</Heading2>
-        <p>- 시행 날짜: </p>
+        <p>- 시행 날짜: 2020년 11월 23일</p>
       </div>
     </Container>
   );

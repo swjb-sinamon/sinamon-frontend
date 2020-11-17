@@ -120,8 +120,8 @@ const PrivacyPage: React.FC = () => {
         </p>
         <p>
           ▶ 개인정보 보호책임자 <br />
-          이름: <br />
-          연락처:
+          이름: 하대겸<br />
+          연락처: me@skylightqp.kr
         </p>
       </div>
       <BlankLine gap={10} />
@@ -154,7 +154,7 @@ const PrivacyPage: React.FC = () => {
       <BlankLine gap={10} />
       <div>
         <Heading2>10. 부칙</Heading2>
-        <p>- 시행 날짜:</p>
+        <p>- 시행 날짜: 2020년 11월 23일</p>
       </div>
     </Container>
   );
