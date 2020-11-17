@@ -4,7 +4,7 @@ import Card from '../../components/Card';
 import CardTitle from '../../atomics/Typography/CardTitle';
 import { useSchool } from '../../hooks/useSchool';
 
-const Content = styled.div`
+const Content = styled.p`
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 14px;
 `;
@@ -22,7 +22,6 @@ const StyledDay = styled.span<{ isToday: boolean }>`
 const CalendarCard: React.FC = () => {
   const { calendar } = useSchool();
 
-  const emptyLength = calendar.filter((value) => value === '').length;
   const day = new Date().getDay();
 
   const dayArray = ['월', '화', '수', '목', '금'];
@@ -31,7 +30,8 @@ const CalendarCard: React.FC = () => {
     <Content>
       {dayArray.map((value, index) => (
         <p key={`Day${value}`}>
-          <StyledDay isToday={day === index + 1}>{value}</StyledDay> {calendar[index]}
+          <StyledDay isToday={day === index + 1}>{value}</StyledDay>{' '}
+          {calendar[index] || '행사가 없습니다'}
         </p>
       ))}
     </Content>
@@ -45,7 +45,7 @@ const CalendarCard: React.FC = () => {
         </span>
         학교 행사가 궁금해!
       </CardTitle>
-      {emptyLength === 5 ? <Content>행사가 없습니다</Content> : <CalendarContent />}
+      <CalendarContent />
     </Card>
   );
 };
