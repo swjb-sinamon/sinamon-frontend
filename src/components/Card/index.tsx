@@ -8,6 +8,7 @@ interface CardProps {
   readonly rowStart: number;
   readonly rowEnd: number;
   readonly hidden?: boolean;
+  readonly className?: string;
 }
 
 const CardContainer = styled.div<CardProps>`
@@ -33,7 +34,7 @@ const CardContainer = styled.div<CardProps>`
 `;
 
 const Card: React.FC<CardProps> = ({ children, ...props }) => {
-  const { columnStart, columnEnd, rowStart, rowEnd, hidden } = props;
+  const { columnStart, columnEnd, rowStart, rowEnd, hidden, className } = props;
   return (
     <CardContainer
       columnStart={columnStart}
@@ -41,6 +42,7 @@ const Card: React.FC<CardProps> = ({ children, ...props }) => {
       rowStart={rowStart}
       rowEnd={rowEnd}
       hidden={hidden}
+      className={className}
     >
       {children}
     </CardContainer>
