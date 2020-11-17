@@ -10,6 +10,7 @@ import MainTitleBar from '../MainTitleBar';
 import Api from '../../api';
 import showToast from '../../utils/Toast';
 import NoStyleA from '../../atomics/NoStyleA';
+import NoStyleLink from '../../atomics/NoStyleLink';
 
 const Sidebar = styled.ul`
   min-height: 100vh;
@@ -74,11 +75,13 @@ const MainSideBar: React.FC = () => {
       <MainTitleBar setOpen={setOpen} />
 
       <ItemList isOpen={isOpen}>
-        <MainSideBarItem tabIndex={0}>
-          <FontAwesomeIcon icon={faUmbrella} size="lg" />
-          &nbsp;
-          <p>우산대여제</p>
-        </MainSideBarItem>
+        <NoStyleLink to="/umbrella">
+          <MainSideBarItem>
+            <FontAwesomeIcon icon={faUmbrella} size="lg" />
+            &nbsp;
+            <p>우산대여제</p>
+          </MainSideBarItem>
+        </NoStyleLink>
 
         <MainSideBarItem tabIndex={0} onClick={() => showToast('준비중입니다.', 'info')}>
           <FontAwesomeIcon icon={faBook} size="lg" />

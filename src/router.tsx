@@ -7,6 +7,7 @@ import MainPage from './pages/MainPage';
 import PrivacyPage from './pages/PrivacyPage';
 import PermissionRoute from './utils/Route/PermissionRoute';
 import ToSPage from './pages/ToSPage';
+import UmbrellaPage from './pages/UmbrellaPage';
 
 const Router: React.FC = () => {
   useEffect(() => {
@@ -16,12 +17,8 @@ const Router: React.FC = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <PermissionRoute
-          exact
-          path="/"
-          success={MainPage}
-          failure={() => <Redirect to="/login" />}
-        />
+        <PermissionRoute exact path="/" success={MainPage} failure={LoginPage} />
+        <PermissionRoute exact path="/umbrella" success={UmbrellaPage} failure={LoginPage} />
         <PermissionRoute
           exact
           path="/login"
