@@ -2,8 +2,8 @@
     <br/>
     <br/>
     <br/>
-    <img src="https://github.com/swjb-sinamon/sinamon-frontend/tree/develop/docs/logo.png" alt="sinamon" />
-    <h3>🍹 수정과</h3>
+    <img src="https://github.com/swjb-sinamon/sinamon-frontend/blob/develop/docs/logo.png?raw=true" alt="sinamon" />
+    <h2>🍹 수정과</h2>
     <br/>
     <br/>
     <br/>
