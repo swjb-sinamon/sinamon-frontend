@@ -4,7 +4,7 @@ import Card from '../../components/Card';
 import CardTitle from '../../atomics/Typography/CardTitle';
 import { useSchool } from '../../hooks/useSchool';
 
-const Content = styled.p`
+const Content = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 14px;
 `;
