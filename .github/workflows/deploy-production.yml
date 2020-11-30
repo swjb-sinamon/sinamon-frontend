@@ -30,7 +30,7 @@ jobs:
       - name: Build
         env:
           GENERATE_SOURCEMAP: false
-          REACT_APP_API_HOST: ${{ secrets.API_HOST }}
+          REACT_APP_API_HOST: ${{ secrets.API_HOST_PRODUCTION }}
           REACT_APP_RECAPTCHA: ${{ secrets.RECAPTCHA }}
         run: yarn build:production
 
@@ -41,7 +41,7 @@ jobs:
         run: |
           aws s3 cp \
             --recursive \
-            --endpoint-url kr.object.ncloudstorage.com \
+            --endpoint-url http://kr.object.ncloudstorage.com \
             build s3://sinamon-frontend
 
       - name: Discord Alert Success
