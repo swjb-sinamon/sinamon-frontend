@@ -6,7 +6,7 @@ on:
       - release@beta
 
 jobs:
-  Deploy:
+  deploy:
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout source code.
@@ -24,8 +24,8 @@ jobs:
       - name: Install Dependencies
         run: yarn
 
-#      - name: Run ESLint
-#        run: yarn lint
+      - name: Run ESLint
+        run: yarn lint
 
       - name: Build
         env:

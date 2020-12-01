@@ -6,7 +6,7 @@ on:
       - release
 
 jobs:
-  Deploy:
+  deploy-production:
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout source code.
@@ -24,8 +24,8 @@ jobs:
       - name: Install Dependencies
         run: yarn
 
-#      - name: Run ESLint
-#        run: yarn lint
+      - name: Run ESLint
+        run: yarn lint
 
       - name: Build
         env:
@@ -34,15 +34,14 @@ jobs:
           REACT_APP_RECAPTCHA: ${{ secrets.RECAPTCHA }}
         run: yarn build:production
 
-      - name: Deploy                  # S3에 배포하기
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
-        run: |
-          aws s3 cp \
-            --recursive \
-            --endpoint-url http://kr.object.ncloudstorage.com \
-            build s3://sinamon-frontend
+      - name: Deploy
+        uses: SamKirkland/FTP-Deploy-Action@3.1.1
+        with:
+          ftp-server: ${{ secrets.FTP_HOST_PRODUCTION }}
+          ftp-username: ${{ secrets.FTP_USERNAME_PRODUCTION }}
+          ftp-password: ${{ secrets.FTP_PASSWORD_PRODUCTION }}
+          local-dir: ./build/
+          git-ftp-args: --insecure
 
       - name: Discord Alert Success
         uses: sarisia/actions-status-discord@v1
