@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { ReCaptcha } from 'react-recaptcha-v3';
+import Snowfall from 'react-snowfall';
 import { Heading1 } from '../atomics/Typography/Heading';
 import { ReactComponent as Friends } from '../assets/friends.svg';
 import BlankLine from '../utils/BlankLine';
@@ -41,6 +42,13 @@ const StyledSVG = styled(Friends)`
   margin-right: -10px;
   grid-column: 1 / 2;
 
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
+    display: none;
+  }
+`;
+
+const SnowfallWrapper = styled.div`
+  display: block;
   @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
     display: none;
   }
@@ -136,6 +144,9 @@ const LoginPage: React.FC = () => {
         </StyledForm>
       </GridContainer>
 
+      <SnowfallWrapper>
+        <Snowfall snowflakeCount={200} />
+      </SnowfallWrapper>
       <ReCaptcha sitekey={process.env.REACT_APP_RECAPTCHA!} action="login" />
     </Container>
   );
