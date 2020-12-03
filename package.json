@@ -6,7 +6,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "lint": "eslint src/**/*.ts[x]"
+    "lint": "eslint src/**/*.ts[x]",
+    "workbox": "workbox generateSW workbox-config.js",
+    "build:production": "yarn build && yarn workbox"
   },
   "repository": {
     "type": "git",
@@ -24,10 +26,16 @@
     "@fortawesome/react-fontawesome": "^0.1.11",
     "axios": "^0.20.0",
     "dotenv": "^8.2.0",
+    "qrcode.react": "^1.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-modal": "^3.11.2",
+    "react-notifications-component": "^2.4.1",
+    "react-recaptcha-v3": "^2.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-snowfall": "^1.0.2",
+    "react-tooltip": "^4.2.11",
     "styled-components": "^5.1.1"
   },
   "devDependencies": {
@@ -36,14 +44,19 @@
     "@testing-library/user-event": "^7.1.2",
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
+    "@types/qrcode.react": "^1.0.1",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@types/react-modal": "^3.10.6",
+    "@types/react-notifications-component": "^2.4.0",
+    "@types/react-recaptcha-v3": "^1.1.1",
     "@types/react-router-dom": "^5.1.5",
     "@types/styled-components": "^5.1.2",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.12.0",
     "prettier": "^2.0.5",
-    "typescript": "~3.7.2"
+    "typescript": "~3.7.2",
+    "workbox-cli": "^5.1.4"
   },
   "browserslist": {
     "production": [

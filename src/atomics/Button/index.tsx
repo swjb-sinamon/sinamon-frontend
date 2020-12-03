@@ -13,6 +13,12 @@ export const SmallButton = styled.button<{ width?: number; height?: number }>`
   &:hover {
     background-color: var(--color-button-hover);
   }
+
+  &:disabled {
+    background-color: #0148cd;
+    color: #e7e7e7;
+    cursor: no-drop;
+  }
 `;
 
 export const MediumButton = styled.button<{ width?: number; height?: number }>`
@@ -28,6 +34,12 @@ export const MediumButton = styled.button<{ width?: number; height?: number }>`
   &:hover {
     background-color: var(--color-button-hover);
   }
+
+  &:disabled {
+    background-color: #0148cd;
+    color: #e7e7e7;
+    cursor: no-drop;
+  }
 `;
 
 export const HugeButton = styled.button<{ width?: number; height?: number }>`
@@ -42,5 +54,11 @@ export const HugeButton = styled.button<{ width?: number; height?: number }>`
 
   &:hover {
     background-color: var(--color-button-hover);
+  }
+
+  &:disabled {
+    background-color: #0148cd;
+    color: #e7e7e7;
+    cursor: no-drop;
   }
 `;

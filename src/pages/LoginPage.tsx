@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { ReCaptcha } from 'react-recaptcha-v3';
+import Snowfall from 'react-snowfall';
 import { Heading1 } from '../atomics/Typography/Heading';
 import { ReactComponent as Friends } from '../assets/friends.svg';
 import BlankLine from '../utils/BlankLine';
@@ -10,6 +12,8 @@ import ButtonGroup from '../components/ButtonGroup';
 import { MediumButton } from '../atomics/Button';
 import SCREEN_SIZE from '../styles/screen-size';
 import Api from '../api';
+import ErrorMessage from '../error/ErrorMessage';
+import showToast from '../utils/Toast';
 
 const Container = styled.div`
   display: flex;
@@ -43,37 +47,61 @@ const StyledSVG = styled(Friends)`
   }
 `;
 
+const SnowfallWrapper = styled.div`
+  display: block;
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
+    display: none;
+  }
+`;
+
 interface LoginState {
-  readonly email: string;
+  readonly id: string;
   readonly password: string;
 }
 
 const LoginPage: React.FC = () => {
   const [input, setInput] = useState<LoginState>({
-    email: '',
+    id: '',
     password: ''
   });
 
-  const onInputChange = (type: keyof LoginState) => {
-    return (e: React.ChangeEvent<HTMLInputElement>) => {
-      e.persist();
+  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>, type: keyof LoginState) => {
+    e.persist();
 
-      setInput((current) => ({
-        ...current,
-        [type]: e.target.value
-      }));
-    };
+    setInput((current) => ({
+      ...current,
+      [type]: e.target.value
+    }));
   };
 
   const onLoginClick = async () => {
+    if (input.id.trim() === '' || input.password.trim() === '') {
+      showToast('❗ 아이디 또는 비밀번호가 빈칸입니다.', 'danger');
+      return;
+    }
+
     try {
-      const result = await Api.post('/auth/login', {
-        email: input.email,
+      await Api.post('/auth/login?admin=false', {
+        id: input.id,
         password: input.password
       });
+
+      showToast('🎉 로그인 성공! 메인 페이지로 이동합니다.', 'success');
+      window.location.reload();
     } catch (e) {
-      console.log(e);
+      if (!e.response.data) return;
+      const { success, error } = e.response.data;
+      if (success || !error) return;
+
+      if (error === ErrorMessage.USER_NOT_FOUND) {
+        showToast('💡 존재하지 않는 아이디이거나 잘못된 비밀번호입니다.', 'warning');
+        setInput({ id: '', password: '' });
+      }
     }
+  };
+
+  const onEnterKeyPress = async (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') await onLoginClick();
   };
 
   return (
@@ -86,12 +114,12 @@ const LoginPage: React.FC = () => {
 
             <BlankLine gap={30} />
 
-            <Label>이메일</Label>
+            <Label>아이디</Label>
             <Input
-              placeholder="이메일"
-              type="email"
-              value={input.email}
-              onChange={() => onInputChange('email')}
+              placeholder="아이디"
+              type="text"
+              value={input.id}
+              onChange={(e) => onInputChange(e, 'id')}
             />
 
             <BlankLine gap={20} />
@@ -101,7 +129,8 @@ const LoginPage: React.FC = () => {
               placeholder="비밀번호"
               type="password"
               value={input.password}
-              onChange={() => onInputChange('password')}
+              onChange={(e) => onInputChange(e, 'password')}
+              onKeyPress={onEnterKeyPress}
             />
 
             <BlankLine gap={30} />
@@ -114,6 +143,11 @@ const LoginPage: React.FC = () => {
           </div>
         </StyledForm>
       </GridContainer>
+
+      <SnowfallWrapper>
+        <Snowfall snowflakeCount={200} />
+      </SnowfallWrapper>
+      <ReCaptcha sitekey={process.env.REACT_APP_RECAPTCHA!} action="login" />
     </Container>
   );
 };

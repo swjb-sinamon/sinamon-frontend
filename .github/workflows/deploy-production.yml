@@ -1,0 +1,58 @@
+name: sinamon-frontend-deploy-production
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - release
+
+jobs:
+  deploy-production:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout source code.
+        uses: actions/checkout@master
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-build-
+            ${{ runner.OS }}-
+
+      - name: Install Dependencies
+        run: yarn
+
+#      - name: Run ESLint
+#        run: yarn lint
+
+      - name: Build
+        env:
+          GENERATE_SOURCEMAP: false
+          REACT_APP_API_HOST: ${{ secrets.API_HOST_PRODUCTION }}
+          REACT_APP_RECAPTCHA: ${{ secrets.RECAPTCHA }}
+        run: yarn build:production
+
+      - name: Deploy
+        uses: SamKirkland/FTP-Deploy-Action@3.1.1
+        with:
+          ftp-server: ${{ secrets.FTP_HOST_PRODUCTION }}
+          ftp-username: ${{ secrets.FTP_USERNAME_PRODUCTION }}
+          ftp-password: ${{ secrets.FTP_PASSWORD_PRODUCTION }}
+          local-dir: ./build/
+          git-ftp-args: --insecure
+
+      - name: Discord Alert Success
+        uses: sarisia/actions-status-discord@v1
+        if: success()
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          description: "🎉 프로덕션 사이트가 배포되었습니다! https://sinamon.info"
+
+      - name: Discord Alert Failure
+        uses: sarisia/actions-status-discord@v1
+        if: failure()
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          description: "🔥 프로덕션 사이트 배포를 실패하였습니다."

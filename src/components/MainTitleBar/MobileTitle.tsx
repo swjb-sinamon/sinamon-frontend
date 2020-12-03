@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { Heading1 } from '../../atomics/Typography/Heading';
 import SCREEN_SIZE from '../../styles/screen-size';
+import Logo from '../../assets/logo.png';
+import NoStyleLink from '../../atomics/NoStyleLink';
 
 const MobileTitleContainer = styled.div`
   @media screen and (min-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
@@ -20,13 +22,23 @@ const MobileTitleContainer = styled.div`
   padding: 0 1.6rem;
 `;
 
-const StyledTitle = styled(Heading1)`
-  font-size: 26px;
+const LogoContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   cursor: pointer;
   &:hover {
     color: var(--color-button-hover);
   }
+`;
+
+const StyledTitle = styled(Heading1)`
+  display: inline-block;
+  font-size: 20px;
+
+  margin-top: 7px;
+  margin-left: 2px;
 `;
 
 const StyledIcon = styled(FontAwesomeIcon)`
@@ -47,7 +59,13 @@ const MobileTitle: React.FC<MobileTitleProps> = ({ setOpen }) => {
 
   return (
     <MobileTitleContainer>
-      <StyledTitle>수정과</StyledTitle>
+      <NoStyleLink to="/">
+        <LogoContainer>
+          <img src={Logo} alt="수정과" width={38} height={38} />
+          <StyledTitle>수정과</StyledTitle>
+        </LogoContainer>
+      </NoStyleLink>
+
       <StyledIcon icon={faBars} size="lg" onClick={onBuggerClick} />
     </MobileTitleContainer>
   );
