@@ -15,6 +15,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'no-alert': 'off',
     'no-console': 'off',
-    'linebreak-style': 'off'
+    'linebreak-style': 'off',
+    'no-use-before-define': 'off'
   }
 };
