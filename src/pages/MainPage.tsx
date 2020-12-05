@@ -1,15 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import { SCREEN_SIZE, MainSideBarContainer, Card, CardTitle } from 'sinamon-sikhye';
 import MainSideBar from '../components/MainSideBar';
-import Card from '../components/Card';
-import CardTitle from '../atomics/Typography/CardTitle';
-import SCREEN_SIZE from '../styles/screen-size';
 import WeatherCard from '../components/Card/WeatherCard';
 import QRCodeCard from '../components/Card/QRCodeCard';
 import MealCard from '../components/Card/MealCard';
 import CalendarCard from '../components/Card/CalenderCard';
 import useWindowSize from '../hooks/useWindowSize';
-import MainSideBarContainer from '../components/MainSideBar/MainSideBarContainer';
 import NoticeCard from '../components/Card/NoticeCard';
 
 const StyledContent = styled.div`

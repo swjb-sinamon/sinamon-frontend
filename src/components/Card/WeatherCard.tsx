@@ -3,14 +3,11 @@ import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuestion } from '@fortawesome/free-solid-svg-icons';
-import BlankLine from '../../utils/BlankLine';
-import Card from '../../components/Card';
-import CardTitle from '../../atomics/Typography/CardTitle';
+import { Card, Heading1, CardTitle, BlankLine } from 'sinamon-sikhye';
 import convertWeatherStatusToString from '../../utils/Converter/Weather';
 import { convertPm10ToString, convertPm25ToString } from '../../utils/Converter/Dust';
 import WeatherIcon from '../../atomics/Icon/WeatherIcon';
 import { useWeather } from '../../hooks/useWeather';
-import { Heading1 } from '../../atomics/Typography/Heading';
 
 const Container = styled.div`
   display: grid;

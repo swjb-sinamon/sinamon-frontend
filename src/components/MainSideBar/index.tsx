@@ -4,35 +4,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBook, faSchool, faSignOutAlt, faUmbrella } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
-import MainSideBarItem from './MainSideBarItem';
-import SCREEN_SIZE from '../../styles/screen-size';
+import {
+  showToast,
+  MainSidebar,
+  SideBarItemList,
+  MainSideBarItem,
+  NoStyleA,
+  NoStyleLink
+} from 'sinamon-sikhye';
 import MainTitleBar from '../MainTitleBar';
 import Api from '../../api';
-import showToast from '../../utils/Toast';
-import NoStyleA from '../../atomics/NoStyleA';
-import NoStyleLink from '../../atomics/NoStyleLink';
-
-const Sidebar = styled.ul`
-  min-height: 100vh;
-  background-color: white;
-  box-shadow: 0 0 30px rgba(169, 169, 169, 0.2);
-
-  display: flex;
-  flex-direction: column;
-
-  list-style: none;
-
-  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
-    min-height: 4rem;
-  }
-`;
-
-const ItemList = styled.ul<{ isOpen: boolean }>`
-  display: block;
-  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
-    display: ${(props) => (props.isOpen ? 'block' : 'none')};
-  }
-`;
 
 const StyledFooterText = styled.p`
   text-align: center;
@@ -71,10 +52,10 @@ const MainSideBar: React.FC = () => {
   };
 
   return (
-    <Sidebar>
+    <MainSidebar>
       <MainTitleBar setOpen={setOpen} />
 
-      <ItemList isOpen={isOpen}>
+      <SideBarItemList isOpen={isOpen}>
         <NoStyleLink to="/umbrella">
           <MainSideBarItem>
             <FontAwesomeIcon icon={faUmbrella} size="lg" />
@@ -125,8 +106,8 @@ const MainSideBar: React.FC = () => {
           <PrivacyButton onClick={() => history.push('/privacy')}>개인정보처리방침</PrivacyButton>{' '}
           &middot; <PrivacyButton onClick={() => history.push('/tos')}>이용약관</PrivacyButton>
         </StyledFooterText>
-      </ItemList>
-    </Sidebar>
+      </SideBarItemList>
+    </MainSidebar>
   );
 };
 

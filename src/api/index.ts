@@ -1,5 +1,5 @@
 import axios from 'axios';
-import showToast from '../utils/Toast';
+import { showToast } from 'sinamon-sikhye';
 import ErrorMessage from '../error/ErrorMessage';
 
 const host = process.env.REACT_APP_API_HOST || 'http://localhost:8080';

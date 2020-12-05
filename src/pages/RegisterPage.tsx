@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import { ReCaptcha } from 'react-recaptcha-v3';
-import BlankLine from '../utils/BlankLine';
-import { HugeButton } from '../atomics/Button';
+import { showToast, HugeButton, BlankLine } from 'sinamon-sikhye';
 import RegisterHeaderText from '../components/Register/RegisterHeaderText';
 import RegisterFooterText from '../components/Register/RegisterFooterText';
 import RegisterForm from '../components/Register/RegisterForm';
-import showToast from '../utils/Toast';
 import Api from '../api';
 
 const Container = styled.div`

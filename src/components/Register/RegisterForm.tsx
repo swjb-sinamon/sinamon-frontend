@@ -1,11 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import BlankLine from '../../utils/BlankLine';
-import Input from '../../atomics/Form/Input';
-import Label from '../../atomics/Form/Label';
-import Radio from '../../atomics/Form/Radio';
-import SCREEN_SIZE from '../../styles/screen-size';
-import Select from '../../atomics/Form/Select';
+import { Label, BlankLine, Input, Select, SCREEN_SIZE, Radio } from 'sinamon-sikhye';
 
 const RadioList = styled.div`
   & input[type='radio'] {

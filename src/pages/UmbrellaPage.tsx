@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import QRCode from 'qrcode.react';
+import {
+  MainSideBarContainer,
+  BlankLine,
+  HugeButton,
+  showToast,
+  Modal,
+  Heading1,
+  Heading2,
+  Heading3
+} from 'sinamon-sikhye';
 import MainSideBar from '../components/MainSideBar';
-import MainSideBarContainer from '../components/MainSideBar/MainSideBarContainer';
-import { Heading1, Heading2, Heading3 } from '../atomics/Typography/Heading';
-import BlankLine from '../utils/BlankLine';
-import { HugeButton } from '../atomics/Button';
 import Api from '../api';
-import showToast from '../utils/Toast';
-import Modal from '../components/Modal';
 
 const StyledContent = styled.div`
   margin: 3rem;

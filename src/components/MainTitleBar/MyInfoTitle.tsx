@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Heading3 } from '../../atomics/Typography/Heading';
-import SCREEN_SIZE from '../../styles/screen-size';
+import { Heading3, SCREEN_SIZE } from 'sinamon-sikhye';
 import { useProfile } from '../../hooks/useProfile';
 import convertDepartmentIdToString from '../../utils/Converter/Department';
 

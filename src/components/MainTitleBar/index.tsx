@@ -1,11 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Heading1 } from '../../atomics/Typography/Heading';
-import SCREEN_SIZE from '../../styles/screen-size';
+import { Heading1, SCREEN_SIZE, NoStyleLink } from 'sinamon-sikhye';
 import MyInfoTitle from './MyInfoTitle';
 import MobileTitle from './MobileTitle';
 import Logo from '../../assets/logo.png';
-import NoStyleLink from '../../atomics/NoStyleLink';
 
 const SideBarTitle = styled.li`
   width: 100%;
