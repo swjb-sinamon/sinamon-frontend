@@ -3,17 +3,19 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { ReCaptcha } from 'react-recaptcha-v3';
 import Snowfall from 'react-snowfall';
-import { Heading1 } from '../atomics/Typography/Heading';
+import {
+  SCREEN_SIZE,
+  showToast,
+  Heading1,
+  Label,
+  Input,
+  BlankLine,
+  ButtonGroup,
+  MediumButton
+} from 'sinamon-sikhye';
 import { ReactComponent as Friends } from '../assets/friends.svg';
-import BlankLine from '../utils/BlankLine';
-import Label from '../atomics/Form/Label';
-import Input from '../atomics/Form/Input';
-import ButtonGroup from '../components/ButtonGroup';
-import { MediumButton } from '../atomics/Button';
-import SCREEN_SIZE from '../styles/screen-size';
 import Api from '../api';
 import ErrorMessage from '../error/ErrorMessage';
-import showToast from '../utils/Toast';
 
 const Container = styled.div`
   display: flex;

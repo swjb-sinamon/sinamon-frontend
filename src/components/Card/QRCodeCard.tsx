@@ -3,13 +3,9 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQrcode } from '@fortawesome/free-solid-svg-icons';
 import QRCode from 'qrcode.react';
-import { Heading2, Heading3 } from '../../atomics/Typography/Heading';
-import Card from '../../components/Card';
+import { Card, Heading2, Heading3, showToast, Modal, BlankLine } from 'sinamon-sikhye';
 import GradientQR from '../../assets/Gradient/qr';
 import Api from '../../api';
-import Modal from '../Modal';
-import showToast from '../../utils/Toast';
-import BlankLine from '../../utils/BlankLine';
 
 const Container = styled.div`
   display: flex;

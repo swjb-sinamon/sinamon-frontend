@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Card from '../../components/Card';
-import CardTitle from '../../atomics/Typography/CardTitle';
-import { Heading3 } from '../../atomics/Typography/Heading';
+import { Card, CardTitle, Heading3 } from 'sinamon-sikhye';
 import Api from '../../api';
 
 const StyledNotice = styled.div`

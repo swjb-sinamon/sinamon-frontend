@@ -2,10 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { Heading1 } from '../../atomics/Typography/Heading';
-import SCREEN_SIZE from '../../styles/screen-size';
+import { Heading1, SCREEN_SIZE, NoStyleLink } from 'sinamon-sikhye';
 import Logo from '../../assets/logo.png';
-import NoStyleLink from '../../atomics/NoStyleLink';
 
 const MobileTitleContainer = styled.div`
   @media screen and (min-width: ${SCREEN_SIZE.SCREEN_TABLET}) {

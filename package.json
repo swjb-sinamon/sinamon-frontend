@@ -36,6 +36,7 @@
     "react-scripts": "^4.0.1",
     "react-snowfall": "^1.0.2",
     "react-tooltip": "^4.2.11",
+    "sinamon-sikhye": "^1.0.6",
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
@@ -48,6 +49,7 @@
     "@types/react-recaptcha-v3": "^1.1.1",
     "@types/react-router-dom": "^5.1.6",
     "@types/styled-components": "^5.1.4",
+    "@typescript-eslint/eslint-plugin": "^4.9.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^6.15.0",
     "prettier": "^2.2.1",

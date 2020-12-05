@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Card from '../../components/Card';
-import CardTitle from '../../atomics/Typography/CardTitle';
+import { Card, CardTitle } from 'sinamon-sikhye';
 import { useSchool } from '../../hooks/useSchool';
 
 const Content = styled.div`

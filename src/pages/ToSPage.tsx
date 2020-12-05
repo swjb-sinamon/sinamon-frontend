@@ -1,9 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Heading2 } from '../atomics/Typography/Heading';
-import SCREEN_SIZE from '../styles/screen-size';
-import BlankLine from '../utils/BlankLine';
-import { PrivacySubTitle, PrivacyTitle } from '../atomics/Typography/PrivacyTitle';
+import { Heading2, SCREEN_SIZE, BlankLine, PrivacySubTitle, PrivacyTitle } from 'sinamon-sikhye';
 
 const Container = styled.div`
   width: 1000px;
