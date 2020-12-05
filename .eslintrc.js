@@ -1,5 +1,6 @@
 module.exports = {
   extends: ['react-app', 'airbnb', 'eslint-config-prettier'],
+  plugins: ['@typescript-eslint'],
   rules: {
     'arrow-body-style': 'off',
     'jsx-quotes': 'off',
@@ -15,6 +16,12 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'no-alert': 'off',
     'no-console': 'off',
-    'linebreak-style': 'off'
+    'linebreak-style': 'off',
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': 'error',
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'error',
+
+    'no-use-before-define': 'off'
   }
 };
