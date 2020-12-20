@@ -5,11 +5,11 @@ import Api from '../../api';
 
 const StyledNotice = styled.div`
   display: flex;
-  height: 60%;
   justify-content: center;
-  align-items: center;
 
-  text-align: center;
+  & > h3 {
+    width: 100%;
+  }
 `;
 
 const NoticeCard: React.FC = () => {
