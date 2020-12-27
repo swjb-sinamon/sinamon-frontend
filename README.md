@@ -10,6 +10,8 @@
 > 수원정보과학고등학교 인트라넷 프로젝트
 
 ## 🎲 주요기능
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fswjb-sinamon%2Fsinamon-frontend.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fswjb-sinamon%2Fsinamon-frontend?ref=badge_shield)
+
 
 - 우산대여
 - 날씨, 급식, 학사일정 확인
@@ -40,3 +42,7 @@
 ## 📑 Commit Convention
 
 - [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fswjb-sinamon%2Fsinamon-frontend.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fswjb-sinamon%2Fsinamon-frontend?ref=badge_large)
