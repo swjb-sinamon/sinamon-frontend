@@ -103,7 +103,7 @@ const UmbrellaPage: React.FC = () => {
             <StyledParagraph>
               <StyledNumber>2</StyledNumber>
               <span>
-                <b>반납은 다음날 오후 7시까지 가능</b>합니다. 연체 시 영원히 우산대여제를 이용할 수
+                <b>반납은 다음날 오후 5시까지 가능</b>합니다. 연체 시 영원히 우산대여제를 이용할 수
                 없어요.
               </span>
             </StyledParagraph>
