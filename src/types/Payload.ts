@@ -8,4 +8,5 @@ export interface ComciganTimetableType {
   readonly code: string;
   readonly teacher: string;
   readonly subject: string;
+  readonly url: string;
 }
