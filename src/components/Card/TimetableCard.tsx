@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Card, CardTitle } from 'sinamon-sikhye';
+import { Card, CardTitle, NoStyleLink, SCREEN_SIZE } from 'sinamon-sikhye';
 import { ComciganTimetableType } from '../../types/Payload';
 import Api from '../../api';
 import { useProfile } from '../../hooks/useProfile';
 import { convertClassToFullClass } from '../../utils/Converter/SchoolNumber';
 import TimetableItem from '../Timetable/TimetableItem';
+import useWindowSize from '../../hooks/useWindowSize';
 
 const CardHeader = styled.div`
   display: flex;
@@ -23,6 +24,10 @@ const StyledTipText = styled.span`
 
   margin-left: 10px;
   line-height: 2.5;
+
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
+    display: none;
+  }
 `;
 
 const TimeTableContainer = styled.div`
@@ -30,6 +35,12 @@ const TimeTableContainer = styled.div`
   grid-template-columns: repeat(5, 1fr);
 
   text-align: center;
+
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const MoreButton = styled.button`
@@ -43,12 +54,19 @@ const MoreButton = styled.button`
   &:hover {
     background-color: var(--color-gray);
   }
+
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
+    display: none;
+  }
 `;
 
 const day = ['일', '월', '화', '수', '목', '금', '토'];
 const today = new Date().getDay();
 
 const TimetableCard: React.FC = () => {
+  const [width] = useWindowSize();
+  const tablet = parseInt(SCREEN_SIZE.SCREEN_TABLET.replace('px', ''), 10);
+
   const [timetable, setTimetable] = useState<ComciganTimetableType[][]>([]);
   const profile = useProfile();
 
@@ -67,6 +85,38 @@ const TimetableCard: React.FC = () => {
     });
   }, [profile]);
 
+  const TimetableForPC = timetable.map((value, index) => (
+    <TimetableItem
+      // eslint-disable-next-line react/no-array-index-key
+      key={index}
+      day={`${day[index + 1]}`}
+      data={value}
+      active={index + 1 === today}
+    />
+  ));
+
+  const TimetableForMobile = () => {
+    if (today === 0 || today === 6) {
+      return (
+        <>
+          <p>오늘은 주말입니다.</p>
+          <p>
+            더 자세한 시간표는{' '}
+            <NoStyleLink to="/timetable">
+              <b>
+                <u>시간표 보기</u>
+              </b>
+            </NoStyleLink>{' '}
+            메뉴를 <br />
+            이용해주세요.
+          </p>
+        </>
+      );
+    }
+
+    return <TimetableItem day={`${day[today]}`} data={timetable[today - 1]} active />;
+  };
+
   return (
     <Card columnStart={1} columnEnd={5} rowStart={2} rowEnd={3}>
       <CardHeader>
@@ -84,15 +134,7 @@ const TimetableCard: React.FC = () => {
       </CardHeader>
 
       <TimeTableContainer>
-        {timetable.map((value, index) => (
-          <TimetableItem
-            // eslint-disable-next-line react/no-array-index-key
-            key={index}
-            day={`${day[index + 1]}`}
-            data={value}
-            active={index + 1 === today}
-          />
-        ))}
+        {width > tablet ? TimetableForPC : <TimetableForMobile />}
       </TimeTableContainer>
     </Card>
   );
