@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Card, CardTitle, NoStyleLink, SCREEN_SIZE } from 'sinamon-sikhye';
-import { ComciganTimetableType } from '../../types/Payload';
-import Api from '../../api';
-import { useProfile } from '../../hooks/useProfile';
-import { convertClassToFullClass } from '../../utils/Converter/SchoolNumber';
 import TimetableItem from '../Timetable/TimetableItem';
 import useWindowSize from '../../hooks/useWindowSize';
+import { useTimetable } from '../../hooks/useTimetable';
 
 const CardHeader = styled.div`
   display: flex;
@@ -67,23 +64,7 @@ const TimetableCard: React.FC = () => {
   const [width] = useWindowSize();
   const tablet = parseInt(SCREEN_SIZE.SCREEN_TABLET.replace('px', ''), 10);
 
-  const [timetable, setTimetable] = useState<ComciganTimetableType[][]>([]);
-  const profile = useProfile();
-
-  useEffect(() => {
-    if (!profile) return;
-
-    Api.get(
-      `/timetable/${profile.studentGrade}/${convertClassToFullClass(
-        profile.department,
-        profile.studentClass
-      )}`
-    ).then((res) => {
-      if (res.data && res.data.success) {
-        setTimetable(res.data.data);
-      }
-    });
-  }, [profile]);
+  const timetable = useTimetable();
 
   const TimetableForPC = timetable.map((value, index) => (
     <TimetableItem

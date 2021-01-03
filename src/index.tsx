@@ -11,6 +11,7 @@ import Router from './router';
 import { ProfileProvider } from './hooks/useProfile';
 import { SchoolProvider } from './hooks/useSchool';
 import { WeatherProvider } from './hooks/useWeather';
+import { TimetableProvider } from './hooks/useTimetable';
 
 dotenv.config();
 
@@ -21,8 +22,10 @@ ReactDOM.render(
     <ProfileProvider>
       <SchoolProvider>
         <WeatherProvider>
-          <ReactNotification />
-          <Router />
+          <TimetableProvider>
+            <ReactNotification />
+            <Router />
+          </TimetableProvider>
         </WeatherProvider>
       </SchoolProvider>
     </ProfileProvider>
