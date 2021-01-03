@@ -64,13 +64,11 @@ const MainSideBar: React.FC = () => {
           </MainSideBarItem>
         </NoStyleLink>
 
-        <NoStyleLink to="/timetable">
-          <MainSideBarItem>
-            <FontAwesomeIcon icon={faBook} size="lg" />
-            &nbsp;
-            <p>시간표 보기</p>
-          </MainSideBarItem>
-        </NoStyleLink>
+        <MainSideBarItem tabIndex={0} onClick={() => showToast('준비중입니다.', 'info')}>
+          <FontAwesomeIcon icon={faBook} size="lg" />
+          &nbsp;
+          <p>시간표 보기</p>
+        </MainSideBarItem>
 
         <MainSideBarItem tabIndex={0} onClick={() => showToast('준비중입니다.', 'info')}>
           <FontAwesomeIcon icon={faSchool} size="lg" />
