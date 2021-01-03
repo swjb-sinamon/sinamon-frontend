@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuestion } from '@fortawesome/free-solid-svg-icons';
-import { Card, Heading1, CardTitle, BlankLine } from 'sinamon-sikhye';
+import { Card, Heading1, CardTitle, BlankLine, SCREEN_SIZE } from 'sinamon-sikhye';
 import convertWeatherStatusToString from '../../utils/Converter/Weather';
 import { convertPm10ToString, convertPm25ToString } from '../../utils/Converter/Dust';
 import WeatherIcon from '../../atomics/Icon/WeatherIcon';
@@ -14,6 +14,8 @@ const Container = styled.div`
   grid-template-columns: repeat(2, 1fr);
   height: 80%;
   grid-gap: 10px;
+
+  position: relative;
 `;
 
 const ContentBody = styled.div`
@@ -37,10 +39,14 @@ const StyledDustContent = styled.b<{ color: string }>`
 `;
 
 const HelpContainer = styled.div`
-  display: grid;
-  grid-column: 2 / 3;
-  justify-content: flex-end;
-  align-content: center;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_MOBILE}) {
+    right: -16px;
+    bottom: -16px;
+  }
 `;
 
 const HelpButton = styled.a`
@@ -101,6 +107,7 @@ const WeatherCard: React.FC = () => {
             </StyledDustStatus>
           </div>
         </ContentBody>
+
         <HelpContainer>
           <HelpButton data-tip data-for="license">
             <FontAwesomeIcon icon={faQuestion} size="xs" />

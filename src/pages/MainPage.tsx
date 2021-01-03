@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { SCREEN_SIZE, MainSideBarContainer, Card, CardTitle } from 'sinamon-sikhye';
+import { MainSideBarContainer, SCREEN_SIZE } from 'sinamon-sikhye';
 import MainSideBar from '../components/MainSideBar';
 import WeatherCard from '../components/Card/WeatherCard';
 import QRCodeCard from '../components/Card/QRCodeCard';
@@ -8,6 +8,7 @@ import MealCard from '../components/Card/MealCard';
 import CalendarCard from '../components/Card/CalenderCard';
 import useWindowSize from '../hooks/useWindowSize';
 import NoticeCard from '../components/Card/NoticeCard';
+import TimetableCard from '../components/Card/TimetableCard';
 
 const StyledContent = styled.div`
   margin: 3rem;
@@ -49,23 +50,10 @@ const MainPage: React.FC = () => {
           <StyledMobileQRCodeCard />
 
           <WeatherCard />
-
           <MealCard />
-
-          <Card columnStart={1} columnEnd={5} rowStart={2} rowEnd={3}>
-            <CardTitle>
-              <span role="img" aria-label="clock">
-                ⏱
-              </span>
-              무엇을 배울까?
-            </CardTitle>
-            <p>준비중입니다.</p>
-          </Card>
-
+          <TimetableCard />
           <QRCodeCard hidden={width <= tabletSize} />
-
           <NoticeCard />
-
           <CalendarCard />
         </StyledContentGrid>
       </StyledContent>
