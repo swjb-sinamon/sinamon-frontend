@@ -35,6 +35,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.1",
     "react-snowfall": "^1.0.2",
+    "react-text-loop": "^2.3.0",
     "react-tooltip": "^4.2.11",
     "sinamon-sikhye": "^1.0.8",
     "styled-components": "^5.2.1"

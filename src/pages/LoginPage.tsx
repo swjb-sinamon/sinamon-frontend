@@ -13,7 +13,8 @@ import {
   ButtonGroup,
   MediumButton
 } from 'sinamon-sikhye';
-import { ReactComponent as Friends } from '../assets/friends.svg';
+
+import TextLoop from 'react-text-loop';
 import Api from '../api';
 import ErrorMessage from '../error/ErrorMessage';
 
@@ -27,10 +28,32 @@ const Container = styled.div`
 const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-gap: 3rem;
 
   @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
     display: block;
   }
+`;
+
+const Intro = styled.div`
+  margin-top: 2rem;
+
+  & > * {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
+    display: none;
+  }
+`;
+
+const LoopText = styled(Heading1)`
+  color: var(--color-button-hover);
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
 `;
 
 const StyledForm = styled.div`
@@ -38,15 +61,6 @@ const StyledForm = styled.div`
   justify-content: center;
   align-items: center;
   grid-column: 2 / 3;
-`;
-
-const StyledSVG = styled(Friends)`
-  margin-right: -10px;
-  grid-column: 1 / 2;
-
-  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
-    display: none;
-  }
 `;
 
 const SnowfallWrapper = styled.div`
@@ -109,7 +123,18 @@ const LoginPage: React.FC = () => {
   return (
     <Container>
       <GridContainer>
-        <StyledSVG width={600} height={600} />
+        <Intro>
+          <Heading1>🎈 편리한 학교 생활, 수정과와 함께</Heading1>
+          <TextLoop interval={2000}>
+            <LoopText>방과후신청을</LoopText>
+            <LoopText>행사 확인을</LoopText>
+            <LoopText>우산 빌리기를</LoopText>
+            <LoopText>시간표 확인을</LoopText>
+            <LoopText>급식 보기를</LoopText>
+          </TextLoop>
+          <Heading1>해보세요!</Heading1>
+        </Intro>
+
         <StyledForm>
           <div>
             <Heading1>수정과 로그인</Heading1>
