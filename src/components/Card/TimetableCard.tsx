@@ -130,7 +130,9 @@ const TimetableCard: React.FC = () => {
           <StyledTipText>과목명을 클릭하여 줌에 접속하세요</StyledTipText>
         </LeftHeader>
 
-        <MoreButton>더보기</MoreButton>
+        <NoStyleLink to="/timetable">
+          <MoreButton>더보기</MoreButton>
+        </NoStyleLink>
       </CardHeader>
 
       <TimeTableContainer>
