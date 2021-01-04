@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBook, faSchool, faSignOutAlt, faUmbrella } from '@fortawesome/free-solid-svg-icons';
+import {
+  faAward,
+  faBook,
+  faSchool,
+  faSignOutAlt,
+  faUmbrella
+} from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
 import {
@@ -56,6 +62,14 @@ const MainSideBar: React.FC = () => {
       <MainTitleBar setOpen={setOpen} />
 
       <SideBarItemList isOpen={isOpen}>
+        <NoStyleLink to="/contest">
+          <MainSideBarItem>
+            <FontAwesomeIcon icon={faAward} size="lg" />
+            &nbsp;
+            <p>학생협업공모전</p>
+          </MainSideBarItem>
+        </NoStyleLink>
+
         <NoStyleLink to="/umbrella">
           <MainSideBarItem>
             <FontAwesomeIcon icon={faUmbrella} size="lg" />
