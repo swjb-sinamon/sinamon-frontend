@@ -17,6 +17,7 @@ enum ErrorMessage {
   RENTAL_EXPIRE = '우산 대여가 연체된 학생입니다.',
 
   QRCODE_EXPIRE = 'QR코드 유효기간이 지났습니다.',
+  QRCODE_ERROR = '잘못된 QR코드입니다.',
 
   ACTIVATION_CODE_NOT_FOUND = '존재하지 않는 인증코드입니다.',
   ACTIVATION_CODE_USED = '이미 사용된 인증코드입니다.',
