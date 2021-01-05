@@ -23,7 +23,10 @@ enum ErrorMessage {
 
   UNIFORM_NOT_FOUND = '존재하지 않는 교복데이 데이터입니다.',
   UNIFORM_NOT_MINUS = '점수를 더 내릴 수 없습니다.',
-  UNIFORM_DO_NOT_PLUS = '최대 2점까지만 올릴 수 있습니다.'
+  UNIFORM_DO_NOT_PLUS = '최대 2점까지만 올릴 수 있습니다.',
+
+  CONTEST_ALREADY_EXISTS = '이미 참가 신청 되었습니다.',
+  CONTEST_ROLE_NOT_FOUND = '존재하지 않는 역할입니다.'
 }
 
 export default ErrorMessage;
