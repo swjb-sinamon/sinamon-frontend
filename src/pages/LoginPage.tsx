@@ -103,6 +103,7 @@ const LoginPage: React.FC = () => {
       });
 
       showToast('🎉 로그인 성공! 메인 페이지로 이동합니다.', 'success');
+      window.location.reload();
     } catch (e) {
       if (!e.response.data) return;
       const { success, error } = e.response.data;
