@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { loadReCaptcha } from 'react-recaptcha-v3';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import MainPage from './pages/MainPage';
@@ -12,10 +11,6 @@ import TimetablePage from './pages/TimetablePage';
 import ContestPage from './pages/ContestPage';
 
 const Router: React.FC = () => {
-  useEffect(() => {
-    loadReCaptcha(process.env.REACT_APP_RECAPTCHA!);
-  }, []);
-
   return (
     <BrowserRouter>
       <Switch>
