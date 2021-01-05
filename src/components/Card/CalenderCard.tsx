@@ -15,7 +15,6 @@ const StyledDay = styled.span<{ isToday: boolean }>`
   margin-right: 10px;
 
   ${(props) => props.isToday && 'color: var(--color-button-hover);'}
-  ${(props) => props.isToday && 'text-decoration: underline;'}
 `;
 
 const CalendarCard: React.FC = () => {
