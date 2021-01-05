@@ -41,16 +41,17 @@ const TimetableItem: React.FC<TimetableItemProps> = ({ day, data, active }) => {
   return (
     <div>
       <DayText active={active}>{day}</DayText>
-      {data.map((value, index) => (
-        <SubjectText
-          // eslint-disable-next-line react/no-array-index-key
-          key={`${value.weekday}${index}${value.code}`}
-          onClick={() => onClick(value.url)}
-          active={active}
-        >
-          {value.subject}
-        </SubjectText>
-      ))}
+      {data &&
+        data.map((value, index) => (
+          <SubjectText
+            // eslint-disable-next-line react/no-array-index-key
+            key={`${value.weekday}${index}${value.code}`}
+            onClick={() => onClick(value.url)}
+            active={active}
+          >
+            {value.subject}
+          </SubjectText>
+        ))}
     </div>
   );
 };

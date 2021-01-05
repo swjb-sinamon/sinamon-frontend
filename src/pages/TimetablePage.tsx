@@ -72,7 +72,8 @@ const TimetablePage: React.FC = () => {
 
         <StyledContent>
           <Heading1>시간표 보기</Heading1>
-          <Heading3>시간표를 확인하고 과목명을 클릭하여 줌에 접속해보세요.</Heading3>
+          <Heading3>시간표를 확인해보세요.</Heading3>
+          <Heading3>추후 줌 바로가기 기능이 업데이트 됩니다!</Heading3>
 
           <BlankLine gap={30} />
 
