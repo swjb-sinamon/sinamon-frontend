@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
-import ScaleInput from '../../atomics/Form/ScaleInput';
+import { ScaleInput } from 'sinamon-sikhye';
 
 const UnderLineLink = styled(Link)`
   text-decoration: underline;

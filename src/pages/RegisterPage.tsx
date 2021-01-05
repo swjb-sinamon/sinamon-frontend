@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import { ReCaptcha } from 'react-recaptcha-v3';
-import BlankLine from '../utils/BlankLine';
-import { HugeButton } from '../atomics/Button';
+import { showToast, HugeButton, BlankLine } from 'sinamon-sikhye';
+import { Helmet } from 'react-helmet';
 import RegisterHeaderText from '../components/Register/RegisterHeaderText';
 import RegisterFooterText from '../components/Register/RegisterFooterText';
 import RegisterForm from '../components/Register/RegisterForm';
-import showToast from '../utils/Toast';
 import Api from '../api';
 
 const Container = styled.div`
@@ -125,26 +124,32 @@ const RegisterPage: React.FC = () => {
   };
 
   return (
-    <Container>
-      <div>
-        <RegisterHeaderText />
+    <>
+      <Helmet>
+        <title>회원가입 - 수정과</title>
+      </Helmet>
 
-        <BlankLine gap={30} />
+      <Container>
+        <div>
+          <RegisterHeaderText />
 
-        <Form>
-          <RegisterForm state={state} />
-          <RegisterFooterText check={check} />
-        </Form>
+          <BlankLine gap={30} />
 
-        <BlankLine gap={30} />
+          <Form>
+            <RegisterForm state={state} />
+            <RegisterFooterText check={check} />
+          </Form>
 
-        <ButtonWrapper>
-          <HugeButton onClick={onRegisterClick}>회원가입</HugeButton>
-        </ButtonWrapper>
-      </div>
+          <BlankLine gap={30} />
 
-      <ReCaptcha sitekey={process.env.REACT_APP_RECAPTCHA!} action="register" />
-    </Container>
+          <ButtonWrapper>
+            <HugeButton onClick={onRegisterClick}>회원가입</HugeButton>
+          </ButtonWrapper>
+        </div>
+
+        <ReCaptcha sitekey={process.env.REACT_APP_RECAPTCHA!} action="register" />
+      </Container>
+    </>
   );
 };
 

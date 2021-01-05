@@ -1,3 +1,6 @@
+import './styles/global.css';
+import 'react-notifications-component/dist/theme.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import dotenv from 'dotenv';
@@ -7,10 +10,8 @@ import * as serviceWorker from './serviceWorker';
 import Router from './router';
 import { ProfileProvider } from './hooks/useProfile';
 import { SchoolProvider } from './hooks/useSchool';
-
-import './styles/global.css';
-import 'react-notifications-component/dist/theme.css';
 import { WeatherProvider } from './hooks/useWeather';
+import { TimetableProvider } from './hooks/useTimetable';
 
 dotenv.config();
 
@@ -21,8 +22,10 @@ ReactDOM.render(
     <ProfileProvider>
       <SchoolProvider>
         <WeatherProvider>
-          <ReactNotification />
-          <Router />
+          <TimetableProvider>
+            <ReactNotification />
+            <Router />
+          </TimetableProvider>
         </WeatherProvider>
       </SchoolProvider>
     </ProfileProvider>

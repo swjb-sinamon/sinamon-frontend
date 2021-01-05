@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Card from '../../components/Card';
-import CardTitle from '../../atomics/Typography/CardTitle';
-import { Heading3 } from '../../atomics/Typography/Heading';
+import { Card, CardTitle, Heading3 } from 'sinamon-sikhye';
 import Api from '../../api';
 
 const StyledNotice = styled.div`
   display: flex;
-  height: 60%;
   justify-content: center;
-  align-items: center;
 
-  text-align: center;
+  & > h3 {
+    width: 100%;
+  }
 `;
 
 const NoticeCard: React.FC = () => {

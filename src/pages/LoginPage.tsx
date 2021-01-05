@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { ReCaptcha } from 'react-recaptcha-v3';
 import Snowfall from 'react-snowfall';
-import { Heading1 } from '../atomics/Typography/Heading';
-import { ReactComponent as Friends } from '../assets/friends.svg';
-import BlankLine from '../utils/BlankLine';
-import Label from '../atomics/Form/Label';
-import Input from '../atomics/Form/Input';
-import ButtonGroup from '../components/ButtonGroup';
-import { MediumButton } from '../atomics/Button';
-import SCREEN_SIZE from '../styles/screen-size';
+import {
+  BlankLine,
+  ButtonGroup,
+  Heading1,
+  Input,
+  Label,
+  MediumButton,
+  SCREEN_SIZE,
+  showToast
+} from 'sinamon-sikhye';
+
+import TextLoop from 'react-text-loop';
+import { Helmet } from 'react-helmet';
 import Api from '../api';
 import ErrorMessage from '../error/ErrorMessage';
-import showToast from '../utils/Toast';
 
 const Container = styled.div`
   display: flex;
@@ -25,10 +28,32 @@ const Container = styled.div`
 const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-gap: 3rem;
 
   @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
     display: block;
   }
+`;
+
+const Intro = styled.div`
+  margin-top: 2rem;
+
+  & > * {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
+    display: none;
+  }
+`;
+
+const LoopText = styled(Heading1)`
+  color: var(--color-button-hover);
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
 `;
 
 const StyledForm = styled.div`
@@ -36,15 +61,6 @@ const StyledForm = styled.div`
   justify-content: center;
   align-items: center;
   grid-column: 2 / 3;
-`;
-
-const StyledSVG = styled(Friends)`
-  margin-right: -10px;
-  grid-column: 1 / 2;
-
-  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
-    display: none;
-  }
 `;
 
 const SnowfallWrapper = styled.div`
@@ -105,50 +121,66 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <Container>
-      <GridContainer>
-        <StyledSVG width={600} height={600} />
-        <StyledForm>
-          <div>
-            <Heading1>수정과 로그인</Heading1>
+    <>
+      <Helmet>
+        <title>로그인 - 수정과</title>
+      </Helmet>
 
-            <BlankLine gap={30} />
+      <Container>
+        <GridContainer>
+          <Intro>
+            <Heading1>🎈 편리한 학교 생활, 수정과와 함께</Heading1>
+            <TextLoop interval={2000}>
+              <LoopText>방과후신청을</LoopText>
+              <LoopText>행사 확인을</LoopText>
+              <LoopText>우산 빌리기를</LoopText>
+              <LoopText>시간표 확인을</LoopText>
+              <LoopText>급식 보기를</LoopText>
+            </TextLoop>
+            <Heading1>해보세요!</Heading1>
+          </Intro>
 
-            <Label>아이디</Label>
-            <Input
-              placeholder="아이디"
-              type="text"
-              value={input.id}
-              onChange={(e) => onInputChange(e, 'id')}
-            />
+          <StyledForm>
+            <div>
+              <Heading1>수정과 로그인</Heading1>
 
-            <BlankLine gap={20} />
+              <BlankLine gap={30} />
 
-            <Label>비밀번호</Label>
-            <Input
-              placeholder="비밀번호"
-              type="password"
-              value={input.password}
-              onChange={(e) => onInputChange(e, 'password')}
-              onKeyPress={onEnterKeyPress}
-            />
+              <Label>아이디</Label>
+              <Input
+                placeholder="아이디"
+                type="text"
+                value={input.id}
+                onChange={(e) => onInputChange(e, 'id')}
+              />
 
-            <BlankLine gap={30} />
-            <ButtonGroup>
-              <MediumButton onClick={onLoginClick}>로그인</MediumButton>
-              <Link to="/register">
-                <MediumButton>회원가입</MediumButton>
-              </Link>
-            </ButtonGroup>
-          </div>
-        </StyledForm>
-      </GridContainer>
+              <BlankLine gap={20} />
 
-      <SnowfallWrapper>
-        <Snowfall snowflakeCount={200} />
-      </SnowfallWrapper>
-      <ReCaptcha sitekey={process.env.REACT_APP_RECAPTCHA!} action="login" />
-    </Container>
+              <Label>비밀번호</Label>
+              <Input
+                placeholder="비밀번호"
+                type="password"
+                value={input.password}
+                onChange={(e) => onInputChange(e, 'password')}
+                onKeyPress={onEnterKeyPress}
+              />
+
+              <BlankLine gap={30} />
+              <ButtonGroup>
+                <MediumButton onClick={onLoginClick}>로그인</MediumButton>
+                <Link to="/register">
+                  <MediumButton>회원가입</MediumButton>
+                </Link>
+              </ButtonGroup>
+            </div>
+          </StyledForm>
+        </GridContainer>
+
+        <SnowfallWrapper>
+          <Snowfall snowflakeCount={200} />
+        </SnowfallWrapper>
+      </Container>
+    </>
   );
 };
 

@@ -1,16 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import { MainSideBarContainer, SCREEN_SIZE } from 'sinamon-sikhye';
+import { Helmet } from 'react-helmet';
 import MainSideBar from '../components/MainSideBar';
-import Card from '../components/Card';
-import CardTitle from '../atomics/Typography/CardTitle';
-import SCREEN_SIZE from '../styles/screen-size';
 import WeatherCard from '../components/Card/WeatherCard';
 import QRCodeCard from '../components/Card/QRCodeCard';
 import MealCard from '../components/Card/MealCard';
 import CalendarCard from '../components/Card/CalenderCard';
 import useWindowSize from '../hooks/useWindowSize';
-import MainSideBarContainer from '../components/MainSideBar/MainSideBarContainer';
 import NoticeCard from '../components/Card/NoticeCard';
+import TimetableCard from '../components/Card/TimetableCard';
 
 const StyledContent = styled.div`
   margin: 3rem;
@@ -44,35 +43,28 @@ const MainPage: React.FC = () => {
   const tabletSize = parseInt(SCREEN_SIZE.SCREEN_TABLET.replace('px', ''), 10);
 
   return (
-    <MainSideBarContainer>
-      <MainSideBar />
+    <>
+      <Helmet>
+        <title>수정과</title>
+      </Helmet>
 
-      <StyledContent>
-        <StyledContentGrid>
-          <StyledMobileQRCodeCard />
+      <MainSideBarContainer>
+        <MainSideBar />
 
-          <WeatherCard />
+        <StyledContent>
+          <StyledContentGrid>
+            <StyledMobileQRCodeCard />
 
-          <MealCard />
-
-          <Card columnStart={1} columnEnd={5} rowStart={2} rowEnd={3}>
-            <CardTitle>
-              <span role="img" aria-label="clock">
-                ⏱
-              </span>
-              무엇을 배울까?
-            </CardTitle>
-            <p>준비중입니다.</p>
-          </Card>
-
-          <QRCodeCard hidden={width <= tabletSize} />
-
-          <NoticeCard />
-
-          <CalendarCard />
-        </StyledContentGrid>
-      </StyledContent>
-    </MainSideBarContainer>
+            <WeatherCard />
+            <MealCard />
+            <TimetableCard />
+            <QRCodeCard hidden={width <= tabletSize} />
+            <NoticeCard />
+            <CalendarCard />
+          </StyledContentGrid>
+        </StyledContent>
+      </MainSideBarContainer>
+    </>
   );
 };
 
