@@ -84,13 +84,7 @@ const ContestPage: React.FC = () => {
 
         <StyledContent>
           <Heading1>학생협업공모전 참여하기</Heading1>
-          <Heading3>
-            문의:{' '}
-            <StyledNoStyleA href={`tel:${process.env.REACT_APP_CT}`}>
-              {process.env.REACT_APP_CT}
-            </StyledNoStyleA>{' '}
-            또는
-          </Heading3>
+          <Heading3>문의: {process.env.REACT_APP_CT} 또는</Heading3>
           <Heading3>
             수정고 학생협업공모전 문의방{' '}
             <StyledNoStyleA href={process.env.REACT_APP_CK}>
