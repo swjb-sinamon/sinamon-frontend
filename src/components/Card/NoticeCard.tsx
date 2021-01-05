@@ -30,7 +30,15 @@ const NoticeCard: React.FC = () => {
         알려드려요!
       </CardTitle>
       <StyledNotice>
-        <Heading3>{notice}</Heading3>
+        <Heading3>
+          {notice.split('\\n').map((line, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <span key={index}>
+              {line}
+              <br />
+            </span>
+          ))}
+        </Heading3>
       </StyledNotice>
     </Card>
   );
