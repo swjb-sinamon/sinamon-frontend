@@ -31,8 +31,9 @@ const NoticeCard: React.FC = () => {
       </CardTitle>
       <StyledNotice>
         <Heading3>
-          {notice.split('\\n').map((line) => (
-            <span>
+          {notice.split('\\n').map((line, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <span key={index}>
               {line}
               <br />
             </span>
