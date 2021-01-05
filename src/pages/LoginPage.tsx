@@ -103,15 +103,14 @@ const LoginPage: React.FC = () => {
       });
 
       showToast('🎉 로그인 성공! 메인 페이지로 이동합니다.', 'success');
-      window.location.reload();
     } catch (e) {
       if (!e.response.data) return;
       const { success, error } = e.response.data;
       if (success || !error) return;
 
       if (error === ErrorMessage.USER_NOT_FOUND) {
-        showToast('💡 존재하지 않는 아이디이거나 잘못된 비밀번호입니다.', 'warning');
-        setInput({ id: '', password: '' });
+        showToast('💡 존재하지 않는 아이디이거나 잘못된 비밀번호입니다.', 'danger');
+        setInput((prev) => ({ ...prev, password: '' }));
       }
     }
   };
