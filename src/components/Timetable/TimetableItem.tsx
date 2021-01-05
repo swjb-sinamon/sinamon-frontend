@@ -7,7 +7,6 @@ const DayText = styled.p<{ active?: boolean }>`
   font-weight: bold;
 
   color: ${(props) => (props.active ? 'var(--color-button-hover)' : 'black')};
-  text-decoration: ${(props) => (props.active ? 'underline' : 'none')};
 `;
 
 const SubjectText = styled.p<{ active?: boolean }>`
