@@ -11,6 +11,7 @@ import {
   Heading2,
   Heading3
 } from 'sinamon-sikhye';
+import { Helmet } from 'react-helmet';
 import MainSideBar from '../components/MainSideBar';
 import Api from '../api';
 
@@ -49,6 +50,10 @@ const UmbrellaPage: React.FC = () => {
 
   return (
     <>
+      <Helmet>
+        <title>우산대여제 - 수정과</title>
+      </Helmet>
+
       <MainSideBarContainer>
         <MainSideBar />
 

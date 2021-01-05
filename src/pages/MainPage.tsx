@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { MainSideBarContainer, SCREEN_SIZE } from 'sinamon-sikhye';
+import { Helmet } from 'react-helmet';
 import MainSideBar from '../components/MainSideBar';
 import WeatherCard from '../components/Card/WeatherCard';
 import QRCodeCard from '../components/Card/QRCodeCard';
@@ -42,22 +43,28 @@ const MainPage: React.FC = () => {
   const tabletSize = parseInt(SCREEN_SIZE.SCREEN_TABLET.replace('px', ''), 10);
 
   return (
-    <MainSideBarContainer>
-      <MainSideBar />
+    <>
+      <Helmet>
+        <title>수정과</title>
+      </Helmet>
 
-      <StyledContent>
-        <StyledContentGrid>
-          <StyledMobileQRCodeCard />
+      <MainSideBarContainer>
+        <MainSideBar />
 
-          <WeatherCard />
-          <MealCard />
-          <TimetableCard />
-          <QRCodeCard hidden={width <= tabletSize} />
-          <NoticeCard />
-          <CalendarCard />
-        </StyledContentGrid>
-      </StyledContent>
-    </MainSideBarContainer>
+        <StyledContent>
+          <StyledContentGrid>
+            <StyledMobileQRCodeCard />
+
+            <WeatherCard />
+            <MealCard />
+            <TimetableCard />
+            <QRCodeCard hidden={width <= tabletSize} />
+            <NoticeCard />
+            <CalendarCard />
+          </StyledContentGrid>
+        </StyledContent>
+      </MainSideBarContainer>
+    </>
   );
 };
 

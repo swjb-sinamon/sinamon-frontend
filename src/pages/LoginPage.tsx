@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { ReCaptcha } from 'react-recaptcha-v3';
 import Snowfall from 'react-snowfall';
 import {
-  SCREEN_SIZE,
-  showToast,
-  Heading1,
-  Label,
-  Input,
   BlankLine,
   ButtonGroup,
-  MediumButton
+  Heading1,
+  Input,
+  Label,
+  MediumButton,
+  SCREEN_SIZE,
+  showToast
 } from 'sinamon-sikhye';
 
 import TextLoop from 'react-text-loop';
+import { Helmet } from 'react-helmet';
 import Api from '../api';
 import ErrorMessage from '../error/ErrorMessage';
 
@@ -121,61 +121,66 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <Container>
-      <GridContainer>
-        <Intro>
-          <Heading1>🎈 편리한 학교 생활, 수정과와 함께</Heading1>
-          <TextLoop interval={2000}>
-            <LoopText>방과후신청을</LoopText>
-            <LoopText>행사 확인을</LoopText>
-            <LoopText>우산 빌리기를</LoopText>
-            <LoopText>시간표 확인을</LoopText>
-            <LoopText>급식 보기를</LoopText>
-          </TextLoop>
-          <Heading1>해보세요!</Heading1>
-        </Intro>
+    <>
+      <Helmet>
+        <title>로그인 - 수정과</title>
+      </Helmet>
 
-        <StyledForm>
-          <div>
-            <Heading1>수정과 로그인</Heading1>
+      <Container>
+        <GridContainer>
+          <Intro>
+            <Heading1>🎈 편리한 학교 생활, 수정과와 함께</Heading1>
+            <TextLoop interval={2000}>
+              <LoopText>방과후신청을</LoopText>
+              <LoopText>행사 확인을</LoopText>
+              <LoopText>우산 빌리기를</LoopText>
+              <LoopText>시간표 확인을</LoopText>
+              <LoopText>급식 보기를</LoopText>
+            </TextLoop>
+            <Heading1>해보세요!</Heading1>
+          </Intro>
 
-            <BlankLine gap={30} />
+          <StyledForm>
+            <div>
+              <Heading1>수정과 로그인</Heading1>
 
-            <Label>아이디</Label>
-            <Input
-              placeholder="아이디"
-              type="text"
-              value={input.id}
-              onChange={(e) => onInputChange(e, 'id')}
-            />
+              <BlankLine gap={30} />
 
-            <BlankLine gap={20} />
+              <Label>아이디</Label>
+              <Input
+                placeholder="아이디"
+                type="text"
+                value={input.id}
+                onChange={(e) => onInputChange(e, 'id')}
+              />
 
-            <Label>비밀번호</Label>
-            <Input
-              placeholder="비밀번호"
-              type="password"
-              value={input.password}
-              onChange={(e) => onInputChange(e, 'password')}
-              onKeyPress={onEnterKeyPress}
-            />
+              <BlankLine gap={20} />
 
-            <BlankLine gap={30} />
-            <ButtonGroup>
-              <MediumButton onClick={onLoginClick}>로그인</MediumButton>
-              <Link to="/register">
-                <MediumButton>회원가입</MediumButton>
-              </Link>
-            </ButtonGroup>
-          </div>
-        </StyledForm>
-      </GridContainer>
+              <Label>비밀번호</Label>
+              <Input
+                placeholder="비밀번호"
+                type="password"
+                value={input.password}
+                onChange={(e) => onInputChange(e, 'password')}
+                onKeyPress={onEnterKeyPress}
+              />
 
-      <SnowfallWrapper>
-        <Snowfall snowflakeCount={200} />
-      </SnowfallWrapper>
-      <ReCaptcha sitekey={process.env.REACT_APP_RECAPTCHA!} action="login" />
-    </Container>
+              <BlankLine gap={30} />
+              <ButtonGroup>
+                <MediumButton onClick={onLoginClick}>로그인</MediumButton>
+                <Link to="/register">
+                  <MediumButton>회원가입</MediumButton>
+                </Link>
+              </ButtonGroup>
+            </div>
+          </StyledForm>
+        </GridContainer>
+
+        <SnowfallWrapper>
+          <Snowfall snowflakeCount={200} />
+        </SnowfallWrapper>
+      </Container>
+    </>
   );
 };
 

@@ -8,6 +8,7 @@ import {
   MainSideBarContainer,
   SCREEN_SIZE
 } from 'sinamon-sikhye';
+import { Helmet } from 'react-helmet';
 import MainSideBar from '../components/MainSideBar';
 import TimetableItem from '../components/Timetable/TimetableItem';
 import { useTimetable } from '../hooks/useTimetable';
@@ -61,33 +62,39 @@ const TimetablePage: React.FC = () => {
   const timetable = useTimetable();
 
   return (
-    <MainSideBarContainer>
-      <MainSideBar />
+    <>
+      <Helmet>
+        <title>시간표 - 수정과</title>
+      </Helmet>
 
-      <StyledContent>
-        <Heading1>시간표 보기</Heading1>
-        <Heading3>시간표를 확인하고 과목명을 클릭하여 줌에 접속해보세요.</Heading3>
+      <MainSideBarContainer>
+        <MainSideBar />
 
-        <BlankLine gap={30} />
+        <StyledContent>
+          <Heading1>시간표 보기</Heading1>
+          <Heading3>시간표를 확인하고 과목명을 클릭하여 줌에 접속해보세요.</Heading3>
 
-        <TimetableList>
-          {timetable.map((value, index) => (
-            <TimetableItem
-              // eslint-disable-next-line react/no-array-index-key
-              key={index}
-              day={`${day[index + 1]}`}
-              data={value}
-              active={index + 1 === today}
-            />
-          ))}
-        </TimetableList>
+          <BlankLine gap={30} />
 
-        <BlankLine gap={10} />
+          <TimetableList>
+            {timetable.map((value, index) => (
+              <TimetableItem
+                // eslint-disable-next-line react/no-array-index-key
+                key={index}
+                day={`${day[index + 1]}`}
+                data={value}
+                active={index + 1 === today}
+              />
+            ))}
+          </TimetableList>
 
-        <Label>* 수정과에서는 시간표 오류에 따른 책임을 지지 않습니다.</Label>
-        <Label>* 4시간 주기로 시간표를 새로고침합니다.</Label>
-      </StyledContent>
-    </MainSideBarContainer>
+          <BlankLine gap={10} />
+
+          <Label>* 수정과에서는 시간표 오류에 따른 책임을 지지 않습니다.</Label>
+          <Label>* 4시간 주기로 시간표를 새로고침합니다.</Label>
+        </StyledContent>
+      </MainSideBarContainer>
+    </>
   );
 };
 
