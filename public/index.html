@@ -1,47 +1,51 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#004ede" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#004ede" />
 
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <meta name="apple-mobile-web-app-title" content="수정과" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="application-name" content="수정과"/>
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <meta name="apple-mobile-web-app-title" content="수정과" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="application-name" content="수정과" />
 
-    <meta name="description" content="수원정보과학고등학교 인트라넷. 수정과" />
+  <meta name="description" content="수원정보과학고등학교 인트라넷. 수정과" />
 
-    <meta property="og:title" content="수정과" />
-    <meta property="og:description" content="수원정보과학고등학교 인트라넷. 수정과" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://sinamon.info" />
-    <meta property="og:image" content="%PUBLIC_URL%/logo192.png" />
-    <title>수정과</title>
-	
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-GWZHDM3816"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+  <meta property="og:title" content="수정과" />
+  <meta property="og:description" content="수원정보과학고등학교 인트라넷. 수정과" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sinamon.info" />
+  <meta property="og:image" content="%PUBLIC_URL%/logo192.png" />
+  <title>수정과</title>
 
-	  gtag('config', 'G-GWZHDM3816');
-	</script>
-  </head>
-  <body>
-    <noscript>자바스크립트가 비활성화 되있습니다. 수정과 이용을 위해 자바스크립트를 허용해주세요.</noscript>
-    <div id="root"></div>
-    <script>
-      const agent = navigator.userAgent.toLowerCase();
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GWZHDM3816"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-      if ((navigator.appName === 'Netscape' && navigator.userAgent.search('Trident') !== -1) ||
-        agent.indexOf('msie') !== -1) {
-        document.querySelector("#root").innerHTML = "수정과는 인터넷 익스플로러를 지원하지 않습니다.";
-      }
-    </script>
-  </body>
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-GWZHDM3816');
+  </script>
+</head>
+<body>
+<noscript>자바스크립트가 비활성화 되있습니다. 수정과 이용을 위해 자바스크립트를 허용해주세요.</noscript>
+<div id="root"></div>
+<script>
+  const agent = navigator.userAgent.toLowerCase();
+
+  if ((navigator.appName === 'Netscape' && navigator.userAgent.search('Trident') !== -1) ||
+    agent.indexOf('msie') !== -1) {
+    document.querySelector('#root').innerHTML = '수정과는 인터넷 익스플로러를 지원하지 않습니다.<br />Chrome, Firefox, Edge 등의 브라우저를 이용해주세요.';
+  }
+</script>
+</body>
 </html>
