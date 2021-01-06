@@ -122,7 +122,7 @@ const ContestPage: React.FC = () => {
 
           <BlankLine gap={10} />
 
-          <p>선택한 역할에 따라 1학년, 2학년을 섞어 팀이 정해집니다.</p>
+          <p>선택한 역할에 따라 학년을 섞어 팀이 정해집니다.</p>
 
           <BlankLine gap={30} />
 
