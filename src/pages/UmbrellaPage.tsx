@@ -39,7 +39,7 @@ const UmbrellaPage: React.FC = () => {
   const onQRCodeClick = () => {
     Api.get('/qr').then((res) => {
       if (!res.data.success) {
-        showToast('❗ QR코드를 만드는 중에 오류가 발생했습니다.', 'danger');
+        showToast('QR코드를 만드는 중에 오류가 발생했습니다.', 'danger');
         return;
       }
 

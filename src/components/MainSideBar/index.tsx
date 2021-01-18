@@ -53,7 +53,7 @@ const MainSideBar: React.FC = () => {
     const isLogout = window.confirm('정말로 로그아웃 하시겠습니까?');
     if (!isLogout) return;
     await Api.delete('/auth/logout');
-    showToast('👋 다음에 또 찾아와주세요!', 'success');
+    showToast('다음에 또 찾아와주세요!', 'success');
     window.location.reload();
   };
 

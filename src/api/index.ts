@@ -24,7 +24,7 @@ Api.interceptors.response.use(
 
     if (error === ErrorMessage.NO_PERMISSION) return Promise.reject(e);
 
-    showToast(`🔥 ${error}`, 'danger');
+    showToast(error, 'danger');
 
     return Promise.reject(e);
   }
