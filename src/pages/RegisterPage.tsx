@@ -78,27 +78,27 @@ const RegisterPage: React.FC = () => {
         (typeof inputValue === 'string' && (inputValue.trim() === '' || inputValue === '0'))
     );
     if (blankCount.length > 0) {
-      showToast('❗ 빈칸이 있습니다.', 'danger');
+      showToast('빈칸이 있습니다.', 'danger');
       return false;
     }
 
     if (state[0].password.length < 6) {
-      showToast('❗ 비밀번호는 최소 6자리이어야 합니다.', 'danger');
+      showToast('비밀번호는 최소 6자리이어야 합니다.', 'danger');
       return false;
     }
 
     if (state[0].password !== state[0].passwordConfirm) {
-      showToast('❗ 비밀번호를 다시 확인해주세요.', 'danger');
+      showToast('비밀번호를 다시 확인해주세요.', 'danger');
       return false;
     }
 
     if (state[0].number < 1 || state[0].number > 30) {
-      showToast('❗ 학생 번호는 1~30 이내에서만 선택할 수 있습니다.', 'danger');
+      showToast('학생 번호는 1~30 이내에서만 선택할 수 있습니다.', 'danger');
       return false;
     }
 
     if (!check[0].privacy || !check[0].tos) {
-      showToast('❗ 개인정보처리방침 및 이용약관 동의가 필요합니다.', 'danger');
+      showToast('개인정보처리방침 및 이용약관 동의가 필요합니다.', 'danger');
       return false;
     }
 
@@ -119,7 +119,7 @@ const RegisterPage: React.FC = () => {
       code: state[0].code
     });
 
-    showToast('🎉 회원가입 성공! 로그인 페이지로 이동합니다.', 'success');
+    showToast('회원가입 성공! 로그인 페이지로 이동합니다.', 'success');
     history.push('/login');
   };
 

@@ -49,12 +49,12 @@ const ContestPage: React.FC = () => {
     if (!profile) return;
 
     if (role === '') {
-      showToast('🏅 참여할 역할을 선택해주세요.', 'danger');
+      showToast('참여할 역할을 선택해주세요.', 'danger');
       return;
     }
 
     if (!confirm) {
-      showToast('🏅 모든 내용을 읽어주세요.', 'danger');
+      showToast('모든 내용을 읽어주세요.', 'danger');
       return;
     }
 
@@ -66,7 +66,7 @@ const ContestPage: React.FC = () => {
       number: profile.studentNumber,
       role
     }).then(() => {
-      showToast('🏅 참가 신청이 완료되었습니다!', 'success');
+      showToast('참가 신청이 완료되었습니다!', 'success');
 
       setRole('');
       setConfirm(false);
