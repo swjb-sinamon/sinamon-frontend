@@ -10728,10 +10728,10 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
-sinamon-sikhye@^1.0.10:
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/sinamon-sikhye/-/sinamon-sikhye-1.0.10.tgz#249994a90a014cdca91e6eb4c9341fe158327d8d"
-  integrity sha512-Wj7raMElqvwY/l/7wl7Ko7aR0hRIFBPnTedOZMX8pje+Ggp2YHRiskTHHKohDmaR1XL3IaUVVd6lEsDnI0TvLg==
+sinamon-sikhye@^1.0.11:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/sinamon-sikhye/-/sinamon-sikhye-1.0.11.tgz#f2454a65fc3f53d14ff76b01a88cad1e16f97946"
+  integrity sha512-/boSp+cInFel+bDDGplaxK2L7WkBzJIAA3HH00yqW/As37HDdG9qzBG6bw/fYlFFY+nMYg8WT1JCXQi2xZ8+fw==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.32"
     "@fortawesome/free-brands-svg-icons" "^5.15.1"
