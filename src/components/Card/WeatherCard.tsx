@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuestion } from '@fortawesome/free-solid-svg-icons';
-import { Card, Heading1, CardTitle, BlankLine, SCREEN_SIZE } from 'sinamon-sikhye';
+import { BlankLine, Card, CardTitle, SCREEN_SIZE } from 'sinamon-sikhye';
 import convertWeatherStatusToString from '../../utils/Converter/Weather';
 import { convertPm10ToString, convertPm25ToString } from '../../utils/Converter/Dust';
 import WeatherIcon from '../../atomics/Icon/WeatherIcon';
@@ -25,9 +25,20 @@ const ContentBody = styled.div`
   text-align: center;
 `;
 
+const StyledTemperature = styled.span`
+  font-size: 28px;
+  font-weight: 800;
+  font-family: NanumSquareRound, sans-serif;
+
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_MOBILE}) {
+    font-size: 26px;
+  }
+`;
+
 const StyledWeatherStatus = styled.span`
   font-size: 18px;
-  font-weight: lighter;
+  font-weight: 800;
+  font-family: NanumSquareRound, sans-serif;
 `;
 
 const StyledDustStatus = styled.p`
@@ -91,10 +102,8 @@ const WeatherCard: React.FC = () => {
         </ContentBody>
         <ContentBody>
           <div>
-            <Heading1>
-              <span>{temp} ℃ </span>
-              <StyledWeatherStatus>{convertWeatherStatusToString(weather)}</StyledWeatherStatus>
-            </Heading1>
+            <StyledTemperature>{temp} ℃ </StyledTemperature>
+            <StyledWeatherStatus>{convertWeatherStatusToString(weather)}</StyledWeatherStatus>
 
             <BlankLine gap={5} />
 
