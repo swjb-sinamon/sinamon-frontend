@@ -18,6 +18,12 @@ const StyledContent = styled.div`
 `;
 
 const TimetableList = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  text-align: center;
+
+  grid-gap: 2rem;
+
   width: 800px;
   padding: 1rem;
 
@@ -25,33 +31,12 @@ const TimetableList = styled.div`
   border-radius: 3px;
   border: 1px solid var(--color-gray);
 
-  text-align: center;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-
-  & > * {
-    margin-right: 2rem;
-  }
-
-  & > *:last-child {
-    margin-right: 0;
-  }
-
   @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
     width: 100%;
 
-    flex-direction: column;
-
-    & > * {
-      margin-right: 0;
-      margin-bottom: 2rem;
-    }
-
-    & > *:last-child {
-      margin-bottom: 0;
-    }
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
