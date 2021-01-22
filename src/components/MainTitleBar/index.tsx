@@ -13,8 +13,6 @@ const SideBarTitle = styled.li`
   justify-content: center;
   align-items: center;
 
-  border-bottom: 1px solid var(--color-gray);
-
   @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
     height: 100%;
     border: none;
