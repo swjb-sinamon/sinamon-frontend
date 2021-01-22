@@ -1,22 +1,16 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faAward,
-  faBook,
-  faSchool,
-  faSignOutAlt,
-  faUmbrella
-} from '@fortawesome/free-solid-svg-icons';
+import { faAward, faBook, faSchool, faUmbrella } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
 import {
-  showToast,
   MainSidebar,
-  SideBarItemList,
   MainSideBarItem,
   NoStyleA,
-  NoStyleLink
+  NoStyleLink,
+  showToast,
+  SideBarItemList
 } from 'sinamon-sikhye';
 import MainTitleBar from '../MainTitleBar';
 import Api from '../../api';
@@ -24,12 +18,12 @@ import Api from '../../api';
 const StyledFooterText = styled.p`
   text-align: center;
 
-  margin: 2rem 0;
+  margin: 1rem 0;
 
   color: var(--color-subtext);
 `;
 
-const PrivacyButton = styled.button`
+const FooterButton = styled.button`
   border: none;
   background-color: transparent;
 
@@ -112,15 +106,13 @@ const MainSideBar: React.FC = () => {
           </MainSideBarItem>
         </NoStyleA>
 
-        <MainSideBarItem onClick={onLogoutClick} tabIndex={0}>
-          <FontAwesomeIcon icon={faSignOutAlt} size="lg" />
-          &nbsp;
-          <p>로그아웃</p>
-        </MainSideBarItem>
-
         <StyledFooterText>
-          <PrivacyButton onClick={() => history.push('/privacy')}>개인정보처리방침</PrivacyButton>{' '}
-          &middot; <PrivacyButton onClick={() => history.push('/tos')}>이용약관</PrivacyButton>
+          <FooterButton onClick={onLogoutClick}>로그아웃</FooterButton>
+          <br />
+          <FooterButton onClick={() => history.push('/privacy')}>
+            개인정보처리방침
+          </FooterButton>{' '}
+          &middot; <FooterButton onClick={() => history.push('/tos')}>이용약관</FooterButton>
         </StyledFooterText>
       </SideBarItemList>
     </MainSidebar>
