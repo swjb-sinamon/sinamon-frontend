@@ -7,7 +7,7 @@
   box-sizing: border-box;
 }
 
-body {
+:root {
   --color-background: #fafbff;
   --color-button: #0057ff;
   --color-button-hover: #004ede;
@@ -24,4 +24,15 @@ body {
   font-family: 'Noto Sans KR', sans-serif;
   background-color: var(--color-background);
   color: #333333;
+}
+
+.swal-title {
+  font-family: 'NanumSquareRound', sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+}
+
+.swal-button {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: normal;
 }

@@ -47,9 +47,14 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ state }) => {
   ) => {
     e.persist();
 
+    let inputValue: string | number = e.target.value;
+    if (type === 'department' || type === 'class' || type === 'grade') {
+      inputValue = parseInt(e.target.value, 10);
+    }
+
     setInput((current) => ({
       ...current,
-      [type]: e.target.value
+      [type]: inputValue
     }));
   };
 

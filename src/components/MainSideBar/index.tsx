@@ -3,20 +3,21 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faAward,
-  faBook,
-  faSchool,
-  faSignOutAlt,
-  faUmbrella
+  faCalendarWeek,
+  faChalkboard,
+  faUmbrella,
+  faUserCircle
 } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
 import {
-  showToast,
   MainSidebar,
-  SideBarItemList,
   MainSideBarItem,
   NoStyleA,
-  NoStyleLink
+  NoStyleLink,
+  showToast,
+  SideBarIconWrapper,
+  SideBarItemList
 } from 'sinamon-sikhye';
 import MainTitleBar from '../MainTitleBar';
 import Api from '../../api';
@@ -24,12 +25,12 @@ import Api from '../../api';
 const StyledFooterText = styled.p`
   text-align: center;
 
-  margin: 2rem 0;
+  margin: 1rem 0;
 
   color: var(--color-subtext);
 `;
 
-const PrivacyButton = styled.button`
+const FooterButton = styled.button`
   border: none;
   background-color: transparent;
 
@@ -54,6 +55,8 @@ const MainSideBar: React.FC = () => {
     if (!isLogout) return;
     await Api.delete('/auth/logout');
     showToast('다음에 또 찾아와주세요!', 'success');
+
+    history.push('/');
     window.location.reload();
   };
 
@@ -64,31 +67,35 @@ const MainSideBar: React.FC = () => {
       <SideBarItemList isOpen={isOpen}>
         <NoStyleLink to="/contest">
           <MainSideBarItem>
-            <FontAwesomeIcon icon={faAward} size="lg" />
-            &nbsp;
+            <SideBarIconWrapper>
+              <FontAwesomeIcon icon={faAward} size="lg" />
+            </SideBarIconWrapper>
             <p>학생협업공모전</p>
           </MainSideBarItem>
         </NoStyleLink>
 
         <NoStyleLink to="/umbrella">
           <MainSideBarItem>
-            <FontAwesomeIcon icon={faUmbrella} size="lg" />
-            &nbsp;
+            <SideBarIconWrapper>
+              <FontAwesomeIcon icon={faUmbrella} size="lg" />
+            </SideBarIconWrapper>
             <p>우산대여제</p>
           </MainSideBarItem>
         </NoStyleLink>
 
         <NoStyleLink to="/timetable">
           <MainSideBarItem>
-            <FontAwesomeIcon icon={faBook} size="lg" />
-            &nbsp;
+            <SideBarIconWrapper>
+              <FontAwesomeIcon icon={faCalendarWeek} size="lg" />
+            </SideBarIconWrapper>
             <p>시간표 보기</p>
           </MainSideBarItem>
         </NoStyleLink>
 
         <MainSideBarItem tabIndex={0} onClick={() => showToast('준비중입니다.', 'info')}>
-          <FontAwesomeIcon icon={faSchool} size="lg" />
-          &nbsp;
+          <SideBarIconWrapper>
+            <FontAwesomeIcon icon={faChalkboard} />
+          </SideBarIconWrapper>
           <p>방과후학교</p>
         </MainSideBarItem>
 
@@ -98,29 +105,38 @@ const MainSideBar: React.FC = () => {
           rel="noopener noreferrer"
         >
           <MainSideBarItem>
-            <FontAwesomeIcon icon={faFacebookF} size="lg" />
-            &nbsp;
+            <SideBarIconWrapper>
+              <FontAwesomeIcon icon={faFacebookF} size="lg" />
+            </SideBarIconWrapper>
             <p>익명 페이지</p>
           </MainSideBarItem>
         </NoStyleA>
 
         <NoStyleA href="https://www.facebook.com/swjb0/" target="_blank" rel="noopener noreferrer">
           <MainSideBarItem>
-            <FontAwesomeIcon icon={faFacebookF} size="lg" />
-            &nbsp;
+            <SideBarIconWrapper>
+              <FontAwesomeIcon icon={faFacebookF} size="lg" />
+            </SideBarIconWrapper>
             <p>학생회 페이지</p>
           </MainSideBarItem>
         </NoStyleA>
 
-        <MainSideBarItem onClick={onLogoutClick} tabIndex={0}>
-          <FontAwesomeIcon icon={faSignOutAlt} size="lg" />
-          &nbsp;
-          <p>로그아웃</p>
-        </MainSideBarItem>
+        <NoStyleLink to="/account">
+          <MainSideBarItem>
+            <SideBarIconWrapper>
+              <FontAwesomeIcon icon={faUserCircle} size="lg" />
+            </SideBarIconWrapper>
+            <p>내 계정</p>
+          </MainSideBarItem>
+        </NoStyleLink>
 
         <StyledFooterText>
-          <PrivacyButton onClick={() => history.push('/privacy')}>개인정보처리방침</PrivacyButton>{' '}
-          &middot; <PrivacyButton onClick={() => history.push('/tos')}>이용약관</PrivacyButton>
+          <FooterButton onClick={onLogoutClick}>로그아웃</FooterButton>
+          <br />
+          <FooterButton onClick={() => history.push('/privacy')}>
+            개인정보처리방침
+          </FooterButton>{' '}
+          &middot; <FooterButton onClick={() => history.push('/tos')}>이용약관</FooterButton>
         </StyledFooterText>
       </SideBarItemList>
     </MainSidebar>
