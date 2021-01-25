@@ -5,7 +5,8 @@ import {
   faAward,
   faCalendarWeek,
   faChalkboard,
-  faUmbrella
+  faUmbrella,
+  faUserCircle
 } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
@@ -117,6 +118,15 @@ const MainSideBar: React.FC = () => {
             <p>학생회 페이지</p>
           </MainSideBarItem>
         </NoStyleA>
+
+        <NoStyleLink to="/account">
+          <MainSideBarItem>
+            <SideBarIconWrapper>
+              <FontAwesomeIcon icon={faUserCircle} size="lg" />
+            </SideBarIconWrapper>
+            <p>내 계정</p>
+          </MainSideBarItem>
+        </NoStyleLink>
 
         <StyledFooterText>
           <FooterButton onClick={onLogoutClick}>로그아웃</FooterButton>
