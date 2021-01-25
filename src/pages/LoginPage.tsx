@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Snowfall from 'react-snowfall';
 import {
   BlankLine,
   ButtonGroup,
@@ -61,13 +60,6 @@ const StyledForm = styled.div`
   justify-content: center;
   align-items: center;
   grid-column: 2 / 3;
-`;
-
-const SnowfallWrapper = styled.div`
-  display: block;
-  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_TABLET}) {
-    display: none;
-  }
 `;
 
 interface LoginState {
@@ -175,10 +167,6 @@ const LoginPage: React.FC = () => {
             </div>
           </StyledForm>
         </GridContainer>
-
-        <SnowfallWrapper>
-          <Snowfall snowflakeCount={200} />
-        </SnowfallWrapper>
       </Container>
     </>
   );
