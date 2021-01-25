@@ -55,6 +55,8 @@ const MainSideBar: React.FC = () => {
     if (!isLogout) return;
     await Api.delete('/auth/logout');
     showToast('다음에 또 찾아와주세요!', 'success');
+
+    history.push('/');
     window.location.reload();
   };
 
