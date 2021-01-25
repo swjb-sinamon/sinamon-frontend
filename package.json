@@ -38,8 +38,9 @@
     "react-snowfall": "^1.0.2",
     "react-text-loop": "^2.3.0",
     "react-tooltip": "^4.2.11",
-    "sinamon-sikhye": "^1.1.0",
-    "styled-components": "^5.2.1"
+    "sinamon-sikhye": "^1.1.2",
+    "styled-components": "^5.2.1",
+    "sweetalert": "^2.1.2"
   },
   "devDependencies": {
     "@types/node": "^14.14.10",
