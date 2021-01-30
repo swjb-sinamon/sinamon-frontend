@@ -9,7 +9,6 @@ export interface ProfileType {
   readonly password?: string;
   readonly createdAt: string;
   readonly updatedAt: string;
-  readonly deletedAt?: string;
   readonly permission: {
     readonly isAdmin: boolean;
     readonly isTeacher: boolean;
