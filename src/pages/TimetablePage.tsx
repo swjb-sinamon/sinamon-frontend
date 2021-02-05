@@ -24,7 +24,7 @@ const TimetableList = styled.div`
 
   grid-gap: 2rem;
 
-  width: 800px;
+  width: 1000px;
   padding: 1rem;
 
   background-color: white;
