@@ -9,6 +9,12 @@
 
 > 수원정보과학고등학교 인트라넷 프로젝트
 
+
+![TypeScript](https://img.shields.io/badge/typescript%20-%23007ACC.svg?logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/react%20-%2320232a.svg?logo=react&logoColor=%2361DAFB)
+[![CodeFactor](https://www.codefactor.io/repository/github/swjb-sinamon/sinamon-frontend/badge)](https://www.codefactor.io/repository/github/swjb-sinamon/sinamon-frontend)
+
+
 ## 🎲 주요기능
 
 - 우산대여
