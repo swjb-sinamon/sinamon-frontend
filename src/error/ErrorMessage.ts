@@ -4,6 +4,7 @@ enum ErrorMessage {
 
   USER_NOT_FOUND = '존재하지 않는 사용자입니다.',
   USER_ALREADY_EXISTS = '이미 존재하는 아이디입니다.',
+  USER_PASSWORD_NOT_MATCH = '현재 비밀번호가 일치하지 않습니다.',
 
   UMBRELLA_NOT_FOUND = '존재하지 않는 우산입니다.',
   UMBRELLA_ALREADY_EXISTS = '이미 존재하는 우산입니다.',
@@ -27,7 +28,8 @@ enum ErrorMessage {
   UNIFORM_DO_NOT_PLUS = '최대 2점까지만 올릴 수 있습니다.',
 
   CONTEST_ALREADY_EXISTS = '이미 참가 신청 되었습니다.',
-  CONTEST_ROLE_NOT_FOUND = '존재하지 않는 역할입니다.'
+  CONTEST_ROLE_NOT_FOUND = '존재하지 않는 역할입니다.',
+  CONTEST_JOIN_NOT_FOUND = '참여하지 않은 사용자입니다.'
 }
 
 export default ErrorMessage;
