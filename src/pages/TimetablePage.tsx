@@ -58,7 +58,6 @@ const TimetablePage: React.FC = () => {
         <StyledContent>
           <Heading1>시간표 보기</Heading1>
           <Heading3>시간표를 확인해보세요.</Heading3>
-          <Heading3>추후 줌 바로가기 기능이 업데이트 됩니다!</Heading3>
 
           <BlankLine gap={30} />
 
@@ -76,7 +75,7 @@ const TimetablePage: React.FC = () => {
 
           <BlankLine gap={10} />
 
-          <Label>* 수정과에서는 시간표 오류에 따른 책임을 지지 않습니다.</Label>
+          <Label>* 수정과에서는 시간표·수업 링크 오류를 비롯한 모든 책임을 지지 않습니다.</Label>
           <Label>* 4시간 주기로 시간표를 새로고침합니다.</Label>
         </StyledContent>
       </MainSideBarContainer>

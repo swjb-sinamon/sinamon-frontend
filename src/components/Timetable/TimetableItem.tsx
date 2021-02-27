@@ -30,7 +30,7 @@ interface TimetableItemProps {
 const TimetableItem: React.FC<TimetableItemProps> = ({ day, data, active }) => {
   const onClick = (url: string | null) => {
     if (!url) {
-      showToast('Zoom 링크가 등록되어 있지 않습니다.', 'danger');
+      showToast('수업 링크가 등록되어 있지 않습니다.', 'danger');
       return;
     }
 

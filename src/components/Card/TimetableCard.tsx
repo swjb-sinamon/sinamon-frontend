@@ -108,7 +108,7 @@ const TimetableCard: React.FC = () => {
             </span>
             무엇을 배울까?
           </CardTitle>
-          <StyledTipText>추후 줌 바로가기가 업데이트됩니다.</StyledTipText>
+          <StyledTipText>과목명을 눌러 수업에 참여해보세요!</StyledTipText>
         </LeftHeader>
 
         <NoStyleLink to="/timetable">
