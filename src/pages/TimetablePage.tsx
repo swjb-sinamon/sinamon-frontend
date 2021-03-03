@@ -69,6 +69,7 @@ const TimetablePage: React.FC = () => {
                 day={`${day[index + 1]}`}
                 data={value}
                 active={index + 1 === today}
+                showTeacher
               />
             ))}
           </TimetableList>
