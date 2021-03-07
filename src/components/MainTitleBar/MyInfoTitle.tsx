@@ -27,7 +27,7 @@ const MyInfoTitle: React.FC = () => {
   return (
     <AboutContainer>
       <Heading3>
-        {convertDepartmentIdToString(profile.department)}과 {profile.studentGrade}학년{' '}
+        {convertDepartmentIdToString(profile.department)} {profile.studentGrade}학년{' '}
         {profile.studentClass}반
       </Heading3>
       <Heading3>{profile.name} 님</Heading3>
