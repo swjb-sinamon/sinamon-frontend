@@ -1,6 +1,6 @@
 type ReturnType =
   | '컴퓨터전자과'
-  | '스마트자동학과'
+  | '스마트자동화과'
   | 'IT산업디자인과'
   | 'IT경영정보과'
   | 'IT소프트웨어과'
@@ -12,7 +12,7 @@ const convertDepartmentIdToString = (departmentId: string | number): ReturnType 
     case 1:
       return '컴퓨터전자과';
     case 2:
-      return '스마트자동학과';
+      return '스마트자동화과';
     case 3:
       return 'IT산업디자인과';
     case 4:
