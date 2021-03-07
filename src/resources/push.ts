@@ -1,5 +1,6 @@
 import { showToast } from 'sinamon-sikhye';
 import firebase from './firebase';
+import Api from '../api';
 
 const messaging = firebase.messaging();
 
@@ -21,14 +22,15 @@ const initWebPush = (): void => {
     .then((pushToken) => {
       const currentToken = localStorage.getItem('fcm_token');
 
-      if (currentToken === undefined) {
+      if (currentToken === undefined || currentToken !== pushToken) {
         localStorage.setItem('fcm_token', pushToken);
+
+        return Api.post('/fcm', {
+          token: pushToken
+        });
       }
 
-      if (currentToken !== pushToken) {
-        localStorage.setItem('fcm_token', pushToken);
-        // TODO: send fcm token to Backend.
-      }
+      return Promise.reject();
     });
 
   messaging.onMessage((payload) => {
