@@ -26,6 +26,7 @@
     "@fortawesome/react-fontawesome": "^0.1.13",
     "axios": "^0.21.0",
     "dotenv": "^8.2.0",
+    "firebase": "^8.2.10",
     "qrcode.react": "^1.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -37,7 +38,7 @@
     "react-scripts": "^4.0.1",
     "react-text-loop": "^2.3.0",
     "react-tooltip": "^4.2.11",
-    "sinamon-sikhye": "^1.2.3",
+    "sinamon-sikhye": "^1.2.5",
     "styled-components": "^5.2.1",
     "sweetalert": "^2.1.2"
   },
