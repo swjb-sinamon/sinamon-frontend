@@ -37,7 +37,7 @@ const initWebPush = (): void => {
     const { title } = payload.notification;
     const options = {
       body: payload.notification.body,
-      icon: payload.notification.icon
+      icon: '/logo192.png'
     };
 
     showToast(options.body, 'default', title);
