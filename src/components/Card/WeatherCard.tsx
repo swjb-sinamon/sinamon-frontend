@@ -123,8 +123,9 @@ const WeatherCard: React.FC = () => {
           </HelpButton>
           <ReactTooltip id="license" place="bottom">
             <p>
-              데이터는 실시간 관측된 자료이며 측정소 현지 사정이나 데이터의 수신상태에 따라 미수신될
-              수 있습니다.
+              데이터는 실시간 관측된 자료이며 측정소 현지 사정이나
+              <br />
+              데이터의 수신상태에 따라 미수신될 수 있습니다.
             </p>
             <p>미세먼지 데이터 제공: 환경부, 한국환경공단</p>
           </ReactTooltip>

@@ -12,6 +12,7 @@ import { ProfileProvider } from './hooks/useProfile';
 import { SchoolProvider } from './hooks/useSchool';
 import { WeatherProvider } from './hooks/useWeather';
 import { TimetableProvider } from './hooks/useTimetable';
+import initWebPush from './resources/push';
 
 dotenv.config();
 
@@ -32,5 +33,11 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+if (!('Notification' in window)) {
+  alert('해당 브라우저는 알림을 지원하지 않습니다.');
+}
+
+initWebPush();
 
 serviceWorker.register();
