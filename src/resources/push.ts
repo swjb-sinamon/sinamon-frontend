@@ -31,6 +31,8 @@ const initWebPush = (): void => {
       }
 
       return Promise.reject();
+    }).then(() => {
+      return Api.post('/fcm/subscribe');
     });
 
   messaging.onMessage((payload) => {
