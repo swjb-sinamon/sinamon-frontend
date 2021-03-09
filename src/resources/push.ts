@@ -1,6 +1,5 @@
 import { showToast } from 'sinamon-sikhye';
 import firebase from './firebase';
-import Api from '../api';
 
 const messaging = firebase.messaging();
 
@@ -20,19 +19,7 @@ const initWebPush = (): void => {
       });
     })
     .then((pushToken) => {
-      const currentToken = localStorage.getItem('fcm_token');
-
-      if (currentToken === undefined || currentToken !== pushToken) {
-        localStorage.setItem('fcm_token', pushToken);
-
-        return Api.post('/fcm', {
-          token: pushToken
-        });
-      }
-
-      return Promise.reject();
-    }).then(() => {
-      return Api.post('/fcm/subscribe');
+      localStorage.setItem('fcm_token', pushToken);
     });
 
   messaging.onMessage((payload) => {
