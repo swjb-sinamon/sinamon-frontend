@@ -34,6 +34,7 @@ jobs:
           REACT_APP_RECAPTCHA: ${{ secrets.RECAPTCHA }}
           REACT_APP_CK: ${{ secrets.CK }}
           REACT_APP_CT: ${{ secrets.CT }}
+          REACT_APP_VAPIDKEY: ${{ secrets.VAPID }}
         run: yarn build:production
 
       - name: Deploy
