@@ -92,13 +92,6 @@ const MainSideBar: React.FC = () => {
           </MainSideBarItem>
         </NoStyleLink>
 
-        <MainSideBarItem tabIndex={0} onClick={() => showToast('준비중입니다.', 'info')}>
-          <SideBarIconWrapper>
-            <FontAwesomeIcon icon={faChalkboard} />
-          </SideBarIconWrapper>
-          <p>방과후학교</p>
-        </MainSideBarItem>
-
         <NoStyleA
           href="https://www.facebook.com/swjbgh1/"
           target="_blank"
