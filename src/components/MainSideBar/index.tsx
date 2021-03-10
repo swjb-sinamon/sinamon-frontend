@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faAward,
   faCalendarWeek,
-  faChalkboard,
   faUmbrella,
   faUserCircle
 } from '@fortawesome/free-solid-svg-icons';
