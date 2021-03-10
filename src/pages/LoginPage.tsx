@@ -123,11 +123,12 @@ const LoginPage: React.FC = () => {
           <Intro>
             <Heading1>🎈 편리한 학교 생활, 수정과와 함께</Heading1>
             <TextLoop interval={2000}>
-              <LoopText>방과후신청을</LoopText>
+              <LoopText>공모전 참여를</LoopText>
               <LoopText>행사 확인을</LoopText>
               <LoopText>우산 빌리기를</LoopText>
               <LoopText>시간표 확인을</LoopText>
               <LoopText>급식 보기를</LoopText>
+              <LoopText>날씨 확인을</LoopText>
             </TextLoop>
             <Heading1>해보세요!</Heading1>
           </Intro>
