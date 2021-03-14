@@ -1,9 +1,11 @@
 import { showToast } from 'sinamon-sikhye';
 import firebase from './firebase';
 
-const messaging = firebase.messaging();
-
 const initWebPush = (): void => {
+  if (!firebase.messaging.isSupported() || !Notification) return;
+
+  const messaging = firebase.messaging();
+
   Notification.requestPermission()
     .then((permission) => {
       if (permission !== 'granted') {
