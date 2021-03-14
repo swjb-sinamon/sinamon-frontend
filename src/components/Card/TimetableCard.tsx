@@ -104,7 +104,7 @@ const TimetableCard: React.FC = () => {
         <LeftHeader>
           <CardTitle>
             <span role="img" aria-label="clock">
-              ⏱
+              ⏱{' '}
             </span>
             무엇을 배울까?
           </CardTitle>

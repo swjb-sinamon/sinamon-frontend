@@ -39,7 +39,7 @@ const CalendarCard: React.FC = () => {
     <Card columnStart={4} columnEnd={6} rowStart={3} rowEnd={4}>
       <CardTitle>
         <span role="img" aria-label="calendar">
-          📆
+          📆{' '}
         </span>
         학교 행사가 궁금해!
       </CardTitle>
