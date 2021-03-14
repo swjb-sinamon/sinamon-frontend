@@ -32,7 +32,11 @@ const initWebPush = (): void => {
     showToast(options.body, 'default', title);
 
     // eslint-disable-next-line no-new
-    new Notification(title, options);
+    const notification = new Notification(title, options);
+    notification.onclick = (e) => {
+      e.preventDefault();
+      window.open(payload.data.click_action ?? 'https://sinamon.info', '_blank');
+    };
   });
 };
 

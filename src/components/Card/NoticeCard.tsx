@@ -25,7 +25,7 @@ const NoticeCard: React.FC = () => {
     <Card columnStart={1} columnEnd={4} rowStart={3} rowEnd={4}>
       <CardTitle>
         <span role="img" aria-label="notice">
-          📢
+          📢{' '}
         </span>
         알려드려요!
       </CardTitle>
