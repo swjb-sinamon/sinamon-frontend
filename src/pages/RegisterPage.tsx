@@ -52,6 +52,8 @@ interface CheckState {
   readonly tos: boolean;
 }
 
+const NAME_REGEXP = /[^(ㄱ-ㅎ가-힣a-zA-Z)]/g;
+
 const RegisterPage: React.FC = () => {
   const state = useState<RegisterState>({
     id: '',
@@ -79,6 +81,11 @@ const RegisterPage: React.FC = () => {
     );
     if (blankCount.length > 0) {
       showToast('빈칸이 있습니다.', 'danger');
+      return false;
+    }
+
+    if (NAME_REGEXP.test(state[0].fullName)) {
+      showToast('올바르지 않은 이름입니다.', 'danger');
       return false;
     }
 
