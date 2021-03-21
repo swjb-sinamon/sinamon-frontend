@@ -79,7 +79,7 @@ const EventPage: React.FC = () => {
           <BlankLine gap={30} />
 
           <Label htmlFor="e_number">학번을 입력하여 당첨 여부를 확인하세요.</Label>
-          <StyledInput id="e_number" type="text" placeholder="ex. 30925" disabled />
+          <StyledInput id="e_number" type="number" placeholder="ex. 30925" />
 
           <BlankLine gap={10} />
 
