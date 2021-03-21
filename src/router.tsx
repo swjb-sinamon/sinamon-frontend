@@ -10,6 +10,7 @@ import UmbrellaPage from './pages/UmbrellaPage';
 import TimetablePage from './pages/TimetablePage';
 import ContestPage from './pages/ContestPage';
 import AccountPage from './pages/AccountPage';
+import EventPage from './pages/EventPage';
 
 const Router: React.FC = () => {
   return (
@@ -19,6 +20,7 @@ const Router: React.FC = () => {
         <PermissionRoute exact path="/umbrella" success={UmbrellaPage} failure={LoginPage} />
         <PermissionRoute exact path="/timetable" success={TimetablePage} failure={LoginPage} />
         <PermissionRoute exact path="/contest" success={ContestPage} failure={LoginPage} />
+        <PermissionRoute exact path="/event" success={EventPage} failure={LoginPage} />
         <PermissionRoute exact path="/account" success={AccountPage} failure={LoginPage} />
         <PermissionRoute
           exact

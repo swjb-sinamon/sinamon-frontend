@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faAward,
   faCalendarWeek,
+  faStar,
   faUmbrella,
   faUserCircle
 } from '@fortawesome/free-solid-svg-icons';
@@ -64,6 +65,15 @@ const MainSideBar: React.FC = () => {
       <MainTitleBar setOpen={setOpen} />
 
       <SideBarItemList isOpen={isOpen}>
+        <NoStyleLink to="/event">
+          <MainSideBarItem>
+            <SideBarIconWrapper>
+              <FontAwesomeIcon icon={faStar} size="lg" />
+            </SideBarIconWrapper>
+            <p>이벤트 확인</p>
+          </MainSideBarItem>
+        </NoStyleLink>
+
         <NoStyleLink to="/contest">
           <MainSideBarItem>
             <SideBarIconWrapper>
