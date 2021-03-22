@@ -112,7 +112,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ state }) => {
         <Select value={input.department} onChange={(e) => onInputChange(e, 'department')}>
           <option value="0">자신의 학과를 선택해주세요.</option>
           <option value="1">컴퓨터전자과</option>
-          <option value="2">스마트자동학과</option>
+          <option value="2">(디지털네트워크)스마트자동화과</option>
           <option value="3">IT산업디자인과</option>
           <option value="4">IT경영정보과</option>
           <option value="5">IT소프트웨어과</option>
@@ -159,13 +159,6 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ state }) => {
             name="class"
             title="2반"
             value={2}
-            onChange={(e) => onInputChange(e, 'class')}
-          />
-          <Radio
-            type="radio"
-            name="class"
-            title="기타"
-            value={-1}
             onChange={(e) => onInputChange(e, 'class')}
           />
         </RadioList>
