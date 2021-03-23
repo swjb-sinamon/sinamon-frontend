@@ -1,54 +1,77 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#004ede" />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#004ede" />
 
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-  <meta name="apple-mobile-web-app-title" content="수정과" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="application-name" content="수정과" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <meta name="apple-mobile-web-app-title" content="수정과" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="수정과" />
 
-  <meta name="description" content="수원정보과학고등학교 인트라넷. 수정과" />
+    <meta name="description" content="수원정보과학고등학교 인트라넷. 수정과" />
 
-  <meta property="og:title" content="수정과" />
-  <meta property="og:description" content="수원정보과학고등학교 인트라넷. 수정과" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://sinamon.info" />
-  <meta property="og:image" content="%PUBLIC_URL%/logo192.png" />
-  <title>수정과</title>
+    <meta property="og:title" content="수정과" />
+    <meta property="og:description" content="수원정보과학고등학교 인트라넷. 수정과" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sinamon.info" />
+    <meta property="og:image" content="%PUBLIC_URL%/logo192.png" />
+    <title>수정과</title>
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GWZHDM3816"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-M2TJFK2');
+    </script>
+    <!-- End Google Tag Manager -->
 
-    function gtag() {
-      dataLayer.push(arguments);
-    }
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GWZHDM3816"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-GWZHDM3816');
+    </script>
 
-    gtag('js', new Date());
+    <script>
+      console.log(
+        '%c ',
+        'font-size: 100px; background: url(https://sinamon.info/logo192.png) no-repeat center; background-size: 64px;'
+      );
+      console.log('%c편리한 학교 생활, 수정과', 'font-size: 26px; font-weight: bold;');
+      console.log(
+        '%c콘솔 입력을 통해 계정 권한을 뺏길 수 있습니다. 조심하세요!',
+        'font-size: 26px; font-weight: bold;'
+      );
+    </script>
+  </head>
+  <body>
+    <noscript>수정과 사용을 위해 자바스크립트를 허용해주세요.</noscript>
+    <div id="root"></div>
+    <script>
+      const agent = navigator.userAgent.toLowerCase();
 
-    gtag('config', 'G-GWZHDM3816');
-
-    console.log('%c ', 'font-size: 100px; background: url(https://sinamon.info/logo192.png) no-repeat center; background-size: 64px;');
-    console.log('%c편리한 학교 생활, 수정과', 'font-size: 26px; font-weight: bold;');
-    console.log('%c콘솔 입력을 통해 계정 권한을 뺏길 수 있습니다. 조심하세요!', 'font-size: 26px; font-weight: bold;');
-  </script>
-</head>
-<body>
-<noscript>수정과 사용을 위해 자바스크립트를 허용해주세요.</noscript>
-<div id="root"></div>
-<script>
-  const agent = navigator.userAgent.toLowerCase();
-
-  if ((navigator.appName === 'Netscape' && navigator.userAgent.search('Trident') !== -1) ||
-    agent.indexOf('msie') !== -1) {
-    document.querySelector('#root').innerHTML = '수정과는 인터넷 익스플로러를 지원하지 않습니다.<br />Chrome, Firefox, Edge 등의 브라우저를 이용해주세요.';
-  }
-</script>
-</body>
+      if (
+        (navigator.appName === 'Netscape' && navigator.userAgent.search('Trident') !== -1) ||
+        agent.indexOf('msie') !== -1
+      ) {
+        document.querySelector('#root').innerHTML =
+          '수정과는 인터넷 익스플로러를 지원하지 않습니다.<br />Chrome, Firefox, Edge 등의 브라우저를 이용해주세요.';
+      }
+    </script>
+  </body>
 </html>
