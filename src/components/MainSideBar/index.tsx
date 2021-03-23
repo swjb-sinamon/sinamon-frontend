@@ -5,7 +5,8 @@ import {
   faAward,
   faCalendarWeek,
   faUmbrella,
-  faUserCircle
+  faUserCircle,
+  fabriefcasemedical
 } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
@@ -110,6 +111,15 @@ const MainSideBar: React.FC = () => {
               <FontAwesomeIcon icon={faFacebookF} size="lg" />
             </SideBarIconWrapper>
             <p>학생회 페이지</p>
+          </MainSideBarItem>
+        </NoStyleA>
+
+        <NoStyleA href="https://hcs.eduro.go.kr/#/loginHome" target="_blank" rel="noopener noreferrer">
+          <MainSideBarItem>
+            <SideBarIconWrapper>
+              <FontAwesomeIcon icon={fabriefcasemedical} size="lg" />
+            </SideBarIconWrapper>
+            <p>자가진단 페이지</p>
           </MainSideBarItem>
         </NoStyleA>
 
