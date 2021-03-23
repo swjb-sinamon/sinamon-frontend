@@ -9,11 +9,11 @@ const DayText = styled.p<{ active?: boolean }>`
   color: ${(props) => (props.active ? 'var(--color-button-hover)' : 'black')};
 `;
 
-const SubjectText = styled.p<{ active?: boolean, showTeacher?: boolean }>`
+const SubjectText = styled.p<{ active?: boolean; showTeacher?: boolean }>`
   font-size: 14px;
   white-space: nowrap;
-  
-  margin-top: ${(props) => props.showTeacher ? '10px' : '0'};
+
+  margin-top: ${(props) => (props.showTeacher ? '10px' : '0')};
 
   font-weight: ${(props) => (props.active ? 'bold' : 'none')};
 
@@ -45,23 +45,24 @@ const TimetableItem: React.FC<TimetableItemProps> = ({ day, data, active, showTe
     <div>
       <DayText active={active}>{day}</DayText>
       {data &&
-      data.map((value, index) => (
-        <SubjectText
-          // eslint-disable-next-line react/no-array-index-key
-          key={`${value.weekday}${index}${value.code}`}
-          onClick={() => onClick(value.url)}
-          active={active}
-          showTeacher={showTeacher}
-        >
-          {value.subject}
-          {(showTeacher && value.teacher.trim() !== "*") && (
-            <>
-              <br />
-              ({value.teacher})
-            </>
-          )}
-        </SubjectText>
-      ))}
+        data.map((value, index) => (
+          <SubjectText
+            // eslint-disable-next-line react/no-array-index-key
+            key={`${value.weekday}${index}${value.code}`}
+            onClick={() => onClick(value.url)}
+            active={active}
+            showTeacher={showTeacher}
+            tabIndex={0}
+            className="timetable__subject"
+          >
+            {value.subject}
+            {showTeacher && value.teacher.trim() !== '*' && (
+              <>
+                <br />({value.teacher})
+              </>
+            )}
+          </SubjectText>
+        ))}
     </div>
   );
 };
