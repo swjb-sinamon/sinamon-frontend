@@ -4,6 +4,24 @@
 importScripts('https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js');
 importScripts('https://www.gstatic.com/firebasejs/8.2.5/firebase-messaging.js');
 
+self.addEventListener('notificationclick', (e) => {
+  const url = e.notification.data.click_action || 'https://sinamon.info';
+  e.waitUntil(
+    // eslint-disable-next-line consistent-return
+    clients.matchAll({ type: 'window' }).then((windowClients) => {
+      for (let i = 0; i < windowClients.length; i += 1) {
+        const client = windowClients[i];
+        if (client.url === url && 'focus' in client) {
+          return client.focus();
+        }
+      }
+      if (clients.openWindow) {
+        return clients.openWindow(url);
+      }
+    })
+  );
+});
+
 firebase.initializeApp({
   apiKey: 'AIzaSyD4nBZyHASpykbklOCGiKqTNfq9HTpa88U',
   authDomain: 'swjb-sinamon.firebaseapp.com',
@@ -16,20 +34,4 @@ firebase.initializeApp({
 
 const messaging = firebase.messaging();
 
-messaging.onBackgroundMessage((payload) => {
-  const { title } = payload.notification;
-  const options = {
-    body: payload.notification.body,
-    icon: '/logo192.png',
-    data: {
-      click_action: payload.data.click_action
-    }
-  };
-
-  return self.registration.showNotification(title, options);
-});
-
-self.addEventListener('notificationclick', (e) => {
-  e.notification.close();
-  e.waitUntil(clients.openWindow(e.notification.data.click_action || 'https://sinamon.info'));
-});
+messaging.onBackgroundMessage(() => {});
