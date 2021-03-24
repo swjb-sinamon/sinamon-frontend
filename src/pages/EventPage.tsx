@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import {
   BlankLine,
@@ -38,9 +38,19 @@ const Highlight = styled.span`
   color: var(--color-button-hover);
 `;
 
+// const peoples = [];
+
 const EventPage: React.FC = () => {
+  const [input, setInput] = useState<string>('');
+
   const onParticipateButton = () => {
     showToast('3월 29일부터 확인할 수 있습니다.', 'info');
+
+    // if (peoples.includes(input)) {
+    //   showToast('축하드립니다. 이벤트에 당첨되셨습니다.', 'success');
+    // } else {
+    //   showToast('당첨자 목록에 없습니다.', 'info');
+    // }
   };
 
   return (
@@ -79,7 +89,13 @@ const EventPage: React.FC = () => {
           <BlankLine gap={30} />
 
           <Label htmlFor="e_number">학번을 입력하여 당첨 여부를 확인하세요.</Label>
-          <StyledInput id="e_number" type="number" placeholder="ex. 30925" />
+          <StyledInput
+            id="e_number"
+            type="number"
+            placeholder="ex. 30925"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
 
           <BlankLine gap={10} />
 
