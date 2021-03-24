@@ -4,8 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faAward,
   faCalendarWeek,
+  faStar,
   faUmbrella,
-  faUserCircle
+  faUserCircle,
+  faBriefcaseMedical
 } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
@@ -64,6 +66,15 @@ const MainSideBar: React.FC = () => {
       <MainTitleBar setOpen={setOpen} />
 
       <SideBarItemList isOpen={isOpen}>
+        <NoStyleLink to="/event">
+          <MainSideBarItem>
+            <SideBarIconWrapper>
+              <FontAwesomeIcon icon={faStar} size="lg" />
+            </SideBarIconWrapper>
+            <p>이벤트 확인</p>
+          </MainSideBarItem>
+        </NoStyleLink>
+
         <NoStyleLink to="/contest">
           <MainSideBarItem>
             <SideBarIconWrapper>
@@ -110,6 +121,19 @@ const MainSideBar: React.FC = () => {
               <FontAwesomeIcon icon={faFacebookF} size="lg" />
             </SideBarIconWrapper>
             <p>학생회 페이지</p>
+          </MainSideBarItem>
+        </NoStyleA>
+
+        <NoStyleA
+          href="https://hcs.eduro.go.kr/#/loginHome"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <MainSideBarItem>
+            <SideBarIconWrapper>
+              <FontAwesomeIcon icon={faBriefcaseMedical} size="lg" />
+            </SideBarIconWrapper>
+            <p>자가진단 페이지</p>
           </MainSideBarItem>
         </NoStyleA>
 
