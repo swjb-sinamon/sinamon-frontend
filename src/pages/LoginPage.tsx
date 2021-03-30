@@ -16,6 +16,7 @@ import TextLoop from 'react-text-loop';
 import { Helmet } from 'react-helmet';
 import Api from '../api';
 import ErrorMessage from '../error/ErrorMessage';
+import LoginHelpModal from '../components/LoginHelpModal';
 
 const Container = styled.div`
   display: flex;
@@ -62,12 +63,22 @@ const StyledForm = styled.div`
   grid-column: 2 / 3;
 `;
 
+const HelpText = styled.p`
+  color: var(--color-subtext);
+
+  font-size: 14px;
+  font-weight: lighter;
+
+  cursor: pointer;
+`;
+
 interface LoginState {
   readonly id: string;
   readonly password: string;
 }
 
 const LoginPage: React.FC = () => {
+  const openModal = useState<boolean>(false);
   const [input, setInput] = useState<LoginState>({
     id: '',
     password: ''
@@ -159,16 +170,25 @@ const LoginPage: React.FC = () => {
               />
 
               <BlankLine gap={30} />
+
               <ButtonGroup>
                 <MediumButton onClick={onLoginClick}>로그인</MediumButton>
                 <Link to="/register">
                   <MediumButton>회원가입</MediumButton>
                 </Link>
               </ButtonGroup>
+
+              <BlankLine gap={10} />
+
+              <HelpText role="button" tabIndex={0} onClick={() => openModal[1](true)}>
+                로그인에 문제가 있으신가요?
+              </HelpText>
             </div>
           </StyledForm>
         </GridContainer>
       </Container>
+
+      <LoginHelpModal open={openModal} />
     </>
   );
 };

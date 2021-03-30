@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
-import { ReCaptcha } from 'react-recaptcha-v3';
-import { showToast, HugeButton, BlankLine } from 'sinamon-sikhye';
+import { BlankLine, HugeButton, showToast } from 'sinamon-sikhye';
 import { Helmet } from 'react-helmet';
 import RegisterHeaderText from '../components/Register/RegisterHeaderText';
 import RegisterFooterText from '../components/Register/RegisterFooterText';
 import RegisterForm from '../components/Register/RegisterForm';
 import Api from '../api';
+import LoginHelpModal from '../components/LoginHelpModal';
 
 const Container = styled.div`
   display: flex;
@@ -35,6 +35,15 @@ const ButtonWrapper = styled.div`
   }
 `;
 
+const HelpText = styled.p`
+  color: var(--color-subtext);
+
+  font-size: 14px;
+  font-weight: lighter;
+
+  cursor: pointer;
+`;
+
 interface RegisterState {
   readonly id: string;
   readonly password: string;
@@ -55,6 +64,7 @@ interface CheckState {
 const NAME_REGEXP = /[^(ㄱ-ㅎ가-힣a-zA-Z)]/g;
 
 const RegisterPage: React.FC = () => {
+  const openModal = useState<boolean>(false);
   const state = useState<RegisterState>({
     id: '',
     password: '',
@@ -151,11 +161,17 @@ const RegisterPage: React.FC = () => {
 
           <ButtonWrapper>
             <HugeButton onClick={onRegisterClick}>회원가입</HugeButton>
-          </ButtonWrapper>
-        </div>
 
-        <ReCaptcha sitekey={process.env.REACT_APP_RECAPTCHA!} action="register" />
+            <HelpText role="button" tabIndex={0} onClick={() => openModal[1](true)}>
+              회원가입에 문제가 있으신가요?
+            </HelpText>
+          </ButtonWrapper>
+
+          <BlankLine gap={30} />
+        </div>
       </Container>
+
+      <LoginHelpModal open={openModal} />
     </>
   );
 };
