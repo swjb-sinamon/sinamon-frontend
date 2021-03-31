@@ -1,6 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import { SCREEN_SIZE, Heading2, BlankLine, PrivacySubTitle, PrivacyTitle } from 'sinamon-sikhye';
+import {
+  BlankLine,
+  BodyItem,
+  HeaderItem,
+  Heading2,
+  PrivacySubTitle,
+  PrivacyTitle,
+  SCREEN_SIZE,
+  Table,
+  TableHead
+} from 'sinamon-sikhye';
 import { Helmet } from 'react-helmet';
 
 const Container = styled.div`
@@ -24,7 +34,7 @@ const PrivacyPage: React.FC = () => {
       <Helmet>
         <title>개인정보처리방침 - 수정과</title>
       </Helmet>
-      
+
       <Container>
         <PrivacyTitle>수정과</PrivacyTitle>
         <PrivacySubTitle>개인정보처리방침</PrivacySubTitle>
@@ -71,7 +81,7 @@ const PrivacyPage: React.FC = () => {
           <Heading2>4. 처리하는 개인정보의 항목 작성</Heading2>
           <p>① 수정과 은(는) 다음의 개인정보 항목을 처리하고 있습니다.</p>
           <p>
-            1. &lt;서비스 이용&gt; <br />- 필수항목: 아이디, 이름, 학년, 반, 번호, 서비스 이용 기록,
+            1. &lt;서비스 이용&gt; <br />- 필수항목: 아이디, 비밀번호, 이름, 학년, 반, 번호, 서비스 이용 기록,
             IP, User-Agent, 쿠키
           </p>
         </div>
@@ -112,10 +122,41 @@ const PrivacyPage: React.FC = () => {
             쿠키 저장을 거부 할 수 있습니다. 다. 쿠키 저장을 거부할 경우 맞춤형 서비스 이용에 어려움이
             발생할 수 있습니다.
           </p>
+          <p>
+            ③ 수정과 은(는) 더 나은 서비스 제공 및 통계를 위해 로그 분석툴인 Google Analytics(구글 애널리틱스) 을(를) 사용합니다. 단, 개인을 식별할 수 없는 비식별정보만 수집합니다.
+          </p>
+          <p>
+            ④ 필요한 경우 구글 애널리틱스 사용을 거부할 수 있습니다. 브라우저 쿠키 차단 또는 차단 부가기능을 설치해주세요. {' '}
+            <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noreferrer">https://tools.google.com/dlpage/gaoptout</a>
+          </p>
         </div>
         <BlankLine gap={10} />
         <div>
-          <Heading2>7. 개인정보 보호책임자 작성</Heading2>
+          <Heading2>7. 개인정보 처리 위탁 및 수탁</Heading2>
+          <p>수정과는 서비스 향상을 위해서 아래와 같이 개인정보를 위탁하고 있으며, 관계 법령에 따른 위탁계약 시 개인정보가 안전하게 관리될 수 있도록 필요한 사항을 규정하고 있습니다.</p>
+
+          <br />
+
+          <Table>
+            <TableHead>
+              <tr>
+                <HeaderItem>수탁업체</HeaderItem>
+                <HeaderItem>수탁업무 내용</HeaderItem>
+                <HeaderItem>개인정보의 보유 및 이용기간</HeaderItem>
+              </tr>
+            </TableHead>
+            <tbody>
+              <BodyItem>
+                <td>네이버클라우드</td>
+                <td>개인정보가 저장된 서버 운영 및 관리</td>
+                <td>회원탈퇴 시 또는 위탁계약 종료 시</td>
+              </BodyItem>
+            </tbody>
+          </Table>
+        </div>
+        <BlankLine gap={10} />
+        <div>
+          <Heading2>8. 개인정보 보호책임자 작성</Heading2>
           <p>
             ① 수정과 은(는) 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한
             정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고
@@ -134,7 +175,7 @@ const PrivacyPage: React.FC = () => {
         </div>
         <BlankLine gap={10} />
         <div>
-          <Heading2>8. 개인정보 처리방침 변경</Heading2>
+          <Heading2>9. 개인정보 처리방침 변경</Heading2>
           <p>
             ① 이 개인정보처리방침은 시행일로부터 적용되며, 법령 및 방침에 따른 변경내용의 추가, 삭제
             및 정정이 있는 경우에는 변경사항의 시행 7일 전부터 공지사항을 통하여 고지할 것입니다.
@@ -142,7 +183,7 @@ const PrivacyPage: React.FC = () => {
         </div>
         <BlankLine gap={10} />
         <div>
-          <Heading2>9. 개인정보의 안전성 확보 조치</Heading2>
+          <Heading2>10. 개인정보의 안전성 확보 조치</Heading2>
           <p>
             ① 수정과 은(는) 개인정보보호법 제29조에 따라 다음과 같이 안전성 확보에 필요한
             기술적/관리적 및 물리적 조치를 하고 있습니다.
@@ -161,8 +202,10 @@ const PrivacyPage: React.FC = () => {
         </div>
         <BlankLine gap={10} />
         <div>
-          <Heading2>10. 부칙</Heading2>
+          <Heading2>A. 부칙</Heading2>
           <p>- 시행 날짜: 2020년 11월 23일</p>
+          <p>- 2차 공고 날짜: 2021년 3월 31일</p>
+          <p>- 2차 시행 날짜: 2021년 4월 8일</p>
         </div>
       </Container>
     </>
