@@ -32,8 +32,6 @@ jobs:
           GENERATE_SOURCEMAP: false
           REACT_APP_API_HOST: ${{ secrets.API_HOST_PRODUCTION }}
           REACT_APP_RECAPTCHA: ${{ secrets.RECAPTCHA }}
-          REACT_APP_CK: ${{ secrets.CK }}
-          REACT_APP_CT: ${{ secrets.CT }}
           REACT_APP_VAPIDKEY: ${{ secrets.VAPID }}
         run: yarn build:production
 
