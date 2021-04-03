@@ -1,6 +1,7 @@
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import Api from '../api';
 import { ProfileType } from '../types/Profile';
+import { requestNotification } from '../resources/push';
 
 const context = createContext<ProfileType | undefined>(undefined);
 
@@ -8,6 +9,8 @@ export const ProfileProvider: React.FC = ({ children }) => {
   const [profile, setProfile] = useState<ProfileType | undefined>(undefined);
 
   const fetchProfile = useCallback(async () => {
+    requestNotification();
+
     const currentToken = localStorage.getItem('fcm_token');
 
     const res = await Api.get('/auth/me');

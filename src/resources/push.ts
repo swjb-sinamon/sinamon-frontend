@@ -1,13 +1,19 @@
 import { showToast } from 'sinamon-sikhye';
 import firebase from './firebase';
 
-const initWebPush = (): void => {
+const messaging = firebase.messaging();
+
+const canUseNotifications = (showAlert?: boolean): boolean => {
   if (!firebase.messaging.isSupported() || !('Notification' in window) || !Notification) {
-    alert('해당 브라우저는 알림을 지원하지 않습니다.');
-    return;
+    if (showAlert) alert('해당 브라우저는 알림을 지원하지 않습니다.');
+    return false;
   }
 
-  const messaging = firebase.messaging();
+  return true;
+};
+
+export const requestNotification = () => {
+  if (!canUseNotifications(true)) return;
 
   Notification.requestPermission()
     .then((permission) => {
@@ -25,7 +31,12 @@ const initWebPush = (): void => {
     })
     .then((pushToken) => {
       localStorage.setItem('fcm_token', pushToken);
-    });
+    })
+    .catch((e) => console.error('requestNotification Error', e));
+};
+
+export const registerNotificationEvent = () => {
+  if (!canUseNotifications()) return;
 
   messaging.onMessage((payload) => {
     const { title } = payload.notification;
@@ -44,5 +55,3 @@ const initWebPush = (): void => {
     };
   });
 };
-
-export default initWebPush;

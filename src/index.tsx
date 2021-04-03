@@ -11,7 +11,7 @@ import { ProfileProvider } from './hooks/useProfile';
 import { SchoolProvider } from './hooks/useSchool';
 import { WeatherProvider } from './hooks/useWeather';
 import { TimetableProvider } from './hooks/useTimetable';
-import initWebPush from './resources/push';
+import { registerNotificationEvent } from './resources/push';
 
 dotenv.config();
 
@@ -33,5 +33,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-initWebPush();
-
+registerNotificationEvent();
