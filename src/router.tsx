@@ -9,7 +9,6 @@ import ToSPage from './pages/ToSPage';
 import UmbrellaPage from './pages/UmbrellaPage';
 import TimetablePage from './pages/TimetablePage';
 import AccountPage from './pages/AccountPage';
-import EventPage from './pages/EventPage';
 
 const Router: React.FC = () => {
   return (
@@ -18,7 +17,6 @@ const Router: React.FC = () => {
         <PermissionRoute exact path="/" success={MainPage} failure={LoginPage} />
         <PermissionRoute exact path="/umbrella" success={UmbrellaPage} failure={LoginPage} />
         <PermissionRoute exact path="/timetable" success={TimetablePage} failure={LoginPage} />
-        <PermissionRoute exact path="/event" success={EventPage} failure={LoginPage} />
         <PermissionRoute exact path="/account" success={AccountPage} failure={LoginPage} />
         <PermissionRoute
           exact
