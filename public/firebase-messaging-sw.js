@@ -5,7 +5,8 @@ importScripts('https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js');
 importScripts('https://www.gstatic.com/firebasejs/8.2.5/firebase-messaging.js');
 
 self.addEventListener('notificationclick', (e) => {
-  const url = e.notification.data.click_action || 'https://sinamon.info';
+  const f = e.notification.data.FCM_MSG;
+  const url = f && (f.data.click_action || 'https://sinamon.info');
   e.waitUntil(
     // eslint-disable-next-line consistent-return
     clients.matchAll({ type: 'window' }).then((windowClients) => {
@@ -32,6 +33,8 @@ firebase.initializeApp({
   measurementId: 'G-YHYY5BX6ZP'
 });
 
-const messaging = firebase.messaging();
-
-messaging.onBackgroundMessage(() => {});
+try {
+  firebase.messaging();
+} catch (e) {
+  console.error('Firebase Messaging Error', e);
+}
