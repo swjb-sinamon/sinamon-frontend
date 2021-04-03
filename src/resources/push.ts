@@ -2,7 +2,10 @@ import { showToast } from 'sinamon-sikhye';
 import firebase from './firebase';
 
 const initWebPush = (): void => {
-  if (!firebase.messaging.isSupported() || !Notification) return;
+  if (!firebase.messaging.isSupported() || !('Notification' in window) || !Notification) {
+    alert('해당 브라우저는 알림을 지원하지 않습니다.');
+    return;
+  }
 
   const messaging = firebase.messaging();
 
@@ -37,7 +40,7 @@ const initWebPush = (): void => {
     const notification = new Notification(title, options);
     notification.onclick = (e) => {
       e.preventDefault();
-      window.open(payload.data.click_action ?? 'https://sinamon.info', '_blank');
+      window.open(payload.data.click_action || 'https://sinamon.info', '_blank');
     };
   });
 };

@@ -34,10 +34,6 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-if (!('Notification' in window)) {
-  alert('해당 브라우저는 알림을 지원하지 않습니다.');
-}
-
 initWebPush();
 
 serviceWorker.register();
