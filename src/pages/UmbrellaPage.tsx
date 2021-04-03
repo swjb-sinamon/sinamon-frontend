@@ -11,7 +11,7 @@ import {
   Heading2,
   Heading3
 } from 'sinamon-sikhye';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import MainSideBar from '../components/MainSideBar';
 import Api from '../api';
 

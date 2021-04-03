@@ -13,7 +13,7 @@ import {
 } from 'sinamon-sikhye';
 
 import TextLoop from 'react-text-loop';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import Api from '../api';
 import ErrorMessage from '../error/ErrorMessage';
 import LoginHelpModal from '../components/LoginHelpModal';

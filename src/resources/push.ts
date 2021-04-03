@@ -1,10 +1,19 @@
 import { showToast } from 'sinamon-sikhye';
 import firebase from './firebase';
 
-const initWebPush = (): void => {
-  if (!firebase.messaging.isSupported() || !Notification) return;
+const messaging = firebase.messaging();
 
-  const messaging = firebase.messaging();
+const canUseNotifications = (showAlert?: boolean): boolean => {
+  if (!firebase.messaging.isSupported() || !('Notification' in window) || !Notification) {
+    if (showAlert) alert('해당 브라우저는 알림을 지원하지 않습니다.');
+    return false;
+  }
+
+  return true;
+};
+
+export const requestNotification = () => {
+  if (!canUseNotifications(true)) return;
 
   Notification.requestPermission()
     .then((permission) => {
@@ -22,7 +31,12 @@ const initWebPush = (): void => {
     })
     .then((pushToken) => {
       localStorage.setItem('fcm_token', pushToken);
-    });
+    })
+    .catch((e) => console.error('requestNotification Error', e));
+};
+
+export const registerNotificationEvent = () => {
+  if (!canUseNotifications()) return;
 
   messaging.onMessage((payload) => {
     const { title } = payload.notification;
@@ -37,9 +51,7 @@ const initWebPush = (): void => {
     const notification = new Notification(title, options);
     notification.onclick = (e) => {
       e.preventDefault();
-      window.open(payload.data.click_action ?? 'https://sinamon.info', '_blank');
+      window.open(payload.data.click_action || 'https://sinamon.info', '_blank');
     };
   });
 };
-
-export default initWebPush;

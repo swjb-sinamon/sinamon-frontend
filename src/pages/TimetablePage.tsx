@@ -8,7 +8,7 @@ import {
   MainSideBarContainer,
   SCREEN_SIZE
 } from 'sinamon-sikhye';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import MainSideBar from '../components/MainSideBar';
 import TimetableItem from '../components/Timetable/TimetableItem';
 import { useTimetable } from '../hooks/useTimetable';

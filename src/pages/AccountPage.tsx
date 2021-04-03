@@ -13,7 +13,7 @@ import {
   Select,
   showToast
 } from 'sinamon-sikhye';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import swal from 'sweetalert';
 import MainSideBar from '../components/MainSideBar';
 import { useProfile } from '../hooks/useProfile';
