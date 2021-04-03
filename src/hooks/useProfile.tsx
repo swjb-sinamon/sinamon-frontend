@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import Api from '../api';
 import { ProfileType } from '../types/Profile';
 
@@ -7,23 +7,25 @@ const context = createContext<ProfileType | undefined>(undefined);
 export const ProfileProvider: React.FC = ({ children }) => {
   const [profile, setProfile] = useState<ProfileType | undefined>(undefined);
 
-  useEffect(() => {
+  const fetchProfile = useCallback(async () => {
     const currentToken = localStorage.getItem('fcm_token');
 
-    Api.get('/auth/me').then((res) => {
-      if (!res.data) return Promise.reject();
-      if (!res.data.success) return Promise.reject();
-      setProfile(res.data.data);
+    const res = await Api.get('/auth/me');
+    if (!res.data || !res.data.success) return;
 
-      if (!currentToken) return Promise.reject();
+    setProfile(res.data.data);
 
-      return Api.post('/fcm', {
-        token: currentToken
-      });
-    }).then(() => {
-      return Api.post('/fcm/subscribe');
+    if (!currentToken) return;
+    await Api.post('/fcm/token', {
+      token: currentToken
     });
+
+    await Api.post('/fcm/subscribe');
   }, []);
+
+  useEffect(() => {
+    fetchProfile();
+  }, [fetchProfile]);
 
   return <context.Provider value={profile}>{children}</context.Provider>;
 };
