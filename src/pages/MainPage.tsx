@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { MainSideBarContainer, SCREEN_SIZE } from 'sinamon-sikhye';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import MainSideBar from '../components/MainSideBar';
 import WeatherCard from '../components/Card/WeatherCard';
 import QRCodeCard from '../components/Card/QRCodeCard';

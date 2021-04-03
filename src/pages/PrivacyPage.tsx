@@ -11,7 +11,7 @@ import {
   Table,
   TableHead
 } from 'sinamon-sikhye';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 const Container = styled.div`
   width: 1000px;

@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import dotenv from 'dotenv';
 import ReactNotification from 'react-notifications-component';
 import Modal from 'react-modal';
+import { HelmetProvider } from 'react-helmet-async';
 import Router from './router';
 import { ProfileProvider } from './hooks/useProfile';
 import { SchoolProvider } from './hooks/useSchool';
@@ -19,16 +20,18 @@ Modal.setAppElement('#root');
 
 ReactDOM.render(
   <React.StrictMode>
-    <ProfileProvider>
-      <SchoolProvider>
-        <WeatherProvider>
-          <TimetableProvider>
-            <ReactNotification />
-            <Router />
-          </TimetableProvider>
-        </WeatherProvider>
-      </SchoolProvider>
-    </ProfileProvider>
+    <HelmetProvider>
+      <ProfileProvider>
+        <SchoolProvider>
+          <WeatherProvider>
+            <TimetableProvider>
+              <ReactNotification />
+              <Router />
+            </TimetableProvider>
+          </WeatherProvider>
+        </SchoolProvider>
+      </ProfileProvider>
+    </HelmetProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

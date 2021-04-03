@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import { BlankLine, HugeButton, showToast } from 'sinamon-sikhye';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import RegisterHeaderText from '../components/Register/RegisterHeaderText';
 import RegisterFooterText from '../components/Register/RegisterFooterText';
 import RegisterForm from '../components/Register/RegisterForm';
