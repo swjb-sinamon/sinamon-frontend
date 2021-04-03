@@ -6,7 +6,6 @@ import ReactDOM from 'react-dom';
 import dotenv from 'dotenv';
 import ReactNotification from 'react-notifications-component';
 import Modal from 'react-modal';
-import * as serviceWorker from './serviceWorker';
 import Router from './router';
 import { ProfileProvider } from './hooks/useProfile';
 import { SchoolProvider } from './hooks/useSchool';
@@ -36,4 +35,3 @@ ReactDOM.render(
 
 initWebPush();
 
-serviceWorker.register();
