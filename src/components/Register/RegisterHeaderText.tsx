@@ -15,7 +15,7 @@ const RegisterHeaderText: React.FC = () => {
   return (
     <TitleContainer>
       <Heading1>수정과 회원가입</Heading1>
-      <StyledHeading3>수원정보과학고등학교 인트라넷 서비스</StyledHeading3>
+      <StyledHeading3>IT소프트웨어과 인트라넷 프로젝트</StyledHeading3>
     </TitleContainer>
   );
 };
