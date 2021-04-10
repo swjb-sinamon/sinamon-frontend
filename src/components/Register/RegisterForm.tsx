@@ -67,6 +67,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ state }) => {
           value={input.id}
           onChange={(e) => onInputChange(e, 'id')}
           placeholder="로그인 시 사용할 아이디를 입력해주세요."
+          autoFocus
         />
         <BlankLine gap={20} />
 

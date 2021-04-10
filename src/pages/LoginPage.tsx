@@ -156,6 +156,7 @@ const LoginPage: React.FC = () => {
                 type="text"
                 value={input.id}
                 onChange={(e) => onInputChange(e, 'id')}
+                autoFocus
               />
 
               <BlankLine gap={20} />
@@ -174,7 +175,7 @@ const LoginPage: React.FC = () => {
               <ButtonGroup>
                 <MediumButton onClick={onLoginClick}>로그인</MediumButton>
                 <Link to="/register">
-                  <MediumButton>회원가입</MediumButton>
+                  <MediumButton tabIndex={-1}>회원가입</MediumButton>
                 </Link>
               </ButtonGroup>
 
