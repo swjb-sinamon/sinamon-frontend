@@ -22,7 +22,7 @@ const AnonymousPage: React.FC = () => {
       <Helmet>
         <title>익명페이지 - 수정과</title>
       </Helmet>
-      <MainSideBarContainer> 
+      <MainSideBarContainer>
         <MainSideBar />
         <StyledContent>
           <Heading1>익명 페이지</Heading1>
