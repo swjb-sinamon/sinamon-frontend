@@ -3,9 +3,10 @@ import styled from 'styled-components';
 import {
   MainSideBarContainer,
   BlankLine,
-  HugeButton,
   Heading1,
   Heading2,
+  Input,
+  SCREEN_SIZE,
   Heading3
 } from 'sinamon-sikhye';
 import { Helmet } from 'react-helmet-async';
@@ -14,7 +15,11 @@ import MainSideBar from '../components/MainSideBar';
 const StyledContent = styled.div`
   margin: 3rem;
 `;
-
+const StyledInput = styled(Input)`
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_MOBILE}) {
+    width: 100%;
+  }
+`;
 
 const AnonymousPage: React.FC = () => {
 
@@ -29,7 +34,15 @@ const AnonymousPage: React.FC = () => {
           <Heading1>익명 페이지</Heading1>
           <Heading3>익명으로 글을 작성하실 수 있습니다</Heading3>
           <BlankLine gap={30} />
-          
+          <Heading2>제목을 적어주세요</Heading2>
+          <StyledInput
+            type="title"
+          />
+          <BlankLine gap={10} />
+          <Heading2>내용을 입력해주세요</Heading2>
+          <StyledInput
+            type="contents"
+          />
         </StyledContent>
       </MainSideBarContainer>
     </>
