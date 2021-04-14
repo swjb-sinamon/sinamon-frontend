@@ -103,17 +103,26 @@ const MainSideBar: React.FC = () => {
           </StyledLink>
 
           <NoStyleA
-            href="https://www.facebook.com/swjbgh1/"
+            href="https://hcs.eduro.go.kr/#/loginHome"
             target="_blank"
             rel="noopener noreferrer"
           >
             <MainSideBarItem>
               <SideBarIconWrapper>
-                <FontAwesomeIcon icon={faFacebookF} size="lg" />
+                <FontAwesomeIcon icon={faBriefcaseMedical} size="lg" />
               </SideBarIconWrapper>
-              <p>익명 페이지</p>
+              <p>자가진단 바로가기</p>
             </MainSideBarItem>
           </NoStyleA>
+
+          <StyledLink to="/account">
+            <MainSideBarItem>
+              <SideBarIconWrapper>
+                <FontAwesomeIcon icon={faUserCircle} size="lg" />
+              </SideBarIconWrapper>
+              <p>내 계정</p>
+            </MainSideBarItem>
+          </StyledLink>
 
           <NoStyleA
             href="https://www.facebook.com/swjb0/"
@@ -127,28 +136,6 @@ const MainSideBar: React.FC = () => {
               <p>학생회 페이지</p>
             </MainSideBarItem>
           </NoStyleA>
-
-          <NoStyleA
-            href="https://hcs.eduro.go.kr/#/loginHome"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <MainSideBarItem>
-              <SideBarIconWrapper>
-                <FontAwesomeIcon icon={faBriefcaseMedical} size="lg" />
-              </SideBarIconWrapper>
-              <p>자가진단 페이지</p>
-            </MainSideBarItem>
-          </NoStyleA>
-
-          <StyledLink to="/account">
-            <MainSideBarItem>
-              <SideBarIconWrapper>
-                <FontAwesomeIcon icon={faUserCircle} size="lg" />
-              </SideBarIconWrapper>
-              <p>내 계정</p>
-            </MainSideBarItem>
-          </StyledLink>
 
           <MainSideBarItem onClick={onLogoutClick} tabIndex={0}>
             <SideBarIconWrapper>
