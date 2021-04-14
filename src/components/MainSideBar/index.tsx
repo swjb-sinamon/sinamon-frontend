@@ -8,13 +8,12 @@ import {
   faUmbrella,
   faUserCircle
 } from '@fortawesome/free-solid-svg-icons';
-import { useHistory } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
 import {
   MainSidebar,
   MainSideBarItem,
   NoStyleA,
-  NoStyleLink,
   SCREEN_SIZE,
   showToast,
   SideBarIconWrapper,
@@ -54,6 +53,17 @@ const FooterButton = styled.button`
   }
 `;
 
+const StyledLink = styled(NavLink).attrs({
+  activeClassName: 'nav-item-active'
+})`
+  &.nav-item-active {
+    & > li {
+      color: white;
+      background-color: var(--color-button);
+    }
+  }
+`;
+
 const MainSideBar: React.FC = () => {
   const history = useHistory();
   const [isOpen, setOpen] = useState<boolean>(false);
@@ -74,23 +84,23 @@ const MainSideBar: React.FC = () => {
 
       <SideBarItemList isOpen={isOpen}>
         <div>
-          <NoStyleLink to="/umbrella">
+          <StyledLink to="/umbrella">
             <MainSideBarItem>
               <SideBarIconWrapper>
                 <FontAwesomeIcon icon={faUmbrella} size="lg" />
               </SideBarIconWrapper>
               <p>우산대여제</p>
             </MainSideBarItem>
-          </NoStyleLink>
+          </StyledLink>
 
-          <NoStyleLink to="/timetable">
+          <StyledLink to="/timetable">
             <MainSideBarItem>
               <SideBarIconWrapper>
                 <FontAwesomeIcon icon={faCalendarWeek} size="lg" />
               </SideBarIconWrapper>
               <p>시간표 보기</p>
             </MainSideBarItem>
-          </NoStyleLink>
+          </StyledLink>
 
           <NoStyleA
             href="https://www.facebook.com/swjbgh1/"
@@ -131,14 +141,14 @@ const MainSideBar: React.FC = () => {
             </MainSideBarItem>
           </NoStyleA>
 
-          <NoStyleLink to="/account">
+          <StyledLink to="/account">
             <MainSideBarItem>
               <SideBarIconWrapper>
                 <FontAwesomeIcon icon={faUserCircle} size="lg" />
               </SideBarIconWrapper>
               <p>내 계정</p>
             </MainSideBarItem>
-          </NoStyleLink>
+          </StyledLink>
 
           <MainSideBarItem onClick={onLogoutClick} tabIndex={0}>
             <SideBarIconWrapper>
