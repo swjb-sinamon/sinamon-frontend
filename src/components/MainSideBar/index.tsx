@@ -4,7 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBriefcaseMedical,
   faCalendarWeek,
+  faHamburger,
   faSignOutAlt,
+  faStickyNote,
   faUmbrella,
   faUserCircle
 } from '@fortawesome/free-solid-svg-icons';
@@ -78,6 +80,8 @@ const MainSideBar: React.FC = () => {
     window.location.reload();
   };
 
+  const onReadyClick = () => showToast('서비스 준비 중입니다.', 'default');
+
   return (
     <MainSidebar>
       <MainTitleBar setOpen={setOpen} />
@@ -101,6 +105,20 @@ const MainSideBar: React.FC = () => {
               <p>시간표 보기</p>
             </MainSideBarItem>
           </StyledLink>
+
+          <MainSideBarItem onClick={onReadyClick} tabIndex={0}>
+            <SideBarIconWrapper>
+              <FontAwesomeIcon icon={faHamburger} size="lg" />
+            </SideBarIconWrapper>
+            <p>급식 보기</p>
+          </MainSideBarItem>
+
+          <MainSideBarItem onClick={onReadyClick} tabIndex={0}>
+            <SideBarIconWrapper>
+              <FontAwesomeIcon icon={faStickyNote} size="lg" />
+            </SideBarIconWrapper>
+            <p>익명건의함</p>
+          </MainSideBarItem>
 
           <NoStyleA
             href="https://hcs.eduro.go.kr/#/loginHome"
