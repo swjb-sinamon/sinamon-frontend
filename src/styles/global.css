@@ -26,6 +26,11 @@ body {
   color: #333333;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .swal-title {
   font-family: 'NanumSquareRound', sans-serif;
   font-weight: 800;

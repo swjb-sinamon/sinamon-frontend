@@ -38,7 +38,7 @@
     "react-scripts": "^4.0.1",
     "react-text-loop": "^2.3.0",
     "react-tooltip": "^4.2.11",
-    "sinamon-sikhye": "^1.2.5",
+    "sinamon-sikhye": "^2.0.0",
     "styled-components": "^5.2.1",
     "sweetalert": "^2.1.2"
   },
