@@ -21,7 +21,10 @@ const LoginHelpModal: React.FC<LoginHelpModalProps> = ({ open }) => {
     <StyledModal width={450} height={450} name="HelpLogin" state={open}>
       <div>
         <Heading3>회원가입은 어떻게 하나요?</Heading3>
-        <p>학기초에 인증코드 배부 후 회원가입이 가능합니다.</p>
+        <p>
+          학기초에 인증코드 배부 후 회원가입이 가능합니다. 추가 가입은 IT소프트웨어과만 받고
+          있습니다.
+        </p>
       </div>
 
       <br />

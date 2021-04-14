@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Heading1, SCREEN_SIZE, NoStyleLink } from 'sinamon-sikhye';
+import { Heading1, NoStyleLink, SCREEN_SIZE } from 'sinamon-sikhye';
 import MyInfoTitle from './MyInfoTitle';
 import MobileTitle from './MobileTitle';
 import Logo from '../../assets/logo.png';
 
 const SideBarTitle = styled.li`
   width: 100%;
-  height: 240px;
+  height: 280px;
 
   display: flex;
   justify-content: center;
@@ -23,13 +23,14 @@ const SideBarTitle = styled.li`
 
 const TitleContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
   cursor: pointer;
   transition: color 0.2s ease-in-out;
 
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
 
   &:hover {
     color: var(--color-button-hover);
