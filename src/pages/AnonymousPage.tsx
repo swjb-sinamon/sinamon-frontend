@@ -69,7 +69,7 @@ const AnonymousPage: React.FC = () => {
           />
           <BlankLine gap={10} />
           <Heading2>내용을 입력해주세요</Heading2>
-          <StyledInputContents 
+          <StyledInputContents
             type="text"
           />
           <BlankLine gap={30} />
