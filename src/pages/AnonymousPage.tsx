@@ -6,7 +6,8 @@ import {
   HugeButton,
   Heading1,
   Heading2,
-  Heading3
+  Heading3,
+  Input
 } from 'sinamon-sikhye';
 import { Helmet } from 'react-helmet-async';
 import MainSideBar from '../components/MainSideBar';
@@ -14,39 +15,28 @@ import MainSideBar from '../components/MainSideBar';
 const StyledContent = styled.div`
   margin: 3rem;
 `;
-const StyledInputTitle = styled.input<{ width?: number }>`
-width: ${(props) => props.width || 400}px;
-height: 40px;
+const StyledInputTitle = styled(Input)`
+
+`;
+const StyledTextAreaContents = styled.textarea`
+padding-left: 16px;
+padding-top: 15px;
 
 background-color: white;
-padding-left: 16px;
 
 border-radius: 3px;
 border: 1px solid var(--color-gray);
 
+font-size: 16px;
 font-weight: bold;
 
 :disabled {
   cursor: no-drop;
   background-color: #efefef;
 }
-`;
-const StyledInputContents = styled.input<{ width?: number }>`
-width: ${(props) => props.width || 700}px;
-height: 1000px;
 
-background-color: white;
-padding-left: 16px;
-
-border-radius: 3px;
-border: 1px solid var(--color-gray);
-
-text-align:left;
-font-weight: bold;
-
-:disabled {
-  cursor: no-drop;
-  background-color: #efefef;
+:lang(ko) {
+  word-break: keep-all;
 }
 `;
 
@@ -66,11 +56,13 @@ const AnonymousPage: React.FC = () => {
           <Heading2>제목을 적어주세요</Heading2>
           <StyledInputTitle
             type="text"
+            width={500}
           />
           <BlankLine gap={10} />
           <Heading2>내용을 입력해주세요</Heading2>
-          <StyledInputContents
-            type="text"
+          <StyledTextAreaContents
+            cols={90}
+            rows={40}
           />
           <BlankLine gap={30} />
           <HugeButton >제출하기</HugeButton>
