@@ -1,7 +1,10 @@
 import { showToast } from 'sinamon-sikhye';
 import firebase from './firebase';
 
-const messaging = firebase.messaging();
+let messaging: firebase.messaging.Messaging | undefined;
+if (firebase.messaging.isSupported()) {
+  messaging = firebase.messaging();
+}
 
 const canUseNotifications = (showAlert?: boolean): boolean => {
   if (!firebase.messaging.isSupported() || !('Notification' in window) || !Notification) {
@@ -25,7 +28,7 @@ export const requestNotification = () => {
         return Promise.reject();
       }
 
-      return messaging.getToken({
+      return messaging!!.getToken({
         vapidKey: process.env.REACT_APP_VAPIDKEY
       });
     })
@@ -38,7 +41,7 @@ export const requestNotification = () => {
 export const registerNotificationEvent = () => {
   if (!canUseNotifications()) return;
 
-  messaging.onMessage((payload) => {
+  messaging!!.onMessage((payload) => {
     const { title } = payload.notification;
     const options = {
       body: payload.notification.body,
