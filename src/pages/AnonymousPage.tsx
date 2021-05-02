@@ -7,7 +7,9 @@ import {
   Heading1,
   Heading2,
   Heading3,
-  Input
+  Input,
+  Card,
+  CardTitle
 } from 'sinamon-sikhye';
 import { Helmet } from 'react-helmet-async';
 import MainSideBar from '../components/MainSideBar';
@@ -39,6 +41,11 @@ font-weight: bold;
   word-break: keep-all;
 }
 `;
+const StyledListCard = styled.div`
+width: 800px;
+height: 500px;
+
+`
 
 const AnonymousPage: React.FC = () => {
 
@@ -50,7 +57,7 @@ const AnonymousPage: React.FC = () => {
       <MainSideBarContainer>
         <MainSideBar />
         <StyledContent>
-          <Heading1>익명 페이지</Heading1>
+          <Heading1>익명 건의함</Heading1>
           <Heading3>익명으로 글을 작성하실 수 있습니다</Heading3>
           <BlankLine gap={30} />
           <Heading2>제목을 적어주세요</Heading2>
@@ -66,6 +73,19 @@ const AnonymousPage: React.FC = () => {
           />
           <BlankLine gap={30} />
           <HugeButton >제출하기</HugeButton>
+          <BlankLine gap={30} />
+          <StyledListCard>
+            <Card columnStart={1} columnEnd={4} rowStart={3} rowEnd={4}>
+              <CardTitle>
+                <span role="img" aria-label="Anonymouslist">
+                  📧{' '}
+                </span>
+                익명리스트
+              </CardTitle>
+              1.abc <br/>
+              2.abc
+            </Card>
+          </StyledListCard>
         </StyledContent>
       </MainSideBarContainer>
     </>
