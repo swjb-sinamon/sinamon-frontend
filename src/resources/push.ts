@@ -54,7 +54,7 @@ export const registerNotificationEvent = () => {
     const notification = new Notification(title, options);
     notification.onclick = (e) => {
       e.preventDefault();
-      window.open(payload.data.click_action || 'https://sinamon.info', '_blank');
+      window.open(payload.data.click_action || 'https://snm.itsw.info', '_blank');
     };
   });
 };
