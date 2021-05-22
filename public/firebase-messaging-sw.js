@@ -6,7 +6,7 @@ importScripts('https://www.gstatic.com/firebasejs/8.2.5/firebase-messaging.js');
 
 self.addEventListener('notificationclick', (e) => {
   const f = e.notification.data.FCM_MSG;
-  const url = f && (f.data.click_action || 'https://sinamon.info');
+  const url = f && (f.data.click_action || 'https://snm.itsw.info');
   e.waitUntil(
     // eslint-disable-next-line consistent-return
     clients.matchAll({ type: 'window' }).then((windowClients) => {
