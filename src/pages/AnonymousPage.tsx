@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import { Helmet } from 'react-helmet-async';
 import {
-  MainSideBarContainer,
   BlankLine,
-  HugeButton,
+  Card,
+  CardTitle,
   Heading1,
   Heading2,
   Heading3,
+  HugeButton,
   Input,
-  Card,
-  CardTitle,
+  MainSideBarContainer,
   showToast
 } from 'sinamon-sikhye';
-import { Helmet } from 'react-helmet-async';
+import styled from 'styled-components';
+import Api from '../api';
 import MainSideBar from '../components/MainSideBar';
 
 const StyledContent = styled.div`
@@ -58,6 +59,8 @@ const AnonymousPage: React.FC = () => {
     title: '',
     contents: ''
   });
+ 
+
   
   const ontitleChange = (e: React.ChangeEvent<HTMLInputElement>, type: keyof Anonymous) => {
     e.persist();
@@ -81,12 +84,17 @@ const AnonymousPage: React.FC = () => {
       return;
     }
     try {
+      await Api.post('/anonymous?admin=false', {
+        title: written.title,
+        contents: written.contents
+      });
       showToast('제출완료!', 'success');
       window.location.reload();
     } catch (e) {
       showToast('제출실패', 'danger');
     }
   };
+  
   return (
     <>
       <Helmet>
@@ -125,6 +133,7 @@ const AnonymousPage: React.FC = () => {
           <StyledNanumSquareRound>
             <Heading2>익명리스트</Heading2>
           </StyledNanumSquareRound>
+        
           <StyledListCard>
             <Card columnStart={1} columnEnd={4} rowStart={3} rowEnd={4}>
               <CardTitle>
@@ -134,8 +143,11 @@ const AnonymousPage: React.FC = () => {
                 {written.title}
               </CardTitle>
               {written.contents}
+              <br />
             </Card>
           </StyledListCard>
+            
+          
         </StyledContent>
       </MainSideBarContainer>
     </>
