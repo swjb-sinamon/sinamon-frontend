@@ -144,7 +144,7 @@ const AnonymousPage: React.FC = () => {
           <BlankLine gap={30} />
           <StyledNanumSquareRound>
             <Heading2>익명리스트</Heading2>
-          </StyledNanumSquareRound> 
+          </StyledNanumSquareRound>
           {
             apiWritten.map((item) => {
               return (
