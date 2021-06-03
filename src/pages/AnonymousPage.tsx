@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import {
   BlankLine,
@@ -41,10 +41,6 @@ font-weight: bold;
   word-break: keep-all;
 }
 `;
-const StyledListCard = styled.div`
-width: 800px;
-height: 300px;
-`;
 
 const StyledNanumSquareRound = styled.div`
 font-family: 'NanumSquareRound', sans-serif;
@@ -53,8 +49,15 @@ interface Anonymous {
   readonly title: string;
   readonly contents: string;
 }
+interface ApiAnonymous {
+  readonly title: string;
+  readonly contents: string;
+}
+
 
 const AnonymousPage: React.FC = () => {
+  const [apiWritten, setApiWritten] = useState<ApiAnonymous[]>([]);
+
   const [written, setWritten] = useState<Anonymous>({
     title: '',
     contents: ''
@@ -62,7 +65,7 @@ const AnonymousPage: React.FC = () => {
  
 
   
-  const ontitleChange = (e: React.ChangeEvent<HTMLInputElement>, type: keyof Anonymous) => {
+  const onTitleChange = (e: React.ChangeEvent<HTMLInputElement>, type: keyof Anonymous) => {
     e.persist();
 
     setWritten((current) => ({
@@ -83,17 +86,26 @@ const AnonymousPage: React.FC = () => {
       showToast('제목또는 내용이 빈칸입니다', 'danger');
       return;
     }
-    try {
-      await Api.post('/anonymous?admin=false', {
+      await Api.post('/anonymous', {
         title: written.title,
         contents: written.contents
       });
       showToast('제출완료!', 'success');
       window.location.reload();
-    } catch (e) {
-      showToast('제출실패', 'danger');
-    }
+   
   };
+  useEffect(() => {
+    Api.get('/anonymous/').then((res) => {
+      if (!res.data.success) {
+        showToast('익명글을 불러오지 못했습니다', 'danger');
+        return;
+      }
+      setApiWritten(res.data.data);
+  });
+  }, []);
+  
+    
+  
   
   return (
     <>
@@ -111,9 +123,9 @@ const AnonymousPage: React.FC = () => {
           </StyledNanumSquareRound>
           <Input
             placeholder="제목"
-            value={written.title}
+            title={written.title}
             type="text"
-            onChange={(e) => ontitleChange(e, 'title')}
+            onChange={(e) => onTitleChange(e, 'title')}
             width={480}
           />
           <BlankLine gap={10} />
@@ -132,22 +144,22 @@ const AnonymousPage: React.FC = () => {
           <BlankLine gap={30} />
           <StyledNanumSquareRound>
             <Heading2>익명리스트</Heading2>
-          </StyledNanumSquareRound>
-        
-          <StyledListCard>
-            <Card columnStart={1} columnEnd={4} rowStart={3} rowEnd={4}>
-              <CardTitle>
-                <span role="img" aria-label="Anonymouslist">
-                  📧{' '}
-                </span>
-                {written.title}
-              </CardTitle>
-              {written.contents}
-              <br />
-            </Card>
-          </StyledListCard>
-            
-          
+          </StyledNanumSquareRound> 
+          {
+            apiWritten.map((item) => {
+              return (
+                <Card columnStart={1} columnEnd={4} rowStart={3} rowEnd={4}>
+                  <CardTitle>
+                    <span role="img" aria-label="Anonymouslist">
+                      📧{' '}
+                    </span>
+                    {item.title}
+                  </CardTitle>
+                  {item.contents}
+                </Card>
+              );
+          })
+          }
         </StyledContent>
       </MainSideBarContainer>
     </>
