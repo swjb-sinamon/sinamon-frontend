@@ -7,9 +7,9 @@ import {
   Heading1,
   Heading2,
   Heading3,
-  HugeButton,
   Input,
   MainSideBarContainer,
+  MediumButton,
   showToast
 } from 'sinamon-sikhye';
 import styled from 'styled-components';
@@ -21,39 +21,32 @@ const StyledContent = styled.div`
 `;
 
 const StyledTextAreaContents = styled.textarea`
-padding-left: 16px;
-padding-top: 15px;
+  padding-left: 16px;
+  padding-top: 15px;
 
-background-color: white;
+  background-color: white;
+  font-family: 'Noto Sans KR', sans-serif;
 
-border-radius: 3px;
-border: 1px solid var(--color-gray);
+  border-radius: 3px;
+  border: 1px solid var(--color-gray);
 
-font-size: 16px;
-font-weight: bold;
-
-:disabled {
-  cursor: no-drop;
-  background-color: #efefef;
-}
-
-:lang(ko) {
-  word-break: keep-all;
-}
+  font-size: 16px;
+  font-weight: bold;
 `;
 
 const StyledNanumSquareRound = styled.div`
-font-family: 'NanumSquareRound', sans-serif;
-`
+  font-family: 'NanumSquareRound', sans-serif;
+`;
+
 interface Anonymous {
   readonly title: string;
   readonly contents: string;
 }
+
 interface ApiAnonymous {
   readonly title: string;
-  readonly contents: string;
+  readonly content: string;
 }
-
 
 const AnonymousPage: React.FC = () => {
   const [apiWritten, setApiWritten] = useState<ApiAnonymous[]>([]);
@@ -62,38 +55,34 @@ const AnonymousPage: React.FC = () => {
     title: '',
     contents: ''
   });
- 
 
-  
-  const onTitleChange = (e: React.ChangeEvent<HTMLInputElement>, type: keyof Anonymous) => {
-    e.persist();
-
+  const onTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWritten((current) => ({
       ...current,
-      [type]: e.target.value
+      title: e.target.value
     }));
   };
-  const onContentsChange = (e: React.ChangeEvent<HTMLTextAreaElement>, type: keyof Anonymous) => {
-    e.persist();
 
+  const onContentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setWritten((current) => ({
       ...current,
-      [type]: e.target.value
+      contents: e.target.value
     }));
   };
-  const onwrittenClick = async () => {
+
+  const onWrittenClick = async () => {
     if (written.title.trim() === '' || written.contents.trim() === '') {
       showToast('제목또는 내용이 빈칸입니다', 'danger');
       return;
     }
-      await Api.post('/anonymous', {
-        title: written.title,
-        contents: written.contents
-      });
-      showToast('제출완료!', 'success');
-      window.location.reload();
-   
+    await Api.post('/anonymous', {
+      title: written.title,
+      content: written.contents
+    });
+    showToast('제출완료!', 'success');
+    window.location.reload();
   };
+
   useEffect(() => {
     Api.get('/anonymous/').then((res) => {
       if (!res.data.success) {
@@ -101,69 +90,75 @@ const AnonymousPage: React.FC = () => {
         return;
       }
       setApiWritten(res.data.data);
-  });
+    });
   }, []);
-  
-    
-  
-  
+
   return (
     <>
       <Helmet>
         <title>익명페이지 - 수정과</title>
       </Helmet>
+
       <MainSideBarContainer>
         <MainSideBar />
         <StyledContent>
           <Heading1>익명 건의함</Heading1>
           <Heading3>익명으로 글을 작성하실 수 있습니다</Heading3>
           <BlankLine gap={30} />
+
           <StyledNanumSquareRound>
             <Heading2>제목을 적어주세요</Heading2>
           </StyledNanumSquareRound>
+
           <Input
             placeholder="제목"
             title={written.title}
             type="text"
-            onChange={(e) => onTitleChange(e, 'title')}
+            onChange={onTitleChange}
             width={480}
           />
+
           <BlankLine gap={10} />
+
           <StyledNanumSquareRound>
             <Heading2>내용을 입력해주세요</Heading2>
           </StyledNanumSquareRound>
           <StyledTextAreaContents
             placeholder="내용"
             value={written.contents}
-            onChange={(e) => onContentsChange(e, 'contents')}
+            onChange={onContentChange}
             cols={50}
             rows={30}
           />
+
           <BlankLine gap={30} />
-          <HugeButton onClick={onwrittenClick} >제출하기</HugeButton>
+
+          <MediumButton onClick={onWrittenClick}>제출하기</MediumButton>
+
           <BlankLine gap={30} />
+
           <StyledNanumSquareRound>
             <Heading2>익명리스트</Heading2>
           </StyledNanumSquareRound>
-          {
-            apiWritten.map((item) => {
-              return (
-                <Card columnStart={1} columnEnd={4} rowStart={3} rowEnd={4}>
+          {apiWritten.map((item) => {
+            return (
+              <>
+                <Card columnStart={1} columnEnd={1} rowStart={1} rowEnd={1}>
                   <CardTitle>
                     <span role="img" aria-label="Anonymouslist">
                       📧{' '}
                     </span>
                     {item.title}
                   </CardTitle>
-                  {item.contents}
+                  {item.content}
                 </Card>
-              );
-          })
-          }
+                <BlankLine gap={30} />
+              </>
+            );
+          })}
         </StyledContent>
       </MainSideBarContainer>
     </>
-  )
-
-}
-export default AnonymousPage
+  );
+};
+export default AnonymousPage;
