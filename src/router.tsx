@@ -9,6 +9,7 @@ import ToSPage from './pages/ToSPage';
 import UmbrellaPage from './pages/UmbrellaPage';
 import TimetablePage from './pages/TimetablePage';
 import AccountPage from './pages/AccountPage';
+import AnonymousPage from './pages/AnonymousPage';
 
 const Router: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const Router: React.FC = () => {
         <PermissionRoute exact path="/umbrella" success={UmbrellaPage} failure={LoginPage} />
         <PermissionRoute exact path="/timetable" success={TimetablePage} failure={LoginPage} />
         <PermissionRoute exact path="/account" success={AccountPage} failure={LoginPage} />
+        <PermissionRoute exact path="/anonymous" success={AnonymousPage} failure={LoginPage} />
         <PermissionRoute
           exact
           path="/login"

@@ -113,12 +113,14 @@ const MainSideBar: React.FC = () => {
             <p>급식 보기</p>
           </MainSideBarItem>
 
-          <MainSideBarItem onClick={onReadyClick} tabIndex={0}>
-            <SideBarIconWrapper>
-              <FontAwesomeIcon icon={faStickyNote} size="lg" />
-            </SideBarIconWrapper>
-            <p>익명건의함</p>
-          </MainSideBarItem>
+          <StyledLink to="/anonymous">
+            <MainSideBarItem>
+              <SideBarIconWrapper>
+                <FontAwesomeIcon icon={faStickyNote} size="lg" />
+              </SideBarIconWrapper>
+              <p>익명건의함</p>
+            </MainSideBarItem>
+          </StyledLink>
 
           <NoStyleA
             href="https://hcs.eduro.go.kr/#/loginHome"
