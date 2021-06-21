@@ -8,8 +8,10 @@ import {
   Heading2,
   Heading3,
   Input,
+  Label,
   MainSideBarContainer,
   MediumButton,
+  SCREEN_SIZE,
   showToast
 } from 'sinamon-sikhye';
 import styled from 'styled-components';
@@ -18,6 +20,12 @@ import MainSideBar from '../components/MainSideBar';
 
 const StyledContent = styled.div`
   margin: 3rem;
+`;
+
+const StyledInput = styled(Input)`
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_MOBILE}) {
+    width: 100%;
+  }
 `;
 
 const StyledTextAreaContents = styled.textarea`
@@ -30,12 +38,33 @@ const StyledTextAreaContents = styled.textarea`
   border-radius: 3px;
   border: 1px solid var(--color-gray);
 
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 14px;
+
+  resize: none;
+
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_MOBILE}) {
+    width: 100%;
+  }
 `;
 
 const StyledNanumSquareRound = styled.div`
   font-family: 'NanumSquareRound', sans-serif;
+  font-weight: bold;
+`;
+
+const CardWrapper = styled.div`
+  width: 600px;
+
+  @media screen and (max-width: ${SCREEN_SIZE.SCREEN_MOBILE}) {
+    & > div:first-child {
+      width: 70vw;
+    }
+  }
+`;
+
+const ReplyText = styled.span<{ isExists: boolean }>`
+  color: ${(props) => (props.isExists ? 'inherit' : 'var(--color-subtext)')};
+  font-weight: ${(props) => (props.isExists ? 'bold' : 'normal')};
 `;
 
 interface Anonymous {
@@ -44,8 +73,12 @@ interface Anonymous {
 }
 
 interface ApiAnonymous {
+  readonly id: number;
   readonly title: string;
   readonly content: string;
+  readonly reply: {
+    readonly content: string;
+  }[];
 }
 
 const AnonymousPage: React.FC = () => {
@@ -106,11 +139,8 @@ const AnonymousPage: React.FC = () => {
           <Heading3>익명으로 글을 작성하실 수 있습니다</Heading3>
           <BlankLine gap={30} />
 
-          <StyledNanumSquareRound>
-            <Heading2>제목을 적어주세요</Heading2>
-          </StyledNanumSquareRound>
-
-          <Input
+          <Label>제목을 입력해주세요.</Label>
+          <StyledInput
             placeholder="제목"
             title={written.title}
             type="text"
@@ -120,15 +150,14 @@ const AnonymousPage: React.FC = () => {
 
           <BlankLine gap={10} />
 
-          <StyledNanumSquareRound>
-            <Heading2>내용을 입력해주세요</Heading2>
-          </StyledNanumSquareRound>
+          <Label>내용을 입력해주세요</Label>
           <StyledTextAreaContents
             placeholder="내용"
             value={written.contents}
             onChange={onContentChange}
-            cols={50}
-            rows={30}
+            maxLength={400}
+            cols={64}
+            rows={10}
           />
 
           <BlankLine gap={30} />
@@ -138,11 +167,14 @@ const AnonymousPage: React.FC = () => {
           <BlankLine gap={30} />
 
           <StyledNanumSquareRound>
-            <Heading2>익명리스트</Heading2>
+            <Heading2>올라온 익명 건의를 확인해보세요!</Heading2>
           </StyledNanumSquareRound>
+
+          <BlankLine gap={10} />
+
           {apiWritten.map((item) => {
             return (
-              <>
+              <CardWrapper key={item.id}>
                 <Card columnStart={1} columnEnd={1} rowStart={1} rowEnd={1}>
                   <CardTitle>
                     <span role="img" aria-label="Anonymouslist">
@@ -151,9 +183,16 @@ const AnonymousPage: React.FC = () => {
                     {item.title}
                   </CardTitle>
                   {item.content}
+                  <BlankLine gap={10} />
+                  <p>
+                    답변:{' '}
+                    <ReplyText isExists={!!item.reply[0]}>
+                      {item.reply[0] ? item.reply[0].content : '답변대기중'}
+                    </ReplyText>
+                  </p>
                 </Card>
                 <BlankLine gap={30} />
-              </>
+              </CardWrapper>
             );
           })}
         </StyledContent>
