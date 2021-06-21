@@ -185,7 +185,7 @@ const AnonymousPage: React.FC = () => {
                   {item.content}
                   <BlankLine gap={10} />
                   <p>
-                    답변:{' '}
+                    →{' '}
                     <ReplyText isExists={!!item.reply[0]}>
                       {item.reply[0] ? item.reply[0].content : '답변대기중'}
                     </ReplyText>
