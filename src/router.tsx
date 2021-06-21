@@ -19,7 +19,7 @@ const Router: React.FC = () => {
         <PermissionRoute exact path="/umbrella" success={UmbrellaPage} failure={LoginPage} />
         <PermissionRoute exact path="/timetable" success={TimetablePage} failure={LoginPage} />
         <PermissionRoute exact path="/account" success={AccountPage} failure={LoginPage} />
-        <PermissionRoute exact path="/Anonymous" success={AnonymousPage} failure={LoginPage} />
+        <PermissionRoute exact path="/anonymous" success={AnonymousPage} failure={LoginPage} />
         <PermissionRoute
           exact
           path="/login"
